@@ -11,6 +11,7 @@ This repository contains the public paper package, long technical report, cleane
 Archived release:
 
 - GitHub: https://github.com/DaosPath/state-transfer-protocols
+- Project page: https://daospath.github.io/state-transfer-protocols/
 - Zenodo DOI: https://doi.org/10.5281/zenodo.20425831
 
 ## What This Studies

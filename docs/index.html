@@ -1,0 +1,228 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>State-Transfer Protocols · EXP10</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#overview" aria-label="EXP10 home">
+      <span class="brand-title">EXP10 Public Repo Tool Agent</span>
+      <span class="brand-subtitle">State-transfer protocols for scientific repository agents</span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#overview">Overview</a>
+      <a href="#experiments">Experiments</a>
+      <a href="#metrics">Metrics</a>
+      <a href="#artifacts">Artifacts</a>
+      <a href="#reproduce">Reproduce</a>
+      <a href="#claims">Claims</a>
+    </nav>
+    <a class="repo-link" href="https://github.com/DaosPath/state-transfer-protocols">GitHub</a>
+  </header>
+
+  <main>
+    <section id="overview" class="hero section">
+      <div class="hero-copy">
+        <p class="section-label">EXP10: culmination</p>
+        <h1>State-transfer protocols for scientific repo agents</h1>
+        <p class="lead">
+          EXP10 turns the protocol work into a live public-repository task:
+          tool-using agents must preserve state, plan, constraints, claims,
+          dependencies, and recovery while editing scientific artifacts.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#metrics">Explore metrics</a>
+          <a class="button secondary" href="https://doi.org/10.5281/zenodo.20425831">Zenodo DOI</a>
+        </div>
+        <ul class="proof-list">
+          <li><strong>Preserve what matters</strong><span>variables, plans, constraints, claims, dependencies.</span></li>
+          <li><strong>Operate with tools</strong><span>read, edit, validate, hash, sweep, and package files.</span></li>
+          <li><strong>Measure objectively</strong><span>scope drift, claim drift, dependency preservation, recovery.</span></li>
+          <li><strong>Validate in chain</strong><span>multi-turn handoff from short to long agent sequences.</span></li>
+        </ul>
+        <p class="run-line">Latest final freeze: 2026-05-27 · Modes: compressed / hybrid_state · Gemini matrix: 64/64 OK</p>
+      </div>
+
+      <aside class="ops-panel" aria-label="Live repository operations summary">
+        <div class="ops-header">
+          <span>Live Repository Operations</span>
+          <span class="status-dot">Agent system online</span>
+        </div>
+        <div class="ops-grid">
+          <div class="file-tree">
+            <p class="tree-root">/EXP10-public-repo</p>
+            <ul>
+              <li><span>README.md</span><i></i></li>
+              <li><span>CLAIMS.md</span><i></i></li>
+              <li><span>index.html</span><i></i></li>
+              <li><span>METADATA.md</span><i></i></li>
+              <li><span>validators/</span><i></i></li>
+              <li><span>public_dataset_redacted/</span><i></i></li>
+            </ul>
+            <div class="protocol-card">
+              <span>Active protocol</span>
+              <strong>hybrid_state</strong>
+              <small>State · Plan · Constraints · Claims · Dependencies · Recovery</small>
+            </div>
+          </div>
+          <div class="operation-feed">
+            <div class="current-op">
+              <span>Current operation</span>
+              <strong>Edit: README.md</strong>
+              <small>update experimental summary; validate claim map</small>
+            </div>
+            <div class="metric-grid">
+              <article>
+                <span>claim_drift_rate</span>
+                <strong>0.00</strong>
+                <small>ideal: 0</small>
+              </article>
+              <article>
+                <span>scope_drift_rate</span>
+                <strong>0.00</strong>
+                <small>ideal: 0</small>
+              </article>
+              <article>
+                <span>dependency_preservation</span>
+                <strong>0.76</strong>
+                <small>ideal: 1</small>
+              </article>
+              <article>
+                <span>recovery_score</span>
+                <strong>0.88</strong>
+                <small>ideal: 1</small>
+              </article>
+            </div>
+            <div class="handoff-list">
+              <div><span>Agent A → Agent B</span><b>OK</b></div>
+              <div><span>Agent B → Agent C</span><b>OK</b></div>
+              <div><span>Agent C → Agent D</span><b>OK</b></div>
+              <div><span>Agent D → Agent E</span><b>OK</b></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="experiments" class="section journey">
+      <div class="section-heading">
+        <p class="section-label">Research path</p>
+        <h2>From discovery to live repository validation</h2>
+        <p>EXP10 represents the culmination: the protocols are tested through a public web/repo artifact, not only judged as isolated text.</p>
+      </div>
+      <div class="timeline">
+        <article>
+          <span>EXP05</span>
+          <h3>Discovery at Scale</h3>
+          <p>Broad multilingual, multi-model evaluation across natural, compressed, hybrid_min, and hybrid_state.</p>
+          <strong>Outcome: signal found</strong>
+        </article>
+        <article>
+          <span>EXP06</span>
+          <h3>Controlled Protocol Test</h3>
+          <p>Paired compressed vs hybrid_state under controlled language and tokenizer variants.</p>
+          <strong>Outcome: tradeoff confirmed</strong>
+        </article>
+        <article>
+          <span>EXP07 / EXP08</span>
+          <h3>Real-Agent Validation</h3>
+          <p>LangGraph/OpenFang-style handoffs with objective validators, then larger scale-up.</p>
+          <strong>Outcome: objective pressure</strong>
+        </article>
+        <article>
+          <span>EXP09</span>
+          <h3>Tool-Use Validation</h3>
+          <p>Controlled file-level tasks with deterministic validators for CSV, JSONL, tables, manifests, and claims.</p>
+          <strong>Outcome: interface hardened</strong>
+        </article>
+        <article class="highlight">
+          <span>EXP10</span>
+          <h3>Public Repo Agent</h3>
+          <p>Tool-using agent edits public artifacts while preserving constraints, claims, dependencies, and recovery.</p>
+          <strong>Outcome: 64/64 Gemini OK</strong>
+        </article>
+      </div>
+      <p class="core-finding">Core finding: compressed is the universal baseline; hybrid_state is specialized for preserving state, constraints, and claims in real agent handoffs.</p>
+    </section>
+
+    <section id="metrics" class="section metrics-section">
+      <div class="section-heading narrow">
+        <p class="section-label">EXP10 metric system</p>
+        <h2>The final experiment measures repo integrity, not prose quality</h2>
+      </div>
+      <div class="metrics-table" role="table" aria-label="EXP10 metrics">
+        <div class="row header" role="row">
+          <span>Metric</span><span>What it catches</span><span>Ideal</span>
+        </div>
+        <div class="row"><span>state_preserved</span><span>lost variables, decisions, memory</span><span>1.00</span></div>
+        <div class="row"><span>plan_preserved</span><span>lost order, next action, dependencies</span><span>1.00</span></div>
+        <div class="row"><span>constraint_preservation_score</span><span>lost allowed/forbidden files or claims</span><span>1.00</span></div>
+        <div class="row"><span>scope_drift_rate</span><span>unneeded file edits outside task scope</span><span>0.00</span></div>
+        <div class="row"><span>claim_drift_rate</span><span>scientific claim mutation during handoff</span><span>0.00</span></div>
+        <div class="row"><span>dependency_preservation_score</span><span>forgotten README/figures/metadata links</span><span>1.00</span></div>
+        <div class="row"><span>recovery_score</span><span>ability to correct after validator failure</span><span>1.00</span></div>
+      </div>
+    </section>
+
+    <section id="artifacts" class="section artifacts">
+      <div class="section-heading narrow">
+        <p class="section-label">Public artifact</p>
+        <h2>The web page is part of the experiment</h2>
+        <p>EXP10 asks the agent to maintain the same repo that explains the research. This creates a closed loop: protocol → tool use → public artifact → validator.</p>
+      </div>
+      <div class="artifact-grid">
+        <article><h3>GitHub</h3><p><a href="https://github.com/DaosPath/state-transfer-protocols">Repository, code, data, reports, and public package.</a></p></article>
+        <article><h3>Zenodo DOI</h3><p><a href="https://doi.org/10.5281/zenodo.20425831">Archived release for citation and reproducibility.</a></p></article>
+        <article><h3>Short paper</h3><p><a href="https://github.com/DaosPath/state-transfer-protocols/blob/main/paper_short/state_transfer_protocols_short_paper.pdf">Compact paper PDF for workshop and preprint circulation.</a></p></article>
+        <article><h3>README.md</h3><p>Explains state-transfer protocol and experiment path.</p></article>
+        <article><h3>CLAIMS.md</h3><p>Separates strong, narrow, exploratory, and forbidden claims.</p></article>
+        <article><h3>index.html</h3><p>Public landing page and culmination view.</p></article>
+        <article><h3>validators/</h3><p>Checks files, sections, scope drift, claim drift, dependencies, secrets.</p></article>
+        <article><h3>PUBLIC_DATASET_REDACTED</h3><p>Safe data tier with manifest, redaction, and checksums.</p></article>
+        <article><h3>paper/</h3><p>Main PDF, source, figures, and appendix references.</p></article>
+      </div>
+    </section>
+
+    <section id="reproduce" class="section reproduce">
+      <div>
+        <p class="section-label">Reproduce</p>
+        <h2>One experiment, deterministic checks</h2>
+        <p>EXP10 starts with 16 tasks, 2 modes, 2 repetitions, and explicit long-chain tasks. The final Gemini run completed 64/64 latest cells.</p>
+      </div>
+      <pre><code>python run_exp10_resumable.py --preflight
+python run_exp10_resumable.py --dry-local --reps 2
+python status_exp10.py
+python validators/validate_public_repo_case.py --task-bank task_bank_exp10_seed.jsonl --task-id T001 --repo workspace_runs/T001__hybrid_state__rep1</code></pre>
+    </section>
+
+    <section id="claims" class="section claims">
+      <div class="claim-column strong">
+        <h2>Strong claims</h2>
+        <ul>
+          <li>compressed is a robust universal operational compression baseline.</li>
+          <li>hybrid_state is specialized for explicit state and continuity preservation.</li>
+          <li>objective validators reduce dependence on LLM-as-judge.</li>
+        </ul>
+      </div>
+      <div class="claim-column careful">
+        <h2>Do not claim</h2>
+        <ul>
+          <li>hybrid_state wins globally.</li>
+          <li>ZH proves tokenization advantage.</li>
+          <li>universal agent interoperability is proven.</li>
+          <li>model rankings are general capability results.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>EXP10_PUBLIC_REPO_TOOL_AGENT</span>
+    <span>Scientific repository maintenance as state-transfer benchmark · DOI 10.5281/zenodo.20425831</span>
+  </footer>
+</body>
+</html>
+
