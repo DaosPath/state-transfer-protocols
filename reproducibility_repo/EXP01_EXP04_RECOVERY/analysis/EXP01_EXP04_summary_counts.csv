@@ -1,0 +1,9 @@
+source_file,rows_raw,unique_cells,duplicate_cells_removed,clean_latest_ok,terminal_errors,json_parse_errors
+06_Resultados/experimento_01_runs.jsonl,120,120,0,120,0,0
+06_Resultados/experimento_02_runs.jsonl,120,120,0,120,0,0
+06_Resultados/experimento_03_fusion_runs.jsonl,720,720,0,720,0,0
+09_Multilingue/08_Combined_Runs/exp01_exp02_en_zh_runs.jsonl,480,480,0,480,0,0
+09_Multilingue/08_Combined_Runs/EXP03_EN/exp03_en_runs.jsonl,720,720,0,720,0,0
+09_Multilingue/08_Combined_Runs/EXP03_ZH/exp03_zh_runs.jsonl,900,900,0,900,0,0
+05_Experimentos/EXP04_TRI/exp04_tri_runs.jsonl,1350,1350,0,1350,0,0
+05_Experimentos/EXP04_TRI/exp04b_batch_decode_results.jsonl,9,9,0,9,0,0

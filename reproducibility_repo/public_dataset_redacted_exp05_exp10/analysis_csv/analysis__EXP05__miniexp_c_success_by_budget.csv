@@ -1,0 +1,17 @@
+model_key,token_budget_pct,ok,fail,total,success_rate
+azure_gpt_5_5_instant,100,47,1,48,0.9792
+azure_gpt_5_5_instant,35,23,25,48,0.4792
+azure_gpt_5_5_instant,50,37,11,48,0.7708
+azure_gpt_5_5_instant,75,46,2,48,0.9583
+gemini_3_1_pro_preview,100,48,0,48,1.0
+gemini_3_1_pro_preview,35,48,0,48,1.0
+gemini_3_1_pro_preview,50,48,0,48,1.0
+gemini_3_1_pro_preview,75,48,0,48,1.0
+grok_4_20_non_reasoning,100,48,0,48,1.0
+grok_4_20_non_reasoning,35,48,0,48,1.0
+grok_4_20_non_reasoning,50,48,0,48,1.0
+grok_4_20_non_reasoning,75,48,0,48,1.0
+qwen3_next_80b_instruct,100,48,0,48,1.0
+qwen3_next_80b_instruct,35,48,0,48,1.0
+qwen3_next_80b_instruct,50,48,0,48,1.0
+qwen3_next_80b_instruct,75,48,0,48,1.0

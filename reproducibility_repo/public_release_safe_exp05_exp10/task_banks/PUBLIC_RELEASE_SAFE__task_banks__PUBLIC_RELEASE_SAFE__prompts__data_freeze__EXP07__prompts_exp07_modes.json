@@ -1,0 +1,14 @@
+{
+  "natural": {
+    "agent_a_instruction": "Work on the task until the interruption point. Write a handoff for the next agent in normal prose. Include all variables, constraints, completed subtasks, pending subtasks, plan steps, risks, and next action.",
+    "handoff_style": "Plain natural-language operational summary."
+  },
+  "compressed": {
+    "agent_a_instruction": "Work on the task until the interruption point. Write a compact handoff using dense operational notes. Preserve variables, constraints, completed subtasks, pending subtasks, plan steps, risks, and next action.",
+    "handoff_style": "Dense compact notes with minimal prose."
+  },
+  "hybrid_state": {
+    "agent_a_instruction": "Work on the task until the interruption point. Write a hybrid_state handoff using explicit state fields: G goal, VAR variables, C constraints, DONE completed subtasks, TODO pending subtasks, PLAN ordered steps, R risks, V checks, NEXT next action. Preserve operational continuity.",
+    "handoff_style": "Structured symbolic state-transfer protocol."
+  }
+}

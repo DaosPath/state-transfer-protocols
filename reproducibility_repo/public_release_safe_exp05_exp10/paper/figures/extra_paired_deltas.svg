@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360">
+<rect width="100%" height="100%" fill="white"/>
+<text x="490.0" y="30.0" font-family="Arial" font-size="18" font-weight="700" text-anchor="middle" fill="#222">Paired deltas: hybrid_state minus comparator</text>
+<line x1="635.0" y1="40" x2="635.0" y2="325" stroke="#333"/>
+<text x="320.0" y="67.0" font-family="Arial" font-size="11" font-weight="400" text-anchor="end" fill="#222">EXP06 exp06_a_hybrid_state_causal_handoff</text>
+<rect x="344.1" y="55.0" width="290.9" height="17" fill="#b84a4a"/>
+<text x="339.1" y="68.0" font-family="Arial" font-size="10" font-weight="400" text-anchor="end" fill="#222">-0.203</text>
+<text x="320.0" y="94.0" font-family="Arial" font-size="11" font-weight="400" text-anchor="end" fill="#222">EXP06 exp06_b_zh_tokenizer_ablation</text>
+<rect x="330.0" y="82.0" width="305.0" height="17" fill="#b84a4a"/>
+<text x="325.0" y="95.0" font-family="Arial" font-size="10" font-weight="400" text-anchor="end" fill="#222">-0.213</text>
+<text x="320.0" y="121.0" font-family="Arial" font-size="11" font-weight="400" text-anchor="end" fill="#222">EXP07 objective</text>
+<rect x="635.0" y="109.0" width="0.0" height="17" fill="#2f6f9f"/>
+<text x="640.0" y="122.0" font-family="Arial" font-size="10" font-weight="400" text-anchor="start" fill="#222">0.000</text>
+<text x="320.0" y="148.0" font-family="Arial" font-size="11" font-weight="400" text-anchor="end" fill="#222">EXP07 objective</text>
+<rect x="635.0" y="136.0" width="0.0" height="17" fill="#2f6f9f"/>
+<text x="640.0" y="149.0" font-family="Arial" font-size="10" font-weight="400" text-anchor="start" fill="#222">0.000</text>
+<text x="320.0" y="175.0" font-family="Arial" font-size="11" font-weight="400" text-anchor="end" fill="#222">EXP07 objective</text>
+<rect x="635.0" y="163.0" width="0.0" height="17" fill="#2f6f9f"/>
+<text x="640.0" y="176.0" font-family="Arial" font-size="10" font-weight="400" text-anchor="start" fill="#222">0.000</text>
+</svg>

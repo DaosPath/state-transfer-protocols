@@ -1,0 +1,16 @@
+metric,mode,baseline,mode_mean,baseline_mean,delta,cohen_d,n_mode,n_baseline
+quality_index,hybrid_min,compressed,3.9611,4.3471,-0.386,-0.324,918,902
+quality_index,hybrid_state,compressed,4.2799,4.3471,-0.0672,-0.0609,905,902
+quality_index,natural,compressed,4.3244,4.3471,-0.0227,-0.0204,916,902
+semantic_fidelity,hybrid_min,compressed,4.0261,4.347,-0.3209,-0.2484,918,902
+semantic_fidelity,hybrid_state,compressed,4.2862,4.347,-0.0608,-0.0497,905,902
+semantic_fidelity,natural,compressed,4.3057,4.347,-0.0413,-0.0332,916,902
+state_preservation,hybrid_min,compressed,3.9924,4.2627,-0.2704,-0.2007,918,902
+state_preservation,hybrid_state,compressed,4.4088,4.2627,0.1461,0.1203,905,902
+state_preservation,natural,compressed,4.1539,4.2627,-0.1088,-0.0805,916,902
+operational_continuity,hybrid_min,compressed,3.9194,4.3359,-0.4165,-0.3106,918,902
+operational_continuity,hybrid_state,compressed,4.3624,4.3359,0.0265,0.022,905,902
+operational_continuity,natural,compressed,4.1823,4.3359,-0.1536,-0.117,916,902
+compactness,hybrid_min,compressed,4.8301,4.8271,0.003,0.0047,918,902
+compactness,hybrid_state,compressed,4.7923,4.8271,-0.0348,-0.0554,905,902
+compactness,natural,compressed,4.5393,4.8271,-0.2877,-0.373,916,902

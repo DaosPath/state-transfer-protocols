@@ -1,0 +1,4 @@
+framework,model_key,n,delta_variable_recovery_rate_mean,delta_variable_recovery_rate_sd,delta_subtask_completion_rate_mean,delta_subtask_completion_rate_sd,delta_plan_continuity_rate_mean,delta_plan_continuity_rate_sd,delta_constraint_retention_rate_mean,delta_constraint_retention_rate_sd,delta_handoff_success_mean,delta_handoff_success_sd,delta_state_error_count_mean,delta_state_error_count_sd
+langgraph,azure_gpt_5_4_high,30,-0.29333333333333333,0.604114246635937,-0.125,0.3131458842577788,-0.3416666666666667,0.42285632461199846,-0.16666666666666666,0.6989318615762461,-0.03333333333333333,0.18257418583505536,0.8,56.92245178522601
+langgraph,azure_gpt_chat_latest,30,-0.025,0.24870353490825592,-0.18333333333333332,0.45454284220774926,-0.1,0.4183300132670378,0.18333333333333332,0.5330998051949096,0.0,0.2626128657194451,-0.13333333333333333,1.3829836145670416
+openfang,azure_gpt_chat_latest,30,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

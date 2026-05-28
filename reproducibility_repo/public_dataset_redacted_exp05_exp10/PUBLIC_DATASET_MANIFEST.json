@@ -1,0 +1,80 @@
+{
+  "name": "PUBLIC_DATASET_REDACTED",
+  "policy": "Redacted JSONL plus aggregate CSV tables. Raw internal JSONL is not included.",
+  "jsonl": [
+    {
+      "source": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\analysis\\EXP06\\EXP06_ANALYSIS_20260526_151836\\exp06_clean_ok.jsonl",
+      "status": "redacted",
+      "target": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\PUBLIC_DATASET_REDACTED\\jsonl_redacted\\analysis__EXP06__EXP06_ANALYSIS_20260526_151836__exp06_clean_ok.jsonl",
+      "rows": 6252,
+      "rows_changed": 12
+    },
+    {
+      "source": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\analysis\\EXP06\\EXP06_ANALYSIS_20260526_151836\\exp06_clean_terminal.jsonl",
+      "status": "redacted",
+      "target": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\PUBLIC_DATASET_REDACTED\\jsonl_redacted\\analysis__EXP06__EXP06_ANALYSIS_20260526_151836__exp06_clean_terminal.jsonl",
+      "rows": 6273,
+      "rows_changed": 12
+    },
+    {
+      "source": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\data_freeze\\EXP07\\exp07_clean_dedup.jsonl",
+      "status": "redacted",
+      "target": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\PUBLIC_DATASET_REDACTED\\jsonl_redacted\\data_freeze__EXP07__exp07_clean_dedup.jsonl",
+      "rows": 270,
+      "rows_changed": 90
+    },
+    {
+      "source": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\data_freeze\\EXP07\\exp07_operational_errors.jsonl",
+      "status": "redacted",
+      "target": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\PUBLIC_DATASET_REDACTED\\jsonl_redacted\\data_freeze__EXP07__exp07_operational_errors.jsonl",
+      "rows": 4,
+      "rows_changed": 0
+    }
+  ],
+  "csv_files": [
+    "analysis_csv/analysis__EXP05__miniexp_b_judge_drift.csv",
+    "analysis_csv/analysis__EXP05__miniexp_c_success_by_budget.csv",
+    "analysis_csv/analysis__EXP05__miniexp_e_by_model.csv",
+    "analysis_csv/analysis__EXP05__miniexp_e_by_turn.csv",
+    "analysis_csv/analysis__EXP05__mode_effects_vs_compressed.csv",
+    "analysis_csv/analysis__EXP05__principal_by_generator.csv",
+    "analysis_csv/analysis__EXP05__principal_by_language.csv",
+    "analysis_csv/analysis__EXP05__principal_by_mode.csv",
+    "analysis_csv/analysis__EXP05__principal_paired_mode_deltas.csv",
+    "analysis_csv/analysis__EXP05__stats_by_generator.csv",
+    "analysis_csv/analysis__EXP05__stats_by_judge.csv",
+    "analysis_csv/analysis__EXP05__stats_by_language.csv",
+    "analysis_csv/analysis__EXP05__stats_by_mode.csv",
+    "analysis_csv/analysis__EXP05__stats_by_phase.csv",
+    "analysis_csv/analysis__EXP05__stats_by_phase_mode.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__exp06_evaluation_scores_by_judge.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__exp06_generation_mean_scores.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__judge_agreement.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__paired_effect_by_generator.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__paired_effect_by_language.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__paired_effect_by_phase.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__paired_effect_by_phase_language.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__paired_effect_overall.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__paired_mode_differences.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__policy_failure_summary.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__summary_by_generator.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__summary_by_generator_mode.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__summary_by_judge.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__summary_by_language.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__summary_by_language_mode.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__summary_by_mode.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__summary_by_phase.csv",
+    "analysis_csv/analysis__EXP06__EXP06_ANALYSIS_20260526_151836__summary_by_phase_mode.csv",
+    "analysis_csv/analysis__EXP07__exp07_cost_summary.csv",
+    "analysis_csv/analysis__EXP07__exp07_cost_summary_char4_repaired_estimate.csv",
+    "analysis_csv/analysis__EXP07__exp07_framework_model_mode_summary.csv",
+    "analysis_csv/analysis__EXP07__exp07_framework_mode_summary.csv",
+    "analysis_csv/analysis__EXP07__exp07_framework_summary.csv",
+    "analysis_csv/analysis__EXP07__exp07_model_mode_summary.csv",
+    "analysis_csv/analysis__EXP07__exp07_model_summary.csv",
+    "analysis_csv/analysis__EXP07__exp07_mode_summary.csv",
+    "analysis_csv/analysis__EXP07__exp07_paired_deltas_hybrid_state_minus_compressed.csv",
+    "analysis_csv/analysis__EXP07__exp07_paired_delta_summary.csv"
+  ],
+  "license_recommendation": "CC BY 4.0 or CC BY-NC 4.0"
+}

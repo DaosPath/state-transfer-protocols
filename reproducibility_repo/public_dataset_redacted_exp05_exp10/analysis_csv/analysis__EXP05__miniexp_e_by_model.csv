@@ -1,0 +1,5 @@
+generator_model_key,n,quality_index_mean,quality_index_sd,quality_index_ci95_low,quality_index_ci95_high,semantic_fidelity_mean,semantic_fidelity_sd,semantic_fidelity_ci95_low,semantic_fidelity_ci95_high,state_preservation_mean,state_preservation_sd,state_preservation_ci95_low,state_preservation_ci95_high,operational_continuity_mean,operational_continuity_sd,operational_continuity_ci95_low,operational_continuity_ci95_high,handoff_quality_mean,handoff_quality_sd,handoff_quality_ci95_low,handoff_quality_ci95_high
+azure_gpt_5_5_instant,40,4.5625,0.4938,4.4095,4.7155,4.6,0.4961,4.4462,4.7538,4.6,0.4961,4.4462,4.7538,4.6,0.4961,4.4462,4.7538,4.6,0.4961,4.4462,4.7538
+gemini_3_1_pro_preview,40,2.7229,1.6671,2.2063,3.2396,2.725,1.7095,2.1952,3.2548,2.875,1.6043,2.3778,3.3722,2.575,1.767,2.0274,3.1226,2.575,1.767,2.0274,3.1226
+grok_4_20_non_reasoning,40,4.7635,0.4076,4.6372,4.8899,4.8,0.4051,4.6745,4.9255,4.775,0.4229,4.6439,4.9061,4.8,0.4051,4.6745,4.9255,4.775,0.4229,4.6439,4.9061
+qwen3_next_80b_instruct,40,4.1292,1.0383,3.8074,4.4509,3.825,1.5506,3.3445,4.3055,4.4,1.0077,4.0877,4.7123,3.775,1.5769,3.2863,4.2637,3.7,1.6045,3.2028,4.1972

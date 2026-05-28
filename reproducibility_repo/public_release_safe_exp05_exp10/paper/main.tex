@@ -1,0 +1,461 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{Symbolic Compression Protocols for Multilingual Multi-Agent Handoff Across Frontier Models}
+\author{Anonymous Authors}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Large language model agents increasingly need to transfer operational state across models, providers, and languages without carrying full conversational histories. We study compact symbolic formats as \emph{state-transfer protocols}, asking when they preserve semantic fidelity, operational continuity, and handoff quality across heterogeneous model families. EXP05 is a broad discovery experiment: it compares natural, compressed, hybrid\_min, and hybrid\_state protocols over Spanish, English, and Chinese tasks using multiple frontier and semi-open generators, plus judge-drift, token-budget, Chinese compactness, and long-handoff mini-experiments. EXP06 is a controlled follow-up: it directly pairs compressed against hybrid\_state, adds a Chinese tokenizer/variant ablation, and evaluates every valid generation with three judges. EXP07 and EXP08 add real-agent validation layers using LangGraph and OpenFang with objective handoff metrics; EXP08 scales this setting to 900 operational executions. Across EXP05, compressed is the strongest general baseline, while hybrid\_state significantly improves paired state preservation in the principal subset ($\Delta=+0.133$, 95\% CI $[+0.025,+0.240]$). EXP06 confirms the state-preservation advantage under stricter controls ($\Delta=+0.066$, 95\% CI $[+0.032,+0.100]$), but also shows that hybrid\_state does not win global quality ($\Delta Q=-0.208$, 95\% CI $[-0.239,-0.177]$). EXP07 and EXP08 confirm that these protocols can be evaluated in real agent surfaces without relying solely on LLM judges, but neither shows a global hybrid\_state win: compressed remains the strongest operational baseline, while hybrid\_state shows only conditional advantages in selected state/constraint strata. EXP08 also identifies a provider/model failure mode: under strict JSON requirements, Azure GPT 5.4 High with high reasoning produced 76 blank-output cells, especially for hybrid\_state. We therefore argue that compressed is the universal baseline, while hybrid\_state is a specialized protocol whose benefits are strongest for explicit state variables, not aggregate quality. Chinese and tokenizer-ablation results suggest language representation matters, but the mechanism remains only partially isolated.
+\end{abstract}
+
+\section{Introduction}
+Autonomous and semi-autonomous language-model agents often need to continue work after context truncation, model substitution, provider failure, or handoff to another agent. The usual solution is to retain more natural-language context. This is expensive and fragile: longer context can increase cost, latency, and ambiguity, while still failing to preserve the operational state that matters for continuation.
+
+This paper studies a different framing: compressed and symbolic prompt formats as \emph{state-transfer protocols}. Rather than asking only whether a prompt can be shortened, we ask whether compact formats preserve the information required for another model to continue a task. This distinction matters because a protocol can be token-efficient yet operationally weak, or slightly less natural yet better at carrying state.
+
+The empirical design has four stages. EXP05, named \texttt{EXP05\_PREMIUM\_MULTIMODEL\_TRILINGUAL}, is a broad discovery experiment across modes, languages, model families, judges, and stress tests. EXP06, named \texttt{EXP06\_CAUSAL\_PROTOCOL\_TRANSFER}, is a narrower confirmation experiment that directly tests the strongest EXP05 claim: hybrid\_state should improve operational state transfer even if it does not maximize global quality. EXP07, named \texttt{EXP07\_REAL\_AGENT\_HANDOFF\_OBJECTIVE\_METRICS}, asks whether the same protocol family can be evaluated inside real agent frameworks using objective continuation metrics rather than only LLM judges. EXP08, named \texttt{EXP08\_REAL\_AGENT\_SCALEUP}, scales the real-agent evaluation to 30 tasks, 5 repetitions, and 900 operational executions.
+
+The resulting story is deliberately not a winner-takes-all ranking. Compressed text remains the strongest universal baseline. Hybrid\_state is weaker on aggregate quality, but it repeatedly improves state preservation in judge-based experiments, the metric most aligned with multi-agent continuation. EXP07 and EXP08 further show that real-agent objective metrics are feasible and useful, while also warning against overgeneralization: hybrid\_state does not dominate real-agent execution globally. This distinction is central: compact protocols should be optimized against their intended transfer function, not only against a single global score.
+
+\section{Related Work}
+This work connects four lines of research.
+
+First, prompt compression studies attempt to reduce token count while preserving task utility. These approaches usually optimize for shorter prompts, shorter context, or cheaper inference. EXP05 instead treats compact prompts as communication protocols between agents.
+
+Second, work on LLM agents and tool-using systems emphasizes memory, planning, and handoff. Many systems use natural-language summaries as persistent state. Our experiment asks whether more structured symbolic forms can preserve operational state more reliably.
+
+Third, multilingual evaluation shows that model behavior varies by language, tokenization, training distribution, and cultural-linguistic structure. EXP05 directly compares Spanish, English, and Chinese to test whether compact symbolic formats behave differently across scripts and tokenization regimes.
+
+Fourth, LLM-as-judge methodology has become common for scalable evaluation, but judge drift remains a serious concern. We therefore include a dedicated judge-drift mini-experiment comparing Gemini, GPT, and Grok judges over the same outputs.
+
+\section{Method}
+\subsection{Communication Modes}
+We compare four protocol modes.
+
+\textbf{natural} uses standard human-readable prose.
+
+\textbf{compressed} uses a compact baseline similar to dense operational notes.
+
+\textbf{hybrid\_min} uses the most aggressively minimized hybrid symbolic form.
+
+\textbf{hybrid\_state} emphasizes explicit state preservation, continuity markers, and handoff-relevant fields.
+
+\subsection{Languages and Tasks}
+The principal experiment uses Spanish (ES), English (EN), and Chinese (ZH). Tasks cover contextual summarization, handoff, planning, persistent operational state, and multilingual transfer. The principal design contains 15 task templates, 3 languages, 4 modes, 2 repetitions, and 5 generator families, partitioned into resumable execution parts.
+
+\subsection{Models}
+The principal generator pool includes Grok 4.20 Non-Reasoning, Gemini 3.1 Pro Preview, Llama 4 Maverick, Qwen3-Next-80B, and GLM 5. Additional controlled extensions include Azure GPT instant, Grok reasoning/non-reasoning comparisons, Azure Grok 4.3, judge-drift models, token-budget stress models, and long-handoff models.
+
+\subsection{Evaluation}
+Evaluators return strict JSON metrics. Positive metrics are scored with higher values better: semantic fidelity, clarity, utility, completeness, state preservation, operational continuity, context recoverability, handoff quality, compactness, language stability, and inter-model transferability. Negative metrics are scored with lower values better: ambiguity and information loss.
+
+We compute a descriptive quality index:
+\[
+Q = \frac{\mathrm{mean}(\mathrm{positive}) + (6 - \mathrm{mean}(\mathrm{negative}))}{2}.
+\]
+This index is used for ranking, but individual metrics are reported separately because the main scientific claims concern state preservation, continuity, compactness, and language behavior.
+
+\subsection{Data Cleaning}
+All analyses use cleaned and deduplicated outputs. The cleaning pass keeps the latest successful generation/evaluation per cell, removes superseded retries, preserves unique MiniEXP-C generation failures as experimental evidence, and verifies that no evaluation points to a missing generation. EXP06 additionally preserves provider policy failures as terminal events: 21 Azure GPT instant generation cells were marked \texttt{policy\_failure}, retained for provider-reliability analysis, and excluded from score aggregation because no output existed to evaluate. EXP07 preserves operational startup/calibration errors separately, then scores the latest successful execution per real-agent cell. EXP08 reports two views: an \emph{operational-complete} view with 900/900 latest cells marked OK, and a stricter \emph{JSON-valid} view with 824/900 cells after excluding blank-output responses from Azure GPT 5.4 High.
+
+\section{Experiments}
+\subsection{Principal EXP05}
+The principal experiment evaluates the four communication modes across ES/EN/ZH and five generator families. The cleaned principal subset contains 1,800 evaluations.
+
+\subsection{MiniEXP-A: Grok Reasoning}
+MiniEXP-A compares Grok 4.20 Non-Reasoning and Grok 4.20 Reasoning on matched compact-protocol tasks. A2 separately evaluates Azure Grok 4.3 and is not pooled with Grok 4.20.
+
+\subsection{MiniEXP-B: Judge Drift}
+MiniEXP-B re-evaluates the same 120 source outputs with four judges: Gemini 3.1 Pro Preview, Gemini 3.5 Flash, Azure GPT 5.4 High, and Grok 4.20 Reasoning.
+
+\subsection{MiniEXP-C: Token Budget Stress Test}
+MiniEXP-C evaluates how models respond to reduced output budgets. Generation failures are not discarded when no successful retry exists, because they indicate stress-test failure.
+
+\subsection{MiniEXP-D: Chinese Compactness}
+MiniEXP-D isolates Chinese compact protocol behavior to test whether ZH performance reflects a real language/tokenization signal or only principal-experiment noise.
+
+\subsection{MiniEXP-E: Long Handoff}
+MiniEXP-E studies multi-turn handoff durability under longer operational chains.
+
+\subsection{EXP06: Controlled Causal Follow-up}
+EXP06 tests the strongest EXP05 interpretation under stricter controls. EXP06-A directly pairs compressed and hybrid\_state on causal handoff tasks across ES, EN, and ZH. EXP06-B probes the language/tokenization hypothesis using ZH, ZH\_PINYIN, EN\_LITERAL, and ES\_LITERAL variants. EXP06-C evaluates every valid generation with three independent judges: Gemini 3.5 Flash, Azure GPT 5.4 High, and Grok 4.20 Reasoning. The cleaned EXP06 dataset contains 1,563 valid generations and 4,689 successful evaluations.
+
+\subsection{EXP07: Real-Agent Handoff}
+EXP07 evaluates the same protocol family inside real agent surfaces. It uses LangGraph StateGraph and OpenFang CLI/daemon runs over 10 operational handoff tasks, 3 modes, and 3 repetitions. LangGraph is run with Azure GPT chat latest and Azure GPT 5.4 High; OpenFang is run with Azure GPT chat latest. The cleaned EXP07 dataset contains 270 successful real-agent executions after deduplication, with 4 operational calibration errors retained separately. Unlike EXP05 and EXP06, EXP07 uses objective schema metrics: variable recovery, subtask completion, plan continuity, constraint retention, handoff success, and state-error count.
+
+\subsection{EXP08: Real-Agent Scale-Up}
+EXP08 scales the real-agent design to 30 operational tasks, 2 modes, 5 repetitions, and 900 operational executions. LangGraph is run with Azure GPT chat latest and Azure GPT 5.4 High; OpenFang is run with Azure GPT chat latest. The goal is not to introduce a new protocol, but to test whether EXP07's real-agent conclusions survive a larger matrix. The final operational view contains 900/900 OK cells and zero latest operational errors. The stricter JSON-valid view contains 824/900 cells; the remaining 76 are blank-output responses from Azure GPT 5.4 High under LangGraph, concentrated more heavily in hybrid\_state.
+
+\section{Results}
+\subsection{Principal Mode Results}
+Table~\ref{tab:principal_modes} shows the principal experiment ranking by mode. Compressed achieves the highest quality index. Hybrid\_state ranks second and is strongest on state preservation.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrrrrrr}
+\toprule
+Mode & $n$ & $Q$ & Fidelity & State & Continuity & Compact & InfoLoss \\
+\midrule
+compressed & 450 & 4.301 & 4.351 & 4.233 & 4.327 & 4.833 & 1.949 \\
+hybrid\_state & 450 & 4.180 & 4.189 & 4.369 & 4.320 & 4.807 & 2.022 \\
+natural & 450 & 4.161 & 4.184 & 3.991 & 4.024 & 4.409 & 2.033 \\
+hybrid\_min & 450 & 3.769 & 3.853 & 3.840 & 3.742 & 4.849 & 2.467 \\
+\bottomrule
+\end{tabular}
+\caption{Principal EXP05 results by communication mode. Negative metrics such as information loss are better when lower.}
+\label{tab:principal_modes}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{figures/exp05_modes_metrics.pdf}
+\caption{EXP05 principal mode tradeoff across quality index, state preservation, and compactness.}
+\label{fig:exp05_modes}
+\end{figure}
+
+\subsection{Paired Effects Against Compressed}
+Table~\ref{tab:paired} reports paired deltas against compressed. Hybrid\_state improves state preservation by $+0.133$ with 95\% CI $[+0.025,+0.240]$. Its operational continuity is effectively tied with compressed. Hybrid\_min preserves compactness but loses quality, fidelity, state, and continuity.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{llrrrr}
+\toprule
+Metric & Mode & $n$ & $\Delta$ & 95\% CI Low & 95\% CI High \\
+\midrule
+quality index & hybrid\_state & 430 & -0.108 & -0.203 & -0.012 \\
+semantic fidelity & hybrid\_state & 430 & -0.142 & -0.255 & -0.029 \\
+state preservation & hybrid\_state & 430 & +0.133 & +0.025 & +0.240 \\
+operational continuity & hybrid\_state & 430 & +0.007 & -0.099 & +0.113 \\
+compactness & hybrid\_state & 430 & -0.014 & -0.080 & +0.052 \\
+\bottomrule
+\end{tabular}
+\caption{Paired deltas for hybrid\_state against compressed in the principal experiment.}
+\label{tab:paired}
+\end{table}
+
+\subsection{Language Effects}
+Table~\ref{tab:languages} shows a consistent ZH advantage in the principal subset. This supports the hypothesis that language structure and tokenization may affect compact protocol performance, but it does not yet isolate the causal mechanism.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Language & $n$ & $Q$ & Fidelity & State & Continuity \\
+\midrule
+ZH & 600 & 4.180 & 4.207 & 4.197 & 4.180 \\
+EN & 600 & 4.108 & 4.143 & 4.115 & 4.108 \\
+ES & 600 & 4.020 & 4.083 & 4.013 & 4.022 \\
+\bottomrule
+\end{tabular}
+\caption{Principal EXP05 results by language.}
+\label{tab:languages}
+\end{table}
+
+\subsection{Generator Effects}
+Grok 4.20 Non-Reasoning leads the principal generator ranking ($Q=4.466$), followed by GLM 5 ($Q=4.394$), Qwen3-Next-80B ($Q=4.248$), Llama 4 Maverick ($Q=3.874$), and Gemini 3.1 Pro Preview ($Q=3.532$). This ranking should be interpreted as protocol/task behavior under this setup, not as a general benchmark of model intelligence.
+
+\subsection{Judge Drift}
+Judge-drift results show strong but imperfect agreement. Gemini 3.1 and Gemini 3.5 correlate most strongly ($r=0.839$). Azure GPT 5.4 High is consistently stricter than Gemini and Grok judges, with mean quality-index deltas around $-0.95$ versus Gemini and $-0.43$ versus Grok.
+
+\subsection{Token Budget Stress}
+Gemini, Grok, and Qwen remain structurally successful at all tested budgets, including 35\%. Azure GPT instant is fragile under aggressive budgets: success is 47.9\% at 35\%, 77.1\% at 50\%, 95.8\% at 75\%, and 97.9\% at 100\%.
+
+\section{Controlled Follow-up: EXP06}
+\label{sec:exp06}
+
+EXP05 establishes a broad multilingual and multi-model signal: compressed protocols are a strong baseline, while hybrid\_state improves state preservation. EXP06 tests this claim under stricter paired controls. The experiment removes natural and hybrid\_min, directly compares compressed against hybrid\_state, and adds a Chinese tokenizer/variant ablation plus three-judge calibration.
+
+\subsection{Design}
+EXP06 contains two generation phases and one evaluation phase. EXP06-A evaluates causal handoff transfer across ES, EN, and ZH. EXP06-B evaluates ZH, ZH\_PINYIN, EN\_LITERAL, and ES\_LITERAL variants to probe the language/tokenization hypothesis. EXP06-C evaluates every valid generation with Gemini 3.5 Flash, Azure GPT 5.4 High, and Grok 4.20 Reasoning. The cleaned dataset contains 1,563 valid generations and 4,689 evaluations; 21 Azure GPT instant generations were retained as terminal policy failures and excluded from scoring.
+
+\subsection{Mode Results}
+Compressed achieves the higher global quality index in EXP06 (Table~\ref{tab:exp06_modes}). Hybrid\_state is weaker on global quality, semantic fidelity, operational continuity, compactness, ambiguity, and information loss. However, it is stronger on state preservation. This is the central controlled result: EXP06 confirms hybrid\_state as a state-transfer specialization, not as a universal quality winner.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Mode & $n$ & $Q$ & Fidelity & State & Continuity & Compact & Ambig. & InfoLoss \\
+\midrule
+compressed & 777 & 3.855 & 3.780 & 3.728 & 3.761 & 4.705 & 2.231 & 2.498 \\
+hybrid\_state & 786 & 3.661 & 3.621 & 3.805 & 3.699 & 4.638 & 2.678 & 2.642 \\
+\bottomrule
+\end{tabular}
+\caption{EXP06 mode-level results. Higher is better for $Q$, fidelity, state, continuity, and compactness. Lower is better for ambiguity and information loss.}
+\label{tab:exp06_modes}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\linewidth]{figures/exp06_compressed_vs_hybrid_state.pdf}
+\caption{EXP06 controlled comparison between compressed and hybrid\_state. The figure highlights the central tradeoff: compressed remains stronger globally, while hybrid\_state preserves slightly more state.}
+\label{fig:exp06_modes}
+\end{figure}
+
+\subsection{Paired Effects}
+Table~\ref{tab:exp06_paired} reports paired hybrid\_state minus compressed deltas over matched experimental cells. Hybrid\_state is lower on global quality ($\Delta Q=-0.208$, 95\% CI $[-0.239,-0.177]$), but higher on state preservation ($\Delta=+0.066$, 95\% CI $[+0.032,+0.100]$). This makes the EXP05 claim sharper: hybrid\_state helps the operational-state variable, while compressed remains the safer global baseline.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Metric & $n$ pairs & $\Delta$ & 95\% CI Low & 95\% CI High \\
+\midrule
+quality index & 774 & -0.208 & -0.239 & -0.177 \\
+semantic fidelity & 774 & -0.174 & -0.210 & -0.138 \\
+state preservation & 774 & +0.066 & +0.032 & +0.100 \\
+operational continuity & 774 & -0.078 & -0.112 & -0.043 \\
+handoff quality & 774 & -0.199 & -0.235 & -0.162 \\
+compactness & 774 & -0.072 & -0.118 & -0.026 \\
+ambiguity & 774 & +0.463 & +0.417 & +0.510 \\
+information loss & 774 & +0.159 & +0.121 & +0.197 \\
+\bottomrule
+\end{tabular}
+\caption{EXP06 paired deltas for hybrid\_state minus compressed. Positive deltas are beneficial for positive metrics but harmful for ambiguity and information loss.}
+\label{tab:exp06_paired}
+\end{table}
+
+\subsection{Tokenizer/Variant Ablation}
+In the tokenizer ablation, native ZH remains stronger than romanized ZH\_PINYIN (Table~\ref{tab:exp06_zh}). This supports the hypothesis that script representation and tokenization interact with compact protocol behavior. It does not fully isolate tokenization from training distribution or language familiarity, but it is stronger evidence than the correlational ZH signal in EXP05.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+Variant & $n$ & $Q$ & Fidelity & State & Stability & Compact \\
+\midrule
+ZH & 456 & 3.824 & 3.785 & 3.836 & 4.417 & 4.703 \\
+ZH\_PINYIN & 180 & 3.328 & 3.246 & 3.363 & 3.687 & 4.569 \\
+EN\_LITERAL & 180 & 3.595 & 3.506 & 3.650 & 4.341 & 4.617 \\
+ES\_LITERAL & 180 & 3.671 & 3.624 & 3.661 & 4.157 & 4.709 \\
+\bottomrule
+\end{tabular}
+\caption{EXP06 language/tokenizer ablation. Native ZH outperforms romanized ZH\_PINYIN, suggesting that representation matters for compact protocol behavior.}
+\label{tab:exp06_zh}
+\end{table}
+
+\subsection{Judge Calibration}
+Judge agreement is high for an LLM-as-judge setup (Table~\ref{tab:exp06_judges}). Pairwise quality-index correlations range from 0.886 to 0.913. Azure GPT 5.4 High is stricter on average, Gemini 3.5 Flash is more generous, and Grok 4.20 Reasoning is intermediate. Because the same high-level conclusion survives three judges, EXP06 is less vulnerable to single-judge drift than EXP05 alone.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{llrrr}
+\toprule
+Judge A & Judge B & $n$ & Pearson $r$ & Mean Abs. $\Delta$ \\
+\midrule
+Azure GPT 5.4 High & Gemini 3.5 Flash & 1561 & 0.901 & 0.570 \\
+Azure GPT 5.4 High & Grok 4.20 Reasoning & 1561 & 0.913 & 0.395 \\
+Gemini 3.5 Flash & Grok 4.20 Reasoning & 1563 & 0.886 & 0.512 \\
+\bottomrule
+\end{tabular}
+\caption{EXP06 judge agreement over quality index.}
+\label{tab:exp06_judges}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.86\linewidth]{figures/exp06_judge_agreement.pdf}
+\caption{EXP06 judge-agreement matrix over quality index. Correlations are high enough to reduce single-judge risk, but not high enough to treat any judge as ground truth.}
+\label{fig:exp06_judges}
+\end{figure}
+
+\subsection{Interpretation}
+EXP06 strengthens the paper by converting EXP05's broad exploratory signal into a controlled follow-up. The result is not that hybrid\_state dominates compressed. Instead, compressed remains the general-purpose baseline, while hybrid\_state selectively improves the operational-state variable that motivated the protocol. This distinction makes the contribution sharper: symbolic protocols should be optimized and evaluated against their intended transfer function, not only against aggregate quality.
+
+\section{Real-Agent Handoff Evaluation: EXP07}
+\label{sec:exp07}
+
+EXP07 tests whether the protocol family can be evaluated in real agent frameworks using objective continuation metrics. This experiment is smaller than EXP05/EXP06, but it changes the evidence type: outputs are scored for explicit operational recovery rather than only by LLM judges. The cleaned dataset contains 270 successful executions: 180 LangGraph executions and 90 OpenFang executions.
+
+\subsection{Objective Metrics}
+Each EXP07 task defines a handoff state containing variables, constraints, completed subtasks, pending subtasks, plan steps, risks, validation conditions, and the next action. The continuation agent must return strict JSON. We then compute:
+
+\begin{itemize}
+\item variable recovery rate;
+\item subtask completion rate;
+\item plan continuity rate;
+\item constraint retention rate;
+\item binary handoff success;
+\item state-error count.
+\end{itemize}
+
+These metrics are intentionally narrower than EXP05/EXP06's judge scores. They do not measure all semantic quality, but they provide a more objective view of whether operational state survived handoff.
+
+\subsection{Mode Results}
+Table~\ref{tab:exp07_modes} reports global EXP07 results by mode. Compressed remains the strongest operational baseline on variable recovery, plan continuity, and state-error count. Hybrid\_state is slightly higher on constraint retention, but it does not win globally. Natural prose remains competitive on subtask completion and handoff success, but it produces more state errors.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrrrrrr}
+\toprule
+Mode & $n$ & VarRec & Subtasks & PlanCont & Constraints & Handoff & StateErr \\
+\midrule
+natural & 90 & 0.739 & 0.473 & 0.497 & 0.683 & 0.367 & 16.978 \\
+compressed & 90 & 0.856 & 0.467 & 0.589 & 0.739 & 0.356 & 10.589 \\
+hybrid\_state & 90 & 0.750 & 0.364 & 0.442 & 0.744 & 0.344 & 10.811 \\
+\bottomrule
+\end{tabular}
+\caption{EXP07 real-agent objective metrics by mode. Higher is better except for state-error count.}
+\label{tab:exp07_modes}
+\end{table}
+
+\subsection{Framework and Model Effects}
+Table~\ref{tab:exp07_frameworks} shows that framework surface matters. OpenFang reaches perfect scores under the current schema, while LangGraph exposes substantial variation across modes and models. We interpret the OpenFang result conservatively: it demonstrates compatibility between the protocol/task schema and an external real-agent surface, but should not be read as a universal ranking of OpenFang over LangGraph.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrrrrrr}
+\toprule
+Framework & $n$ & VarRec & Subtasks & PlanCont & Constraints & Handoff & StateErr \\
+\midrule
+LangGraph & 180 & 0.672 & 0.152 & 0.264 & 0.583 & 0.033 & 19.189 \\
+OpenFang & 90 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.000 \\
+\bottomrule
+\end{tabular}
+\caption{EXP07 objective metrics by real-agent framework. OpenFang saturation should be interpreted as surface/schema compatibility, not as a general framework benchmark.}
+\label{tab:exp07_frameworks}
+\end{table}
+
+\subsection{Paired Real-Agent Deltas}
+Table~\ref{tab:exp07_paired} reports paired hybrid\_state minus compressed deltas. Within LangGraph, hybrid\_state does not improve global operational recovery. With GPT chat latest, it improves constraint retention ($\Delta=+0.183$) and slightly reduces state errors ($\Delta=-0.133$), but loses subtask completion and plan continuity. With GPT 5.4 High, it is lower on most objective metrics. OpenFang is tied because all modes saturate the schema.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{llrrrrrr}
+\toprule
+Framework & Model & $n$ & $\Delta$ VarRec & $\Delta$ Subtasks & $\Delta$ Plan & $\Delta$ Constraints & $\Delta$ StateErr \\
+\midrule
+LangGraph & GPT 5.4 High & 30 & -0.293 & -0.125 & -0.342 & -0.167 & +0.800 \\
+LangGraph & GPT chat latest & 30 & -0.025 & -0.183 & -0.100 & +0.183 & -0.133 \\
+OpenFang & GPT chat latest & 30 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+\bottomrule
+\end{tabular}
+\caption{EXP07 paired deltas for hybrid\_state minus compressed. Positive values are beneficial except for state-error count, where lower is better.}
+\label{tab:exp07_paired}
+\end{table}
+
+\subsection{Interpretation}
+EXP07 supports the broader research program but narrows the claim. It shows that compact handoff protocols can be exercised in real agent frameworks and scored with objective state-continuation metrics. However, it does not replicate the stronger judge-based hybrid\_state advantage as a global real-agent effect. The most conservative interpretation is that compressed remains the robust baseline, while hybrid\_state's state benefit is conditional: it may help explicit constraint retention in some real-agent/model strata, but it is not a universal operational winner.
+
+\section{Real-Agent Scale-Up: EXP08}
+EXP08 tests whether the EXP07 real-agent result survives a larger matrix. It uses 30 operational tasks, 2 protocol modes, 5 repetitions, and 3 framework/model routes: LangGraph with Azure GPT chat latest, LangGraph with Azure GPT 5.4 High, and OpenFang with Azure GPT chat latest. The operational-complete view contains 900/900 OK cells with no latest operational errors. Because strict JSON is part of the objective metric pipeline, we also report a stricter view containing 824/900 JSON-valid cells.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{lrrrrrrr}
+\toprule
+View / Mode & $n$ & VarRec & Subtasks & PlanCont & Constraints & Handoff & StateErr \\
+\midrule
+Operational / compressed & 450 & 0.894 & 0.105 & 0.526 & 0.813 & 0.033 & 5.478 \\
+Operational / hybrid\_state & 450 & 0.756 & 0.053 & 0.493 & 0.750 & 0.020 & 14.344 \\
+JSON-valid / compressed & 432 & 0.932 & 0.109 & 0.548 & 0.847 & 0.035 & 1.581 \\
+JSON-valid / hybrid\_state & 392 & 0.867 & 0.061 & 0.566 & 0.861 & 0.023 & 1.819 \\
+\bottomrule
+\end{tabular}
+\caption{EXP08 real-agent scale-up by analysis view and mode. Higher is better except for state-error count.}
+\label{tab:exp08_modes}
+\end{table}
+
+In the operational-complete view, compressed is the stronger global baseline across variable recovery, subtask completion, plan continuity, handoff success, and state-error count. In the stricter JSON-valid view, hybrid\_state is slightly higher on constraint retention and plan continuity, but it still does not win globally. The most important new observation is a failure mode rather than a protocol win: Azure GPT 5.4 High under LangGraph produced 76 blank-output cells with \texttt{parse\_error=no\_json\_object}, including 58 in hybrid\_state and 18 in compressed. These calls are operationally completed but not usable for strict schema scoring, showing that high-reasoning model routes can fail under JSON-constrained handoff even when the surrounding agent runner succeeds.
+
+\section{Discussion}
+The main result is not that a symbolic protocol simply beats natural language everywhere. Instead, EXP05, EXP06, EXP07, and EXP08 show tradeoffs between global quality, compactness, operational state, and real-agent continuation. Compressed remains the strongest universal baseline: it performs well across languages, models, controlled follow-up tests, and real-agent objective metrics. Hybrid\_state gives up some global quality but improves state preservation in judge-based paired experiments, which is precisely the property that motivated the protocol. EXP07 and EXP08 add a caution: the hybrid\_state advantage should not be generalized to every real-agent metric or framework.
+
+This suggests a practical design rule: compact agent protocols should be optimized by target function. If the goal is general semantic quality, compressed is the safer baseline. If the goal is durable handoff and preservation of operational state, hybrid\_state is more promising. If the goal is extreme brevity, hybrid\_min is compact but risky.
+
+The ZH result is one of the most interesting signals. Chinese performs best in the EXP05 principal language comparison and remains stronger than ZH\_PINYIN in EXP06-B. A plausible explanation is that script density, tokenizer behavior, and model training distribution interact with symbolic compression. However, even EXP06 cannot fully separate these factors. The safest claim is that representation matters; the exact mechanism remains open.
+
+Judge drift also matters. The same outputs can receive systematically different quality levels depending on evaluator family. This does not invalidate the result, but it means future papers should report judge identity, judge agreement, and sensitivity analysis.
+
+\subsection{Claim Strength}
+The strongest claim is that compressed is the most reliable general-purpose baseline in this experimental family. It wins quality in EXP05, remains ahead in EXP06 under stricter paired controls, and is also the best aggregate operational baseline in EXP07 and EXP08 real-agent objective metrics.
+
+The second strong claim is narrower: hybrid\_state improves state preservation under judge-scored paired designs. This appears in EXP05's principal paired analysis and survives EXP06's stricter paired design. The claim should not be overstated as a global quality victory or a universal real-agent operational win.
+
+The third claim is methodological: real-agent handoff can be measured with objective state-continuation metrics. EXP07 demonstrates this feasibility in LangGraph and OpenFang, and EXP08 scales it to 900 operational executions. The substantive result is mixed: compressed remains stronger globally, while hybrid\_state shows narrower constraint/plan benefits only in selected strata.
+
+The ZH/tokenization claim is promising but still partly exploratory. EXP05 shows a ZH advantage, and EXP06-B shows native ZH outperforming romanized ZH\_PINYIN. This supports a representation effect, but not a complete causal explanation.
+
+The weakest claims are any broad model-intelligence rankings. Generator effects in this paper reflect protocol/task/provider behavior, not general model capability.
+
+\section{Limitations}
+EXP05 is exploratory and systems-oriented, while EXP06 is a narrower controlled follow-up but still depends on LLM judges and provider serving layers. EXP07 and EXP08 reduce judge dependence through objective metrics, but their framework surfaces are not interchangeable. The use of LLM judges introduces evaluator bias, even though EXP06 reduces single-judge risk through three-judge calibration. Some models were accessed through provider-specific serving layers, so observed behavior includes provider routing, quota, truncation, latency, safety filtering, and content-policy behavior. In EXP06, 21 Azure GPT instant generations were retained as terminal policy failures and excluded from score aggregation; therefore Azure generator averages should be read with survivorship bias in mind. In EXP08, 76 Azure GPT 5.4 High cells returned blank outputs under strict JSON scoring; these are retained as a model/serving failure mode rather than silently removed.
+
+The quality index is descriptive, not a validated psychometric scale. It is useful for ranking and paired contrasts, but the paper's main scientific claims rely on individual metrics such as state preservation, operational continuity, compactness, ambiguity, and information loss. The ZH effect is promising but not fully causal. EXP06-B strengthens the representation hypothesis by comparing ZH with ZH\_PINYIN and literal variants, but it still cannot isolate tokenizer mechanics from training distribution and language familiarity. Some mini-experiments use smaller samples and should be treated as hypothesis-generating.
+
+The model list is also time-sensitive. Frontier model names, availability, quotas, and pricing change rapidly. Therefore, this paper should describe exact observed model identifiers, dates, and serving routes in an appendix before publication. EXP07's OpenFang results saturate the objective schema, and EXP08's OpenFang results remain high, so they should be interpreted as successful compatibility checks rather than general framework benchmarks.
+
+\section{Conclusion}
+EXP05, EXP06, EXP07, and EXP08 together reframe prompt compression as interoperable state-transfer protocol design. EXP05 provides the broad discovery result: compressed is a strong cross-model, multilingual baseline, and hybrid\_state improves state preservation in paired analysis. EXP06 provides the controlled follow-up: compressed remains ahead on global quality, but hybrid\_state still improves state preservation under stricter paired controls. EXP07 adds real-agent validation, and EXP08 scales it: compact protocols can be executed and measured in LangGraph and OpenFang using objective handoff metrics, but hybrid\_state does not dominate globally in this setting. The conclusion is therefore not that one protocol dominates all uses. Rather, compressed is the universal baseline, and hybrid\_state is a specialized state-oriented protocol whose benefits are conditional and should be tested against the target execution surface.
+
+This distinction makes the research program clearer. Future compact agent protocols should be evaluated by target function: general semantic quality, state preservation, continuity, recoverability, cost, framework behavior, and robustness to language and model family. The results motivate further work on symbolic protocols for multi-agent AI systems, especially where agents must survive context loss, provider substitution, multilingual transfer, evaluator drift, and real-agent execution constraints.
+
+\begin{thebibliography}{9}
+
+\bibitem{exp06data2026}
+Anonymous Authors.
+\newblock EXP06 Causal Protocol Transfer: Frozen Data, Cleaned Dataset, and Statistical Reports.
+\newblock Internal experimental dataset freeze, May 26, 2026.
+
+\bibitem{exp05data2026}
+Anonymous Authors.
+\newblock EXP05 Premium Multi-Model Trilingual: Cleaned Experimental Data and Reports.
+\newblock Internal experimental dataset freeze, May 23, 2026.
+
+\bibitem{exp07data2026}
+Anonymous Authors.
+\newblock EXP07 Real-Agent Handoff Objective Metrics: Frozen Data, Cleaned Dataset, and Statistical Reports.
+\newblock Internal experimental dataset freeze, May 26, 2026.
+
+\bibitem{exp08data2026}
+Anonymous Authors.
+\newblock EXP08 Real-Agent Scale-Up: Frozen Data, Objective Metrics, and Blank-Output Failure Analysis.
+\newblock Internal experimental dataset freeze, May 27, 2026.
+
+\bibitem{wei2022chain}
+Jason Wei et al.
+\newblock Chain-of-Thought Prompting Elicits Reasoning in Large Language Models.
+\newblock arXiv:2201.11903, 2022.
+
+\bibitem{yao2023react}
+Shunyu Yao et al.
+\newblock ReAct: Synergizing Reasoning and Acting in Language Models.
+\newblock arXiv:2210.03629, 2023.
+
+\bibitem{liu2023lost}
+Nelson F. Liu et al.
+\newblock Lost in the Middle: How Language Models Use Long Contexts.
+\newblock arXiv:2307.03172, 2023.
+
+\bibitem{chang2024survey}
+Yupeng Chang et al.
+\newblock A Survey on Evaluation of Large Language Models.
+\newblock ACM Transactions on Intelligent Systems and Technology, 2024.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,18 @@
+{
+  "created_utc": "2026-05-27T22:20:22.630704+00:00",
+  "package": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\PUBLIC_RELEASE_FINAL_20260527_222018",
+  "components": {
+    "paper_short": "paper_short/",
+    "technical_report": "technical_report/",
+    "reproducibility_repo": "reproducibility_repo/"
+  },
+  "source_paths": {
+    "paper_short": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\paper_focused_handoff",
+    "technical_report": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\paper_long_40p_build",
+    "public_release_safe": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\PUBLIC_RELEASE_SAFE",
+    "public_dataset_redacted": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\PUBLIC_DATASET_REDACTED",
+    "exp01_exp04_recovery": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP01_EXP04_RECOVERY"
+  },
+  "file_count": 324,
+  "secret_sweep_hits": []
+}

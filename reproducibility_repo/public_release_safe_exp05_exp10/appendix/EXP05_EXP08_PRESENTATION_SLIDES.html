@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Symbolic Compression Protocols</title>
+  <style>
+    body{margin:0;background:#111;color:#f6f2ea;font-family:Arial,Helvetica,sans-serif}
+    section{min-height:100vh;box-sizing:border-box;padding:7vh 9vw;display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid #333}
+    h1{font-size:54px;line-height:1.02;margin:0 0 28px}
+    h2{font-size:42px;line-height:1.08;margin:0 0 24px;color:#9fc5ff}
+    p,li{font-size:25px;line-height:1.38;max-width:1040px}
+    ul{margin-top:6px}
+    strong{color:#ffd37a}
+    .kicker{font-size:18px;letter-spacing:.08em;text-transform:uppercase;color:#aaa;margin-bottom:18px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1100px}
+    .box{border:1px solid #444;padding:22px;background:#181818}
+    .small{font-size:20px;color:#ddd}
+  </style>
+</head>
+<body>
+  <section><div class="kicker">EXP05-EXP08</div><h1>Symbolic Compression Protocols for Multi-Agent Handoff</h1><p><strong>Core claim:</strong> compact protocols can be evaluated as operational state-transfer mechanisms, not just prompt compression tricks.</p></section>
+  <section><h2>Problem</h2><p>Agents lose continuity when context is compressed, multilingual, transferred across models, or handed to another framework.</p><p>Question: can compact protocols preserve enough state for another agent to continue work?</p></section>
+  <section><h2>Protocols</h2><ul><li>natural: normal prose</li><li>compressed: compact operational notes</li><li>hybrid_min: extreme symbolic compression</li><li>hybrid_state: compact structured state handoff</li></ul></section>
+  <section><h2>EXP05: Broad Discovery</h2><p>ES / EN / ZH, multiple model families, four protocol modes, LLM-judge metrics.</p><p><strong>Finding:</strong> compressed was the strongest universal baseline; hybrid_state showed early continuity signal.</p></section>
+  <section><h2>EXP05: Multilingual Signal</h2><p>ZH did not collapse under compression and sometimes scored better.</p><p class="small">Interpret as promising evidence for language/tokenization effects, not proof.</p></section>
+  <section><h2>EXP06: Controlled Test</h2><p>compressed vs hybrid_state under stricter causal transfer controls.</p><p>Variants: ES, EN, ZH, ZH_PINYIN, EN_LITERAL, ES_LITERAL.</p></section>
+  <section><h2>EXP06: Tradeoff</h2><p>hybrid_state improved state-oriented transfer in selected conditions, but did not dominate global quality.</p><p><strong>Interpretation:</strong> compressed baseline; hybrid_state specialized for operational state.</p></section>
+  <section><h2>EXP07: Real-Agent Handoff</h2><div class="grid"><div class="box"><p>Frameworks</p><ul><li>LangGraph-style</li><li>OpenFang-style</li></ul></div><div class="box"><p>Objective metrics</p><ul><li>variable recovery</li><li>subtask completion</li><li>plan continuity</li><li>constraint retention</li></ul></div></div></section>
+  <section><h2>EXP07: Objective Result</h2><p>compressed remained operationally robust. hybrid_state showed narrower advantages around explicit state and constraint retention.</p></section>
+  <section><h2>EXP08: Scale-Up</h2><p>30 tasks, 5 repetitions, 2 frameworks, 2 Azure model routes for LangGraph, 900 expected executions.</p><p>Goal: test whether EXP07 patterns survive larger sampling.</p></section>
+  <section><h2>Reproducibility and Safety</h2><ul><li>paper source and figures</li><li>appendix and task banks</li><li>aggregate CSVs</li><li>redacted JSONL dataset</li><li>manifests, checksums, security sweep</li></ul></section>
+  <section><h2>Takeaway</h2><p><strong>Strong:</strong> compressed is a universal operational compression baseline.</p><p><strong>Careful:</strong> hybrid_state is a specialized protocol for state/continuity, not a universal quality winner.</p></section>
+</body>
+</html>

@@ -1,0 +1,7 @@
+judge_a,judge_b,n_common,quality_corr,mean_delta_a_minus_b
+azure_gpt_5_4_high,gemini_3_1_pro_preview,120,0.6369,-0.9754
+azure_gpt_5_4_high,gemini_3_5_flash,120,0.612,-0.9473
+azure_gpt_5_4_high,grok_4_20_reasoning,120,0.7321,-0.4337
+gemini_3_1_pro_preview,gemini_3_5_flash,120,0.8387,0.028
+gemini_3_1_pro_preview,grok_4_20_reasoning,120,0.6108,0.5417
+gemini_3_5_flash,grok_4_20_reasoning,120,0.6009,0.5136

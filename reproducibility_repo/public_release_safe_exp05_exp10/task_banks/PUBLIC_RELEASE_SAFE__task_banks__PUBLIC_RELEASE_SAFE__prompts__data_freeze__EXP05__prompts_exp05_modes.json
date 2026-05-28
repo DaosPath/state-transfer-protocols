@@ -1,0 +1,22 @@
+{
+  "prompt_version": "exp05_modes_2026-05-18.1",
+  "shared_prefix": "Use final answer only. Do not reveal hidden reasoning. Follow the target language exactly. Output plain text only unless a mode explicitly asks for fields. Do not invent data.",
+  "modes": {
+    "natural": {
+      "max_tokens": 650,
+      "template": "Language: {language}\nMode: natural\n\nWrite a clear natural-language answer for the task. Keep it concise but complete. Preserve objective, evidence, risk, decision, and next action when present. Avoid decorative prose.\n\nTask:\n{task_text}"
+    },
+    "compressed": {
+      "max_tokens": 360,
+      "template": "Language: {language}\nMode: compressed\n\nWrite a compressed operational answer. Short phrases. No filler. No long explanation. Preserve all critical entities, numbers, decisions, risks, and next actions. Use readable compact natural language, not obscure symbols.\n\nPreferred shape when useful:\nP: problem\nS: solution/decision\nR: risk\nN: next\n\nTask:\n{task_text}"
+    },
+    "hybrid_min": {
+      "max_tokens": 260,
+      "template": "Language: {language}\nMode: hybrid_min\n\nWrite the minimal hybrid protocol. One compact line if possible. Use only useful fields. Do not fill empty fields. Separate fields with semicolons. Preserve meaning over style.\n\nAllowed fields:\ng=goal; p=problem; c=context; e=evidence; d=decision; s=solution; r=risk; n=next; v=verify; m=metric; lim=limit; conf=confidence.\n\nRules:\n- Use 2 to 5 fields.\n- No Markdown.\n- No full paragraphs.\n- No invented data.\n- Must be understandable by another agent.\n\nTask:\n{task_text}"
+    },
+    "hybrid_state": {
+      "max_tokens": 380,
+      "template": "Language: {language}\nMode: hybrid_state\n\nWrite a compact state-preserving handoff. Use compact fields plus short natural fragments. Preserve operational continuity: objective, current state, evidence, decision, risk, verification, and next action.\n\nAllowed fields:\ng=goal; st=state; c=context; e=evidence; d=decision; r=risk; v=verify; n=next; mem=memory; lim=limit; conf=confidence.\n\nRules:\n- Use no more than 7 fields.\n- Each field must add information.\n- Prefer compact clarity over extreme compression.\n- No invented data.\n- Output must be directly usable by the next agent.\n\nTask:\n{task_text}"
+    }
+  }
+}

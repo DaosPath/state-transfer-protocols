@@ -1,0 +1,8 @@
+phase,task_id,language,mode,model_key,n
+exp06_a_hybrid_state_causal_handoff,A005,ES,compressed,azure_gpt_5_5_instant,3
+exp06_a_hybrid_state_causal_handoff,A005,ES,hybrid_state,azure_gpt_5_5_instant,3
+exp06_a_hybrid_state_causal_handoff,A005,ZH,hybrid_state,azure_gpt_5_5_instant,3
+exp06_a_hybrid_state_causal_handoff,A008,EN,compressed,azure_gpt_5_5_instant,3
+exp06_a_hybrid_state_causal_handoff,A008,ZH,compressed,azure_gpt_5_5_instant,3
+exp06_a_hybrid_state_causal_handoff,A011,ZH,compressed,azure_gpt_5_5_instant,3
+exp06_a_hybrid_state_causal_handoff,A012,ZH,compressed,azure_gpt_5_5_instant,3

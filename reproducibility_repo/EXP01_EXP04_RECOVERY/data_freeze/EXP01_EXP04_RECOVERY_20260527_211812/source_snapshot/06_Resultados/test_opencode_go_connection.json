@@ -1,0 +1,112 @@
+{
+  "timestamp": "2026-05-12T21:40:27.807591+00:00",
+  "base_url": "https://opencode.ai/zen/go/v1",
+  "models_endpoint": "https://opencode.ai/zen/go/v1/models",
+  "chat_completions_endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+  "models_ok": true,
+  "chat_ok": true,
+  "models_count": 15,
+  "simple_prompt": "Responde solo: OK_OPENCODE_GO_TEST",
+  "simple_response": "OK_OPENCODE_GO_TEST",
+  "error": null,
+  "http_status": null,
+  "chat_model": "deepseek-v4-flash",
+  "chat_latency_ms": 1414,
+  "usage": {
+    "input_tokens": 15,
+    "output_tokens": 7,
+    "total_tokens": 22,
+    "token_count_method": null
+  },
+  "pilot": {
+    "timestamp": "2026-05-12T21:40:29.223451+00:00",
+    "task_id": "T001",
+    "ok": true,
+    "checks": [
+      {
+        "mode": "natural",
+        "generation_ok": true,
+        "model": "deepseek-v4-flash",
+        "latency_ms": 4359,
+        "http_status": 200,
+        "evaluation_ok": true,
+        "evaluator_model": "deepseek-v4-pro",
+        "error": null,
+        "evaluation_error": null,
+        "evaluation": {
+          "fidelidad_semantica": 5,
+          "claridad": 5,
+          "completitud": 5,
+          "utilidad": 5,
+          "ambiguedad": 1,
+          "perdida_informacion": 1,
+          "facilidad_traduccion": 5,
+          "comentario": "La respuesta aborda completamente la tarea, identifica el problema, propone una solución concreta, enumera riesgos y detalla próximos pasos. Es clara, útil y sin ambigüedades."
+        }
+      },
+      {
+        "mode": "caveman",
+        "generation_ok": true,
+        "model": "deepseek-v4-flash",
+        "latency_ms": 3509,
+        "http_status": 200,
+        "evaluation_ok": true,
+        "evaluator_model": "deepseek-v4-pro",
+        "error": null,
+        "evaluation_error": null,
+        "evaluation": {
+          "fidelidad_semantica": 5,
+          "claridad": 5,
+          "completitud": 4,
+          "utilidad": 5,
+          "ambiguedad": 1,
+          "perdida_informacion": 1,
+          "facilidad_traduccion": 5,
+          "comentario": "La respuesta captura fielmente el problema, propone una solución concreta, enumera riesgos y pasos siguientes de forma clara y concisa, aunque podría detallar un poco más la compresión de contexto compartido."
+        }
+      },
+      {
+        "mode": "proto",
+        "generation_ok": true,
+        "model": "deepseek-v4-flash",
+        "latency_ms": 3492,
+        "http_status": 200,
+        "evaluation_ok": true,
+        "evaluator_model": "deepseek-v4-pro",
+        "error": null,
+        "evaluation_error": null,
+        "evaluation": {
+          "fidelidad_semantica": 5,
+          "claridad": 5,
+          "completitud": 5,
+          "utilidad": 5,
+          "ambiguedad": 1,
+          "perdida_informacion": 1,
+          "facilidad_traduccion": 5,
+          "comentario": "La respuesta captura fielmente el problema, propone solución, riesgos y próximos pasos de forma concisa y estructurada, sin ambigüedad ni pérdida de información relevante."
+        }
+      },
+      {
+        "mode": "proto_translated",
+        "generation_ok": true,
+        "model": "deepseek-v4-flash",
+        "latency_ms": 2843,
+        "http_status": 200,
+        "evaluation_ok": true,
+        "evaluator_model": "deepseek-v4-pro",
+        "error": null,
+        "evaluation_error": null,
+        "evaluation": {
+          "fidelidad_semantica": 4,
+          "claridad": 4,
+          "completitud": 4,
+          "utilidad": 4,
+          "ambiguedad": 2,
+          "perdida_informacion": 2,
+          "facilidad_traduccion": 5,
+          "comentario": "La respuesta captura bien la esencia del problema y propone soluciones alineadas, aunque omite detalles como ejemplos concretos de formato o métricas de riesgo."
+        }
+      }
+    ]
+  }
+}

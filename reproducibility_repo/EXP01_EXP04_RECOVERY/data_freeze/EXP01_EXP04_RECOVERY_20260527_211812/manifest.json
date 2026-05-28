@@ -1,0 +1,1045 @@
+{
+  "created_utc": "2026-05-27T21:18:14.540956+00:00",
+  "root": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA",
+  "freeze_dir": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP01_EXP04_RECOVERY\\data_freeze\\EXP01_EXP04_RECOVERY_20260527_211812",
+  "clean_dir": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP01_EXP04_RECOVERY\\clean_latest_ok",
+  "policy": {
+    "deduplication_key": "experiment/language/task_id/mode/run/generator_model",
+    "latest_cell_policy": "last row wins",
+    "ok_policy": "error empty/null and evaluation_parse_error empty/null/false",
+    "terminal_errors_kept_separately": true
+  },
+  "summaries": [
+    {
+      "file": "06_Resultados/experimento_01_runs.jsonl",
+      "rows_raw": 120,
+      "json_parse_errors": 0,
+      "unique_cells": 120,
+      "duplicate_cells_removed": 0,
+      "clean_latest_ok": 120,
+      "terminal_errors": 0,
+      "experiments": {
+        "EXP01": 120
+      },
+      "languages": {
+        "ES": 120
+      },
+      "modes_top": {
+        "natural": 30,
+        "caveman": 30,
+        "proto": 30,
+        "proto_translated": 30
+      },
+      "models": {
+        "deepseek-v4-flash": 120
+      }
+    },
+    {
+      "file": "06_Resultados/experimento_02_runs.jsonl",
+      "rows_raw": 120,
+      "json_parse_errors": 0,
+      "unique_cells": 120,
+      "duplicate_cells_removed": 0,
+      "clean_latest_ok": 120,
+      "terminal_errors": 0,
+      "experiments": {
+        "EXP02_PROTO_V2": 120
+      },
+      "languages": {
+        "ES": 120
+      },
+      "modes_top": {
+        "natural": 30,
+        "caveman": 30,
+        "proto_v2": 30,
+        "proto_v2_translated": 30
+      },
+      "models": {
+        "deepseek-v4-flash": 120
+      }
+    },
+    {
+      "file": "06_Resultados/experimento_03_fusion_runs.jsonl",
+      "rows_raw": 720,
+      "json_parse_errors": 0,
+      "unique_cells": 720,
+      "duplicate_cells_removed": 0,
+      "clean_latest_ok": 720,
+      "terminal_errors": 0,
+      "experiments": {
+        "EXP03_PROTO_V3_FUSION": 720
+      },
+      "languages": {
+        "ES": 720
+      },
+      "modes_top": {
+        "natural": 90,
+        "caveman": 90,
+        "proto_v3_min": 90,
+        "proto_v3_state": 90,
+        "proto_v3_hybrid": 90,
+        "proto_v3_min_translated": 90,
+        "proto_v3_state_translated": 90,
+        "proto_v3_hybrid_translated": 90
+      },
+      "models": {
+        "deepseek-v4-flash": 720
+      }
+    },
+    {
+      "file": "09_Multilingue/08_Combined_Runs/exp01_exp02_en_zh_runs.jsonl",
+      "rows_raw": 480,
+      "json_parse_errors": 0,
+      "unique_cells": 480,
+      "duplicate_cells_removed": 0,
+      "clean_latest_ok": 480,
+      "terminal_errors": 0,
+      "experiments": {
+        "EXP01": 240,
+        "EXP02": 240
+      },
+      "languages": {
+        "EN": 240,
+        "ZH": 240
+      },
+      "modes_top": {
+        "natural_en": 60,
+        "compressed_en": 60,
+        "natural_zh": 60,
+        "compressed_zh": 60,
+        "proto_v1_en": 30,
+        "proto_v1_translated_en": 30,
+        "proto_v2_en": 30,
+        "proto_v2_translated_en": 30,
+        "proto_v1_core_zh": 30,
+        "proto_v1_translated_zh": 30,
+        "proto_v2_core_zh": 30,
+        "proto_v2_translated_zh": 30
+      },
+      "models": {
+        "deepseek-v4-flash": 480
+      }
+    },
+    {
+      "file": "09_Multilingue/08_Combined_Runs/EXP03_EN/exp03_en_runs.jsonl",
+      "rows_raw": 720,
+      "json_parse_errors": 0,
+      "unique_cells": 720,
+      "duplicate_cells_removed": 0,
+      "clean_latest_ok": 720,
+      "terminal_errors": 0,
+      "experiments": {
+        "EXP03": 720
+      },
+      "languages": {
+        "EN": 720
+      },
+      "modes_top": {
+        "natural_en": 90,
+        "compressed_en": 90,
+        "proto_v3_min_core_en": 90,
+        "proto_v3_state_core_en": 90,
+        "proto_v3_hybrid_en": 90,
+        "proto_v3_min_translated_en": 90,
+        "proto_v3_state_translated_en": 90,
+        "proto_v3_hybrid_translated_en": 90
+      },
+      "models": {
+        "deepseek-v4-flash": 720
+      }
+    },
+    {
+      "file": "09_Multilingue/08_Combined_Runs/EXP03_ZH/exp03_zh_runs.jsonl",
+      "rows_raw": 900,
+      "json_parse_errors": 0,
+      "unique_cells": 900,
+      "duplicate_cells_removed": 0,
+      "clean_latest_ok": 900,
+      "terminal_errors": 0,
+      "experiments": {
+        "EXP03": 900
+      },
+      "languages": {
+        "ZH": 900
+      },
+      "modes_top": {
+        "natural_zh": 90,
+        "compressed_zh": 90,
+        "proto_v3_min_core_zh": 90,
+        "proto_v3_state_core_zh": 90,
+        "proto_v3_hybrid_zh": 90,
+        "proto_v3_zh_native": 90,
+        "proto_v3_min_translated_zh": 90,
+        "proto_v3_state_translated_zh": 90,
+        "proto_v3_hybrid_translated_zh": 90,
+        "proto_v3_zh_native_translated": 90
+      },
+      "models": {
+        "deepseek-v4-flash": 900
+      }
+    },
+    {
+      "file": "05_Experimentos/EXP04_TRI/exp04_tri_runs.jsonl",
+      "rows_raw": 1350,
+      "json_parse_errors": 0,
+      "unique_cells": 1350,
+      "duplicate_cells_removed": 0,
+      "clean_latest_ok": 1350,
+      "terminal_errors": 0,
+      "experiments": {
+        "EXP04_TRI": 1350
+      },
+      "languages": {
+        "ES": 450,
+        "EN": 450,
+        "ZH": 450
+      },
+      "modes_top": {
+        "natural_es": 90,
+        "compressed_es": 90,
+        "compressed_state_es": 90,
+        "hybrid_min_es": 90,
+        "hybrid_state_es": 90,
+        "natural_en": 90,
+        "compressed_en": 90,
+        "compressed_state_en": 90,
+        "hybrid_min_en": 90,
+        "hybrid_state_en": 90,
+        "natural_zh": 90,
+        "compressed_zh": 90,
+        "compressed_state_zh": 90,
+        "hybrid_min_zh": 90,
+        "hybrid_state_zh": 90
+      },
+      "models": {
+        "deepseek-v4-flash": 1350
+      }
+    },
+    {
+      "file": "05_Experimentos/EXP04_TRI/exp04b_batch_decode_results.jsonl",
+      "rows_raw": 9,
+      "json_parse_errors": 0,
+      "unique_cells": 9,
+      "duplicate_cells_removed": 0,
+      "clean_latest_ok": 9,
+      "terminal_errors": 0,
+      "experiments": {
+        "EXP04B_BATCH_FINAL_DECODE": 9
+      },
+      "languages": {
+        "ES": 3,
+        "EN": 3,
+        "ZH": 3
+      },
+      "modes_top": {
+        "compressed_state": 3,
+        "hybrid_min": 3,
+        "hybrid_state": 3
+      },
+      "models": {
+        "deepseek-v4-flash": 9
+      }
+    }
+  ],
+  "global_clean_counts": {
+    "clean_latest_ok_total": 4419,
+    "terminal_errors_total": 0,
+    "by_experiment": {
+      "EXP01": 360,
+      "EXP02_PROTO_V2": 120,
+      "EXP03_PROTO_V3_FUSION": 720,
+      "EXP02": 240,
+      "EXP03": 1620,
+      "EXP04_TRI": 1350,
+      "EXP04B_BATCH_FINAL_DECODE": 9
+    },
+    "by_language": {
+      "ES": 1413,
+      "EN": 1413,
+      "ZH": 1593
+    },
+    "by_model": {
+      "deepseek-v4-flash": 4419
+    },
+    "modes_top": {
+      "natural_en": 240,
+      "compressed_en": 240,
+      "natural_zh": 240,
+      "compressed_zh": 240,
+      "natural": 150,
+      "caveman": 150,
+      "proto_v3_min": 90,
+      "proto_v3_state": 90,
+      "proto_v3_hybrid": 90,
+      "proto_v3_min_translated": 90,
+      "proto_v3_state_translated": 90,
+      "proto_v3_hybrid_translated": 90,
+      "proto_v3_min_core_en": 90,
+      "proto_v3_state_core_en": 90,
+      "proto_v3_hybrid_en": 90,
+      "proto_v3_min_translated_en": 90,
+      "proto_v3_state_translated_en": 90,
+      "proto_v3_hybrid_translated_en": 90,
+      "proto_v3_min_core_zh": 90,
+      "proto_v3_state_core_zh": 90,
+      "proto_v3_hybrid_zh": 90,
+      "proto_v3_zh_native": 90,
+      "proto_v3_min_translated_zh": 90,
+      "proto_v3_state_translated_zh": 90,
+      "proto_v3_hybrid_translated_zh": 90,
+      "proto_v3_zh_native_translated": 90,
+      "natural_es": 90,
+      "compressed_es": 90,
+      "compressed_state_es": 90,
+      "hybrid_min_es": 90,
+      "hybrid_state_es": 90,
+      "compressed_state_en": 90,
+      "hybrid_min_en": 90,
+      "hybrid_state_en": 90,
+      "compressed_state_zh": 90,
+      "hybrid_min_zh": 90,
+      "hybrid_state_zh": 90,
+      "proto": 30,
+      "proto_translated": 30,
+      "proto_v2": 30
+    }
+  },
+  "snapshot_files": [
+    {
+      "source": "06_Resultados/experimento_01_runs.jsonl",
+      "snapshot": "source_snapshot/06_Resultados/experimento_01_runs.jsonl",
+      "bytes": 242567,
+      "sha256": "a315cfc2e258a023418e5497f191ea259e9a56f116cc384afa8622979670c0dc",
+      "modified_utc": "2026-05-12T22:01:34.384030+00:00"
+    },
+    {
+      "source": "06_Resultados/experimento_02_runs.jsonl",
+      "snapshot": "source_snapshot/06_Resultados/experimento_02_runs.jsonl",
+      "bytes": 241489,
+      "sha256": "f6cd1739db4b97346f40a1aefa17920e39c147ca891a3a331e8f149c6242e770",
+      "modified_utc": "2026-05-12T22:36:58.996961+00:00"
+    },
+    {
+      "source": "06_Resultados/experimento_03_fusion_runs.jsonl",
+      "snapshot": "source_snapshot/06_Resultados/experimento_03_fusion_runs.jsonl",
+      "bytes": 1684635,
+      "sha256": "33dc503b1b0647b5879bcbbfdcb99be20397a0e99ca53afd8fb7ddec3006c1e8",
+      "modified_utc": "2026-05-13T01:43:55.053934+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/exp01_exp02_en_zh_runs.jsonl",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/exp01_exp02_en_zh_runs.jsonl",
+      "bytes": 1473121,
+      "sha256": "69e5dfe09aeab796499c93017c5bcd63e16e51e1fe5a09b762c8c19811ed4957",
+      "modified_utc": "2026-05-13T03:51:03.394428+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_EN/exp03_en_runs.jsonl",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_EN/exp03_en_runs.jsonl",
+      "bytes": 1890415,
+      "sha256": "5d3c3a4ab801feeb00e970b3d78f66dd08e5d57219c976e32d8b5c11421cc03c",
+      "modified_utc": "2026-05-13T20:06:46.769693+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_ZH/exp03_zh_runs.jsonl",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_ZH/exp03_zh_runs.jsonl",
+      "bytes": 2156740,
+      "sha256": "9b529e79cc69caa69006aabee1a349c87590883c7cfdd943a3f5cbcd28fa3403",
+      "modified_utc": "2026-05-13T22:38:59.700829+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/exp04_tri_runs.jsonl",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/exp04_tri_runs.jsonl",
+      "bytes": 3975787,
+      "sha256": "3683caab94853767908fe53b4e0450cd1041bbadf66f6c0171a77b4dac132750",
+      "modified_utc": "2026-05-14T06:01:03.216465+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/exp04b_batch_decode_results.jsonl",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/exp04b_batch_decode_results.jsonl",
+      "bytes": 44024,
+      "sha256": "8a6c02a7c7212c2a075a0b44e07e7b42c74fae7b5431c9709243b9ffc02ed20e",
+      "modified_utc": "2026-05-14T06:06:10.710229+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/Analisis_Continuidad_Operativa_EXP04.md",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/Analisis_Continuidad_Operativa_EXP04.md",
+      "bytes": 2032,
+      "sha256": "e9564bc7c2be128af247638e36b93dabb6ffcceeea3a2ebff693f15df1039f8e",
+      "modified_utc": "2026-05-14T06:06:10.759276+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/Analisis_EXP04B_Batch_Final_Decode.md",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/Analisis_EXP04B_Batch_Final_Decode.md",
+      "bytes": 819,
+      "sha256": "c258d24d837d3f7ddca75eb164af1bff2ee8d6631e353a485b03a038ea4c7a2f",
+      "modified_utc": "2026-05-14T06:06:10.718738+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/Analisis_Modos_EXP04_TRI.md",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/Analisis_Modos_EXP04_TRI.md",
+      "bytes": 2267,
+      "sha256": "a3e39b24b3a5c15c17cc4b05aaf91e5d0643f8a7a19828b5cf7f0973458cdd35",
+      "modified_utc": "2026-05-14T06:06:10.755776+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/Analisis_Por_Idioma_EXP04.md",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/Analisis_Por_Idioma_EXP04.md",
+      "bytes": 475,
+      "sha256": "e224d2061c4e0cc92215e8c6c34951ba43e8aed5d734bea9b2430ea738361472",
+      "modified_utc": "2026-05-14T06:06:10.760278+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/Comparacion_EXP03_vs_EXP04.md",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/Comparacion_EXP03_vs_EXP04.md",
+      "bytes": 486,
+      "sha256": "6c8461970ce9931992f55ca2e8aacaa9fe438beb207333f5c5d966fc7489d150",
+      "modified_utc": "2026-05-14T06:06:10.760781+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/Comparacion_EXP04_ES_EN_ZH.md",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/Comparacion_EXP04_ES_EN_ZH.md",
+      "bytes": 973,
+      "sha256": "a7223f6d3bca50b1576ae0c39808f508adfff914909d64d9199d4883fd135498",
+      "modified_utc": "2026-05-14T06:06:10.755276+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/connection_test_exp04_tri.json",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/connection_test_exp04_tri.json",
+      "bytes": 339,
+      "sha256": "1bd0047edbf77799f9c328aa492b9f8d1fdda021730d8e23bfe5900f9e6dafb8",
+      "modified_utc": "2026-05-14T01:19:41.538689+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/Errores_y_Anomalias_EXP04_TRI.md",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/Errores_y_Anomalias_EXP04_TRI.md",
+      "bytes": 769,
+      "sha256": "76e41fa424278821c3e6d36d7d024229744d8e5369c00ce2dfe52fd3607914fe",
+      "modified_utc": "2026-05-14T06:06:10.761281+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/exp04_tri_execution_log.md",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/exp04_tri_execution_log.md",
+      "bytes": 150,
+      "sha256": "b12d8dece9b1e716efdf6a29cf5aea89c612a07e1236abb970d83496fb214105",
+      "modified_utc": "2026-05-14T06:06:10.761781+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/exp04_tri_stderr.log",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/exp04_tri_stderr.log",
+      "bytes": 549,
+      "sha256": "43a3139d56413d4f8ace6342e7d6e407deb5d096279a536c43144551eebeb463",
+      "modified_utc": "2026-05-14T06:01:03.276069+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/exp04_tri_stdout.log",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/exp04_tri_stdout.log",
+      "bytes": 2136,
+      "sha256": "d6b73a87edfb625ab674da5048f9cc5138d4a91dab2f56644b860474a3edbd53",
+      "modified_utc": "2026-05-14T06:01:03.217465+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/Resultados_EXP04_TRI.md",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/Resultados_EXP04_TRI.md",
+      "bytes": 8836,
+      "sha256": "166c72622745883c0ecc7554244be814146abb31199613063798a96764259eab",
+      "modified_utc": "2026-05-14T06:06:10.754776+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/Resumen_Ejecutivo_EXP04_TRI.md",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/Resumen_Ejecutivo_EXP04_TRI.md",
+      "bytes": 1305,
+      "sha256": "1aa9215afee97bd0bc4964757d8b888bb2af8c4fb2dadab08cc04f0ccf2e0c01",
+      "modified_utc": "2026-05-14T06:07:59.600797+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/run_exp04_tri_opencode_go.py",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/run_exp04_tri_opencode_go.py",
+      "bytes": 62027,
+      "sha256": "f033572ea825caac52956c4a3d018c8b391cf5c52a0b6af7c74552f3d85ca58c",
+      "modified_utc": "2026-05-18T21:19:22.142723+00:00"
+    },
+    {
+      "source": "05_Experimentos/EXP04_TRI/task_bank_exp04_tri.jsonl",
+      "snapshot": "source_snapshot/05_Experimentos/EXP04_TRI/task_bank_exp04_tri.jsonl",
+      "bytes": 16827,
+      "sha256": "2b32f21a0820037a7d590dacf21e7c79a24bdffa5257e4e9ccb07d8caf38f214",
+      "modified_utc": "2026-05-14T01:19:39.093588+00:00"
+    },
+    {
+      "source": "05_Experimentos/Experimento_01_Comparacion_Token_Natural_vs_Cavernicola_vs_Proto.md",
+      "snapshot": "source_snapshot/05_Experimentos/Experimento_01_Comparacion_Token_Natural_vs_Cavernicola_vs_Proto.md",
+      "bytes": 1712,
+      "sha256": "06fad2138319f375d1e81a93f986d91fbb506ab461fd4b015ee134bc8bedcca8",
+      "modified_utc": "2026-05-12T20:45:08.008384+00:00"
+    },
+    {
+      "source": "05_Experimentos/Experimento_02_ProtoV2_vs_Caveman.md",
+      "snapshot": "source_snapshot/05_Experimentos/Experimento_02_ProtoV2_vs_Caveman.md",
+      "bytes": 1469,
+      "sha256": "9a58f6b4b96f7d321d3341f7be158b6fc428f90db7cc455f26496a6f91a9a4c6",
+      "modified_utc": "2026-05-12T22:12:54.860581+00:00"
+    },
+    {
+      "source": "05_Experimentos/Experimento_03_Proto_v3_Minimalista.md",
+      "snapshot": "source_snapshot/05_Experimentos/Experimento_03_Proto_v3_Minimalista.md",
+      "bytes": 4636,
+      "sha256": "91114a025c2eb4f180a8863996673f9cc0117eb753f416f3a98f80d7725877b0",
+      "modified_utc": "2026-05-13T01:50:01.308308+00:00"
+    },
+    {
+      "source": "05_Experimentos/Metricas_de_Evaluacion.md",
+      "snapshot": "source_snapshot/05_Experimentos/Metricas_de_Evaluacion.md",
+      "bytes": 1355,
+      "sha256": "a967b463c8d2831f34d0d8df696286aff046b36cae64f82025214ea5d5a2a183",
+      "modified_utc": "2026-05-12T20:45:08.224161+00:00"
+    },
+    {
+      "source": "05_Experimentos/Prompts_de_Prueba.md",
+      "snapshot": "source_snapshot/05_Experimentos/Prompts_de_Prueba.md",
+      "bytes": 1644,
+      "sha256": "9ceeb37f6dab8603556273c30a65991d6d3fbd8ab4b31cd49dde820a74c3e272",
+      "modified_utc": "2026-05-12T20:45:08.293734+00:00"
+    },
+    {
+      "source": "05_Experimentos/run_experimento_01_opencode_go.py",
+      "snapshot": "source_snapshot/05_Experimentos/run_experimento_01_opencode_go.py",
+      "bytes": 49468,
+      "sha256": "9b14e5d2d1d5e8e9992e53f288e3b824077c1d1fe69e6cc07af9c2100e23e192",
+      "modified_utc": "2026-05-22T04:17:31.459208+00:00"
+    },
+    {
+      "source": "05_Experimentos/run_experimento_01_opencode_go_local.py",
+      "snapshot": "source_snapshot/05_Experimentos/run_experimento_01_opencode_go_local.py",
+      "bytes": 329,
+      "sha256": "ae521d9d13f5fbbbe581afde7a2cf0b30696bedff1fddd113071ceb754f0de58",
+      "modified_utc": "2026-05-12T21:12:24.387052+00:00"
+    },
+    {
+      "source": "05_Experimentos/run_experimento_02_proto_v2_opencode_go.py",
+      "snapshot": "source_snapshot/05_Experimentos/run_experimento_02_proto_v2_opencode_go.py",
+      "bytes": 28522,
+      "sha256": "e09355be734cbe2d28c5e1f6c7c1e8d0db72d9a01f6f97dbbd245f49425336db",
+      "modified_utc": "2026-05-18T21:19:49.696120+00:00"
+    },
+    {
+      "source": "05_Experimentos/run_experimento_03_proto_v3_fusion_local.py",
+      "snapshot": "source_snapshot/05_Experimentos/run_experimento_03_proto_v3_fusion_local.py",
+      "bytes": 227,
+      "sha256": "fa2e23a2f54d966a5aaa4a5fc7bf2d97f568d41bef8e47066a8f7886ddc98e45",
+      "modified_utc": "2026-05-13T01:53:06.314830+00:00"
+    },
+    {
+      "source": "05_Experimentos/run_experimento_03_proto_v3_fusion_opencode_go.py",
+      "snapshot": "source_snapshot/05_Experimentos/run_experimento_03_proto_v3_fusion_opencode_go.py",
+      "bytes": 58952,
+      "sha256": "b66cdb901d9a31d2ae3ad987e265ac8be45b0dd4d47f04c1f1c485f6b8531877",
+      "modified_utc": "2026-05-18T21:19:22.243249+00:00"
+    },
+    {
+      "source": "06_Resultados/Analisis_Variantes_Proto_v3.md",
+      "snapshot": "source_snapshot/06_Resultados/Analisis_Variantes_Proto_v3.md",
+      "bytes": 2160,
+      "sha256": "086c071d8597f25544aa204ff71825defbf825a7264a242f18d1f71854d78bbb",
+      "modified_utc": "2026-05-13T01:48:57.957780+00:00"
+    },
+    {
+      "source": "06_Resultados/Comparacion_EXP01_EXP02_EXP03_Fusion.md",
+      "snapshot": "source_snapshot/06_Resultados/Comparacion_EXP01_EXP02_EXP03_Fusion.md",
+      "bytes": 2959,
+      "sha256": "f6e5d69eb7c2915c9f8c91acaec3141f0804255cee906078d01e68fad3749ce0",
+      "modified_utc": "2026-05-13T01:49:21.034034+00:00"
+    },
+    {
+      "source": "06_Resultados/Comparacion_EXP01_EXP02_EXP03_Template.md",
+      "snapshot": "source_snapshot/06_Resultados/Comparacion_EXP01_EXP02_EXP03_Template.md",
+      "bytes": 1503,
+      "sha256": "73ede1ed8fc707ebb5bdea73c4836855681ea1b3d647b5d892bae553eafa0868",
+      "modified_utc": "2026-05-12T22:51:49.422835+00:00"
+    },
+    {
+      "source": "06_Resultados/Conclusiones_Experimento_02.md",
+      "snapshot": "source_snapshot/06_Resultados/Conclusiones_Experimento_02.md",
+      "bytes": 715,
+      "sha256": "3f9aeaf0ba7808800d92ef4aaeb4ed68abaa60c103d10f4b33bdeb1c06e4e58c",
+      "modified_utc": "2026-05-12T22:36:59.000977+00:00"
+    },
+    {
+      "source": "06_Resultados/Conclusiones_Experimento_03_Fusion.md",
+      "snapshot": "source_snapshot/06_Resultados/Conclusiones_Experimento_03_Fusion.md",
+      "bytes": 1035,
+      "sha256": "a63d23edd2acccc880b4c4fcaffb0bb31a172429646688af5d70e3a82481c781",
+      "modified_utc": "2026-05-13T01:48:30.963517+00:00"
+    },
+    {
+      "source": "06_Resultados/Conclusiones_Parciales.md",
+      "snapshot": "source_snapshot/06_Resultados/Conclusiones_Parciales.md",
+      "bytes": 7790,
+      "sha256": "15befaa26e882a03f05ae0ebd052ef26e273d7507f984f4ac036311be69df560",
+      "modified_utc": "2026-05-23T01:13:58.260012+00:00"
+    },
+    {
+      "source": "06_Resultados/Error_Conexion_OpencodeGo.md",
+      "snapshot": "source_snapshot/06_Resultados/Error_Conexion_OpencodeGo.md",
+      "bytes": 993,
+      "sha256": "566de1034f17fdafb4156a9857839be446d1a0ab31f2f6e057c96354a63285e5",
+      "modified_utc": "2026-05-12T22:02:22.945230+00:00"
+    },
+    {
+      "source": "06_Resultados/Error_Experimento_03_Fusion.md",
+      "snapshot": "source_snapshot/06_Resultados/Error_Experimento_03_Fusion.md",
+      "bytes": 1104,
+      "sha256": "012a47a90b8ed01094f95ed99957cf6e8303a08a3d99a13f17578a1406f95641",
+      "modified_utc": "2026-05-13T01:49:37.719675+00:00"
+    },
+    {
+      "source": "06_Resultados/Errores_Experimento_01.md",
+      "snapshot": "source_snapshot/06_Resultados/Errores_Experimento_01.md",
+      "bytes": 712,
+      "sha256": "5cc546ef4d5fdf06b356ea6d573969e402fbf1cf1db3cca5f24c8466550bb4a8",
+      "modified_utc": "2026-05-12T22:02:23.029345+00:00"
+    },
+    {
+      "source": "06_Resultados/exp03_fusion_stderr.log",
+      "snapshot": "source_snapshot/06_Resultados/exp03_fusion_stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modified_utc": "2026-05-12T23:37:49.166622+00:00"
+    },
+    {
+      "source": "06_Resultados/exp03_fusion_stdout.log",
+      "snapshot": "source_snapshot/06_Resultados/exp03_fusion_stdout.log",
+      "bytes": 91,
+      "sha256": "bb38fd8b9ad59fc98bf0fa8f5495ce2281ed84760401420fbc8a963742879a84",
+      "modified_utc": "2026-05-13T01:43:55.120929+00:00"
+    },
+    {
+      "source": "06_Resultados/Experimento_01_Resultados.md",
+      "snapshot": "source_snapshot/06_Resultados/Experimento_01_Resultados.md",
+      "bytes": 5813,
+      "sha256": "47b1e202131173b9066db1f278d55f06e9b42e35547b55ab9ca017c7b31529d4",
+      "modified_utc": "2026-05-12T22:02:48.023611+00:00"
+    },
+    {
+      "source": "06_Resultados/Experimento_02_Resultados.md",
+      "snapshot": "source_snapshot/06_Resultados/Experimento_02_Resultados.md",
+      "bytes": 7253,
+      "sha256": "df9fa1fc3fa402ac2573d6c167b8e5dae9f10ea6c716da5761a7f522d5c23bb2",
+      "modified_utc": "2026-05-12T22:36:58.999469+00:00"
+    },
+    {
+      "source": "06_Resultados/Experimento_03_Fusion_Resultados.md",
+      "snapshot": "source_snapshot/06_Resultados/Experimento_03_Fusion_Resultados.md",
+      "bytes": 23952,
+      "sha256": "4f03a7a116d7b99204cb4f35a62006e113493558f2dbe70c33d9f61436cacf2d",
+      "modified_utc": "2026-05-13T01:54:46.538913+00:00"
+    },
+    {
+      "source": "06_Resultados/Observaciones_Experimento_02.md",
+      "snapshot": "source_snapshot/06_Resultados/Observaciones_Experimento_02.md",
+      "bytes": 699,
+      "sha256": "876ad91c4fbff4d21654be9dc4227f94dcbea85fd14d46c8f295f7aa918bdd0f",
+      "modified_utc": "2026-05-12T22:36:59.000977+00:00"
+    },
+    {
+      "source": "06_Resultados/Observaciones_Experimento_03_Fusion.md",
+      "snapshot": "source_snapshot/06_Resultados/Observaciones_Experimento_03_Fusion.md",
+      "bytes": 1791,
+      "sha256": "aed0a6d5d240f7dd695123575c246c61e1c86d10239c9aa54885d1e813aced7e",
+      "modified_utc": "2026-05-13T01:49:27.434303+00:00"
+    },
+    {
+      "source": "06_Resultados/Observaciones_Iniciales.md",
+      "snapshot": "source_snapshot/06_Resultados/Observaciones_Iniciales.md",
+      "bytes": 838,
+      "sha256": "c165791948dbfeed3d00c2a9394c6fbccf5b68abc4ee23189fcf7b3dc27d331f",
+      "modified_utc": "2026-05-12T22:01:34.394423+00:00"
+    },
+    {
+      "source": "06_Resultados/README.md",
+      "snapshot": "source_snapshot/06_Resultados/README.md",
+      "bytes": 776,
+      "sha256": "5f7ce8df227e9282ed841158e2e8be12f5860dad42e30dd2eb36c4f35827bbe1",
+      "modified_utc": "2026-05-12T20:46:59.974868+00:00"
+    },
+    {
+      "source": "06_Resultados/Resultados_EXP03_Template.md",
+      "snapshot": "source_snapshot/06_Resultados/Resultados_EXP03_Template.md",
+      "bytes": 2386,
+      "sha256": "d227a9c771c384d1420ba6a2debe0524a7d34676b39a9206369b0db5405e1152",
+      "modified_utc": "2026-05-12T22:51:49.351310+00:00"
+    },
+    {
+      "source": "06_Resultados/Tabla_Resultados_Template.md",
+      "snapshot": "source_snapshot/06_Resultados/Tabla_Resultados_Template.md",
+      "bytes": 1318,
+      "sha256": "e43f0fa3f7a725c650931cd61325ebca4eb9e510018d00fdb1a4f2d47968de8c",
+      "modified_utc": "2026-05-12T20:47:00.053514+00:00"
+    },
+    {
+      "source": "06_Resultados/test_opencode_go_connection.json",
+      "snapshot": "source_snapshot/06_Resultados/test_opencode_go_connection.json",
+      "bytes": 3919,
+      "sha256": "b699fa31d66d98c3461e7978f5055064bbbea8dce6c83e57ab79687924b1979f",
+      "modified_utc": "2026-05-12T21:41:13.534271+00:00"
+    },
+    {
+      "source": "09_Multilingue/03_English_Experiments/Comparison_EXP01_EXP02_EXP03_EN_Template.md",
+      "snapshot": "source_snapshot/09_Multilingue/03_English_Experiments/Comparison_EXP01_EXP02_EXP03_EN_Template.md",
+      "bytes": 695,
+      "sha256": "1f7025e6b43d82e1982c7dc06fa5cba1be4344a6ca36a3570a9136df6c6733ea",
+      "modified_utc": "2026-05-13T02:03:04.273823+00:00"
+    },
+    {
+      "source": "09_Multilingue/03_English_Experiments/EXP01_EN_Reproduction.md",
+      "snapshot": "source_snapshot/09_Multilingue/03_English_Experiments/EXP01_EN_Reproduction.md",
+      "bytes": 752,
+      "sha256": "86bfa8baa865400945067ba034575a3b18e16450e2f3e96f5f490f478dab55ff",
+      "modified_utc": "2026-05-13T02:03:03.608307+00:00"
+    },
+    {
+      "source": "09_Multilingue/03_English_Experiments/EXP02_EN_Reproduction.md",
+      "snapshot": "source_snapshot/09_Multilingue/03_English_Experiments/EXP02_EN_Reproduction.md",
+      "bytes": 709,
+      "sha256": "4a9596b3dbdfbb05f2a55aede543cbf71485a78d60ce05bbc533cacc03d3695e",
+      "modified_utc": "2026-05-13T02:03:03.672326+00:00"
+    },
+    {
+      "source": "09_Multilingue/03_English_Experiments/EXP03_EN_Fusion.md",
+      "snapshot": "source_snapshot/09_Multilingue/03_English_Experiments/EXP03_EN_Fusion.md",
+      "bytes": 635,
+      "sha256": "11fe9cbb0bc3a0176afd5811083fdbbece7da877aa26895c2e3bccb98fc9a670",
+      "modified_utc": "2026-05-13T02:03:03.733847+00:00"
+    },
+    {
+      "source": "09_Multilingue/03_English_Experiments/Prompt_Agent_EXP01_EN.md",
+      "snapshot": "source_snapshot/09_Multilingue/03_English_Experiments/Prompt_Agent_EXP01_EN.md",
+      "bytes": 619,
+      "sha256": "9c6dfcc0c58339af007763dc10607e205984f42787d466efadb8d095e0053921",
+      "modified_utc": "2026-05-13T02:03:03.795379+00:00"
+    },
+    {
+      "source": "09_Multilingue/03_English_Experiments/Prompt_Agent_EXP02_EN.md",
+      "snapshot": "source_snapshot/09_Multilingue/03_English_Experiments/Prompt_Agent_EXP02_EN.md",
+      "bytes": 673,
+      "sha256": "61caa81df4b00f94156e30845339a2d617fe590e7f3ea029e1d10f72775aaf38",
+      "modified_utc": "2026-05-13T02:03:03.856901+00:00"
+    },
+    {
+      "source": "09_Multilingue/03_English_Experiments/Prompt_Agent_EXP03_EN.md",
+      "snapshot": "source_snapshot/09_Multilingue/03_English_Experiments/Prompt_Agent_EXP03_EN.md",
+      "bytes": 1569,
+      "sha256": "ebfc8efb0b1e76779bdb6f0aab167ead10b979286fd789db01e1d3151a85c172",
+      "modified_utc": "2026-05-13T02:03:03.919073+00:00"
+    },
+    {
+      "source": "09_Multilingue/03_English_Experiments/Prompt_Evaluator_EN.md",
+      "snapshot": "source_snapshot/09_Multilingue/03_English_Experiments/Prompt_Evaluator_EN.md",
+      "bytes": 972,
+      "sha256": "ba7463aeb3e86a1c9e4bea5ae44e063bd952cff0d1dafa882ceb2348f70e57d4",
+      "modified_utc": "2026-05-13T02:03:03.980112+00:00"
+    },
+    {
+      "source": "09_Multilingue/03_English_Experiments/Results_EXP01_EN_Template.md",
+      "snapshot": "source_snapshot/09_Multilingue/03_English_Experiments/Results_EXP01_EN_Template.md",
+      "bytes": 1096,
+      "sha256": "2a9b5bfdfee8cc274db15c5de9641216e660c0696283b17563e45c2547f2a12e",
+      "modified_utc": "2026-05-13T02:03:04.042149+00:00"
+    },
+    {
+      "source": "09_Multilingue/03_English_Experiments/Results_EXP02_EN_Template.md",
+      "snapshot": "source_snapshot/09_Multilingue/03_English_Experiments/Results_EXP02_EN_Template.md",
+      "bytes": 1054,
+      "sha256": "aa8ba50c3e787164075d37ce67b1a26ebcee177ba0a0dbdc007f48777640bb81",
+      "modified_utc": "2026-05-13T02:03:04.102705+00:00"
+    },
+    {
+      "source": "09_Multilingue/03_English_Experiments/Results_EXP03_EN_Template.md",
+      "snapshot": "source_snapshot/09_Multilingue/03_English_Experiments/Results_EXP03_EN_Template.md",
+      "bytes": 1186,
+      "sha256": "72e8811d16dd3ea366c13d9b5fffe9d20dd6665fce9d3eced9f699a70dcdc26e",
+      "modified_utc": "2026-05-13T02:03:04.166213+00:00"
+    },
+    {
+      "source": "09_Multilingue/04_Chinese_Experiments/Comparison_EXP01_EXP02_EXP03_ZH_Template.md",
+      "snapshot": "source_snapshot/09_Multilingue/04_Chinese_Experiments/Comparison_EXP01_EXP02_EXP03_ZH_Template.md",
+      "bytes": 743,
+      "sha256": "2946520eef89676da226bfc1b3ae07c2ff7a79a58b23cccd0ade5be71f303828",
+      "modified_utc": "2026-05-13T02:04:24.087803+00:00"
+    },
+    {
+      "source": "09_Multilingue/04_Chinese_Experiments/EXP01_ZH_Reproduction.md",
+      "snapshot": "source_snapshot/09_Multilingue/04_Chinese_Experiments/EXP01_ZH_Reproduction.md",
+      "bytes": 694,
+      "sha256": "9ac2953f050a6f6282392c410773e0dc77dbc191b0cae4510e3c1e697da25970",
+      "modified_utc": "2026-05-13T02:04:23.465872+00:00"
+    },
+    {
+      "source": "09_Multilingue/04_Chinese_Experiments/EXP02_ZH_Reproduction.md",
+      "snapshot": "source_snapshot/09_Multilingue/04_Chinese_Experiments/EXP02_ZH_Reproduction.md",
+      "bytes": 573,
+      "sha256": "41bed7ab9d66366b1d27228a20ebe6b3dca99b0fd291d4bb9ecd299fecdf715b",
+      "modified_utc": "2026-05-13T02:04:23.530107+00:00"
+    },
+    {
+      "source": "09_Multilingue/04_Chinese_Experiments/EXP03_ZH_Fusion.md",
+      "snapshot": "source_snapshot/09_Multilingue/04_Chinese_Experiments/EXP03_ZH_Fusion.md",
+      "bytes": 776,
+      "sha256": "692ac6dede5baae79b7e79cefa4516123694f47782bc73bf8c57823b564be466",
+      "modified_utc": "2026-05-13T02:04:23.594141+00:00"
+    },
+    {
+      "source": "09_Multilingue/04_Chinese_Experiments/Prompt_Agent_EXP01_ZH.md",
+      "snapshot": "source_snapshot/09_Multilingue/04_Chinese_Experiments/Prompt_Agent_EXP01_ZH.md",
+      "bytes": 619,
+      "sha256": "5ddb0482602c808f6865932b2ea8873da403c2679538ec642f8c45ffef5cca61",
+      "modified_utc": "2026-05-13T02:04:23.654152+00:00"
+    },
+    {
+      "source": "09_Multilingue/04_Chinese_Experiments/Prompt_Agent_EXP02_ZH.md",
+      "snapshot": "source_snapshot/09_Multilingue/04_Chinese_Experiments/Prompt_Agent_EXP02_ZH.md",
+      "bytes": 635,
+      "sha256": "5f0754ea3b51640df2e10cadf47235495f00df2059fcad71cf2883ee4ba6d0e0",
+      "modified_utc": "2026-05-13T02:04:23.715167+00:00"
+    },
+    {
+      "source": "09_Multilingue/04_Chinese_Experiments/Prompt_Agent_EXP03_ZH.md",
+      "snapshot": "source_snapshot/09_Multilingue/04_Chinese_Experiments/Prompt_Agent_EXP03_ZH.md",
+      "bytes": 2112,
+      "sha256": "927a7293d2fe3dd86446205f1840ab405f13dcf16100d578ce867189059be358",
+      "modified_utc": "2026-05-13T02:04:23.776204+00:00"
+    },
+    {
+      "source": "09_Multilingue/04_Chinese_Experiments/Prompt_Evaluator_ZH.md",
+      "snapshot": "source_snapshot/09_Multilingue/04_Chinese_Experiments/Prompt_Evaluator_ZH.md",
+      "bytes": 1142,
+      "sha256": "0d1f6eb99ead1dcf233252a6d6a31c787978a7ace957bc542d5ea0f297cdcbc1",
+      "modified_utc": "2026-05-13T02:04:23.838216+00:00"
+    },
+    {
+      "source": "09_Multilingue/04_Chinese_Experiments/Results_EXP01_ZH_Template.md",
+      "snapshot": "source_snapshot/09_Multilingue/04_Chinese_Experiments/Results_EXP01_ZH_Template.md",
+      "bytes": 1102,
+      "sha256": "e1b425536ae93353642602a2ff6c3dca7fb30515a13bf1e74d24b13a6360cd4e",
+      "modified_utc": "2026-05-13T02:04:23.900236+00:00"
+    },
+    {
+      "source": "09_Multilingue/04_Chinese_Experiments/Results_EXP02_ZH_Template.md",
+      "snapshot": "source_snapshot/09_Multilingue/04_Chinese_Experiments/Results_EXP02_ZH_Template.md",
+      "bytes": 1069,
+      "sha256": "1c902d96e8ef2b82c75762963b61e9d4a30f9018aae3e4942dc62586561e17ba",
+      "modified_utc": "2026-05-13T02:04:23.964266+00:00"
+    },
+    {
+      "source": "09_Multilingue/04_Chinese_Experiments/Results_EXP03_ZH_Template.md",
+      "snapshot": "source_snapshot/09_Multilingue/04_Chinese_Experiments/Results_EXP03_ZH_Template.md",
+      "bytes": 1316,
+      "sha256": "e96a44eddf22112b007e7cd55f768c26345d8729223cd6d7b7bbc98385a71ab5",
+      "modified_utc": "2026-05-13T02:04:24.027281+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/combined_run_stderr.log",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/combined_run_stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modified_utc": "2026-05-13T02:17:30.586006+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/combined_run_stdout.log",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/combined_run_stdout.log",
+      "bytes": 803,
+      "sha256": "2d5a4446dad22770df8f7790d6d0dfefc0836f4ce5768f3752d7f4141d4a6d10",
+      "modified_utc": "2026-05-13T03:51:03.448562+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/Comparacion_EXP01_EXP02_EN_ZH.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/Comparacion_EXP01_EXP02_EN_ZH.md",
+      "bytes": 5004,
+      "sha256": "f31307d3bf2765a327856dc9a884000309ab849ce9c374ad038a47bd69f711e5",
+      "modified_utc": "2026-05-13T03:51:03.412435+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/Comparacion_EXP01_EXP02_ES_EN_ZH_Borrador.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/Comparacion_EXP01_EXP02_ES_EN_ZH_Borrador.md",
+      "bytes": 3063,
+      "sha256": "7c40ac824143e575980982bb3ebaebb50ed6870437c1ba0b1fcec714fc29e944",
+      "modified_utc": "2026-05-13T03:51:03.412937+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/connection_test_exp01_exp02_en_zh.json",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/connection_test_exp01_exp02_en_zh.json",
+      "bytes": 248,
+      "sha256": "1629e59edfb6b27aafdd9ac78930cb74ef85731696c7df667f93dd80b8687f5f",
+      "modified_utc": "2026-05-13T02:17:32.695093+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/Errores_y_Anomalias_EXP01_EXP02_EN_ZH.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/Errores_y_Anomalias_EXP01_EXP02_EN_ZH.md",
+      "bytes": 915,
+      "sha256": "f96182778fcace7e89e0a243ce6fb09b60ba5fbcdb5ae4ab0b7b7a97411a9c6e",
+      "modified_utc": "2026-05-13T03:53:01.267672+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_EN/Analisis_Traducciones_EXP03_EN.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_EN/Analisis_Traducciones_EXP03_EN.md",
+      "bytes": 781,
+      "sha256": "1e2e9e542ad260ba34bc984e4df593cdbf35628701b9013484778ec5e3d5d821",
+      "modified_utc": "2026-05-13T20:06:46.804876+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_EN/connection_test_exp03_en.json",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_EN/connection_test_exp03_en.json",
+      "bytes": 398,
+      "sha256": "272a33a473d716549a0e213befd8535eb4c557cdaeacf56f56432454c4d15aac",
+      "modified_utc": "2026-05-13T17:54:18.906293+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_EN/Errores_y_Anomalias_EXP03_EN.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_EN/Errores_y_Anomalias_EXP03_EN.md",
+      "bytes": 1328,
+      "sha256": "47e3c52f8a5a0d029116218e2bc11a28c14cc3e5b3db0eca559e91f938d3b232",
+      "modified_utc": "2026-05-13T20:06:46.805884+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_EN/exp03_en_execution_log.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_EN/exp03_en_execution_log.md",
+      "bytes": 906,
+      "sha256": "b25dde5bbadecdd5f7cbda06f3bf8c43b4c9bc49a370504b25c268dc348af48e",
+      "modified_utc": "2026-05-13T20:06:46.806881+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_EN/exp03_en_stderr.log",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_EN/exp03_en_stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modified_utc": "2026-05-13T17:54:15.845744+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_EN/exp03_en_stdout.log",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_EN/exp03_en_stdout.log",
+      "bytes": 1474,
+      "sha256": "4c1f23d9244591f1f2d8ac7f1d7925b80422c02f13e52a060bab213ffdf2216b",
+      "modified_utc": "2026-05-13T20:06:46.853044+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_EN/Resultados_EXP03_EN.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_EN/Resultados_EXP03_EN.md",
+      "bytes": 6216,
+      "sha256": "a69f97e131b3bddaf6ae66332621818ef899bd2d12549efdd07d9d9f50910456",
+      "modified_utc": "2026-05-13T20:06:46.804372+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_EN/Resumen_Ejecutivo_EXP03_EN.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_EN/Resumen_Ejecutivo_EXP03_EN.md",
+      "bytes": 753,
+      "sha256": "284ac38309e49bbee27c94ff3f8d645074ffbf1763eddbfafafb3b39366f2440",
+      "modified_utc": "2026-05-13T20:06:46.805884+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_EN/run_exp03_en_opencode_go.py",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_EN/run_exp03_en_opencode_go.py",
+      "bytes": 260,
+      "sha256": "19719e23c1e930d30904bb63059b02b2bf610cd95aa81789e44ae31ed2029f2c",
+      "modified_utc": "2026-05-13T17:42:12.362760+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/exp03_language_common.py",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/exp03_language_common.py",
+      "bytes": 72155,
+      "sha256": "1e561233b91e5eceb6dd408869cc7fc81847d4d8d2d87344387c0775023cdbbc",
+      "modified_utc": "2026-05-18T21:19:29.565803+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_ZH/Analisis_Traducciones_EXP03_ZH.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_ZH/Analisis_Traducciones_EXP03_ZH.md",
+      "bytes": 908,
+      "sha256": "681c4893584b1fe8bc12570b923cb2e5babdc5d028dfe465e40f4a8008273209",
+      "modified_utc": "2026-05-13T22:38:59.751251+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_ZH/connection_test_exp03_zh.json",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_ZH/connection_test_exp03_zh.json",
+      "bytes": 398,
+      "sha256": "7828971ad1522cc6283e55f38da766e209b05d45f2d01c6fa0be50d49001701f",
+      "modified_utc": "2026-05-13T20:21:00.132433+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_ZH/Errores_y_Anomalias_EXP03_ZH.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_ZH/Errores_y_Anomalias_EXP03_ZH.md",
+      "bytes": 1320,
+      "sha256": "54e4911065ed20171ae183ea07ebd0c9790c937501271d70a6fcfeeab23965e1",
+      "modified_utc": "2026-05-13T22:38:59.752756+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_ZH/exp03_zh_execution_log.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_ZH/exp03_zh_execution_log.md",
+      "bytes": 906,
+      "sha256": "d0bbeca05b5d75189578cbb0ea29d8cae108163e028e19bc74ec4f56d466e3f9",
+      "modified_utc": "2026-05-13T22:38:59.753762+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_ZH/exp03_zh_stderr.log",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_ZH/exp03_zh_stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modified_utc": "2026-05-13T20:20:57.768361+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_ZH/exp03_zh_stdout.log",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_ZH/exp03_zh_stdout.log",
+      "bytes": 1987,
+      "sha256": "90812ed47d6be89524f91a87882702a46d3a8409da73011785d201cfa5a231b7",
+      "modified_utc": "2026-05-13T22:38:59.799387+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_ZH/Resultados_EXP03_ZH.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_ZH/Resultados_EXP03_ZH.md",
+      "bytes": 6741,
+      "sha256": "8e944ad4bfa077207ff6f7acb9d845430190fc2b7b45b5f6eb473d3823f9ecb0",
+      "modified_utc": "2026-05-13T22:38:59.751251+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_ZH/Resumen_Ejecutivo_EXP03_ZH.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_ZH/Resumen_Ejecutivo_EXP03_ZH.md",
+      "bytes": 813,
+      "sha256": "d3809a0560c66212131a17920541b42ccc18f942e21ad2c0ff032733fa395fe6",
+      "modified_utc": "2026-05-13T22:38:59.753762+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/EXP03_ZH/run_exp03_zh_opencode_go.py",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/EXP03_ZH/run_exp03_zh_opencode_go.py",
+      "bytes": 260,
+      "sha256": "ab70f1e08c77a8624827c64b9e2c2a68514b200c47676121220131868c91acb0",
+      "modified_utc": "2026-05-13T17:42:12.462957+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/pilot_exp01_exp02_en_zh_report.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/pilot_exp01_exp02_en_zh_report.md",
+      "bytes": 187,
+      "sha256": "6bac443f929800b6826f4a4d69dcedd8c4cabf44d25c5d5cd177578f490de367",
+      "modified_utc": "2026-05-13T02:20:26.125413+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/Resultados_EXP01_EXP02_EN_ZH.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/Resultados_EXP01_EXP02_EN_ZH.md",
+      "bytes": 6816,
+      "sha256": "6b5696ce5c30887ea463498855bae8a1b6a5b37b1d67a24441a1efb79937adac",
+      "modified_utc": "2026-05-13T03:51:03.412435+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/Resumen_Ejecutivo_EXP01_EXP02_Multilingue.md",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/Resumen_Ejecutivo_EXP01_EXP02_Multilingue.md",
+      "bytes": 1489,
+      "sha256": "b126004bfc4d2b59349a2c6f055e4f0a97d5b47b02b0b602a90cf8b526b2c520",
+      "modified_utc": "2026-05-13T03:51:03.413427+00:00"
+    },
+    {
+      "source": "09_Multilingue/08_Combined_Runs/run_exp01_exp02_en_zh_combined_opencode_go.py",
+      "snapshot": "source_snapshot/09_Multilingue/08_Combined_Runs/run_exp01_exp02_en_zh_combined_opencode_go.py",
+      "bytes": 44747,
+      "sha256": "048b7ef8d1df024f6dcd4b39fe79ee867d112fe8e5a694b76165be6d1a12d74e",
+      "modified_utc": "2026-05-18T21:19:49.528590+00:00"
+    }
+  ],
+  "secret_sweep_hits": []
+}

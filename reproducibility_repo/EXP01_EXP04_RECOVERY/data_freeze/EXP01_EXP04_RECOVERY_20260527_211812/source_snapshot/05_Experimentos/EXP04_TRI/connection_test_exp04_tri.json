@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-05-14T01:19:39.483416+00:00",
+  "models_ok": true,
+  "chat_ok": true,
+  "models_count": 15,
+  "error": null,
+  "chat_model": "deepseek-v4-flash",
+  "chat_latency_ms": 2054,
+  "chat_response": "OK_EXP04_TRI_TEST",
+  "usage": {
+    "input_tokens": 15,
+    "output_tokens": 7,
+    "total_tokens": 22
+  }
+}
