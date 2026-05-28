@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>State-Transfer Protocols · EXP10</title>
+  <title>State-Transfer Protocols · EXP10/EXP11</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#overview" aria-label="EXP10 home">
-      <span class="brand-title">EXP10 Public Repo Tool Agent</span>
-      <span class="brand-subtitle">State-transfer protocols for scientific repository agents</span>
+    <a class="brand" href="#overview" aria-label="State-transfer protocols home">
+      <span class="brand-title">State-Transfer Protocols</span>
+      <span class="brand-subtitle">Public repo and page-maintenance agents</span>
     </a>
     <nav class="nav" aria-label="Main navigation">
       <a href="#overview">Overview</a>
       <a href="#experiments">Experiments</a>
+      <a href="#exp11">EXP11</a>
       <a href="#metrics">Metrics</a>
       <a href="#artifacts">Artifacts</a>
       <a href="#reproduce">Reproduce</a>
@@ -26,12 +27,13 @@
   <main>
     <section id="overview" class="hero section">
       <div class="hero-copy">
-        <p class="section-label">EXP10: culmination</p>
-        <h1>State-transfer protocols for scientific repo agents</h1>
+        <p class="section-label">EXP10/EXP11: public artifact loop</p>
+        <h1>State-transfer protocols for scientific repo and page agents</h1>
         <p class="lead">
-          EXP10 turns the protocol work into a live public-repository task:
-          tool-using agents must preserve state, plan, constraints, claims,
-          dependencies, and recovery while editing scientific artifacts.
+          EXP10 turns the protocol work into a live public-repository task.
+          EXP11 continues that loop by assigning page-maintenance tasks to
+          Gemini 3.5 Flash and Azure GPT-5.4 High while tracking state,
+          plan, constraints, claims, dependencies, responsive design, and recovery.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#metrics">Explore metrics</a>
@@ -43,7 +45,7 @@
           <li><strong>Measure objectively</strong><span>scope drift, claim drift, dependency preservation, recovery.</span></li>
           <li><strong>Validate in chain</strong><span>multi-turn handoff from short to long agent sequences.</span></li>
         </ul>
-        <p class="run-line">Latest final freeze: 2026-05-27 · Modes: compressed / hybrid_state · Gemini matrix: 64/64 OK</p>
+        <p class="run-line">Latest: EXP11 completed 96 real model cells · Gemini 35/48 OK · Azure GPT-5.4 High 48/48 OK</p>
       </div>
 
       <aside class="ops-panel" aria-label="Live repository operations summary">
@@ -61,6 +63,7 @@
               <li><span>METADATA.md</span><i></i></li>
               <li><span>validators/</span><i></i></li>
               <li><span>public_dataset_redacted/</span><i></i></li>
+              <li><span>docs/</span><i></i></li>
             </ul>
             <div class="protocol-card">
               <span>Active protocol</span>
@@ -71,8 +74,8 @@
           <div class="operation-feed">
             <div class="current-op">
               <span>Current operation</span>
-              <strong>Edit: README.md</strong>
-              <small>update experimental summary; validate claim map</small>
+              <strong>Edit: public page</strong>
+              <small>update EXP11 summary; validate responsive contract</small>
             </div>
             <div class="metric-grid">
               <article>
@@ -144,14 +147,60 @@
           <p>Tool-using agent edits public artifacts while preserving constraints, claims, dependencies, and recovery.</p>
           <strong>Outcome: 64/64 Gemini OK</strong>
         </article>
+        <article class="highlight blue">
+          <span>EXP11</span>
+          <h3>Page Task Assignment</h3>
+          <p>Gemini 3.5 Flash and Azure GPT-5.4 High maintain the public page through assigned design/content tasks.</p>
+          <strong>Outcome: 83/96 real model OK</strong>
+        </article>
       </div>
       <p class="core-finding">Core finding: compressed is the universal baseline; hybrid_state is specialized for preserving state, constraints, and claims in real agent handoffs.</p>
     </section>
 
+    <section id="exp11" class="section exp11-highlight">
+      <div class="section-heading narrow">
+        <p class="section-label">EXP11: assigned page maintenance</p>
+        <h2>Protocol effects become visible under constrained web-editing tasks</h2>
+        <p>
+          EXP11 uses the existing GitHub Pages site as the artifact. Agents receive scoped tasks such as adding result summaries,
+          improving responsive layout, protecting claims, and preserving links. Validators check HTML integrity, scope drift,
+          claim drift, mobile readiness, external dependency freedom, and secret safety.
+        </p>
+      </div>
+
+      <div class="result-grid">
+        <article class="result-card">
+          <span class="result-label">Gemini 3.5 Flash</span>
+          <strong class="score">35/48 OK</strong>
+          <p>Hybrid_state helped the smaller model: compressed reached 14/24 OK, while hybrid_state reached 21/24 OK.</p>
+        </article>
+        <article class="result-card">
+          <span class="result-label">Azure GPT-5.4 High</span>
+          <strong class="score">48/48 OK</strong>
+          <p>The higher-budget model completed both modes, suggesting model capacity can compensate for weaker protocol structure.</p>
+        </article>
+        <article class="result-card">
+          <span class="result-label">Interpretation</span>
+          <strong class="score">protocol x model</strong>
+          <p>EXP11 is not a general model ranking. It is a page-maintenance interface test where protocol structure matters most under tighter model budgets.</p>
+        </article>
+      </div>
+
+      <div class="comparison-table" role="table" aria-label="EXP11 model and mode summary">
+        <div class="row header" role="row">
+          <span>Model / mode</span><span>Latest cells</span><span>OK</span>
+        </div>
+        <div class="row"><span>Gemini 3.5 Flash / compressed</span><span>24</span><span>14</span></div>
+        <div class="row"><span>Gemini 3.5 Flash / hybrid_state</span><span>24</span><span>21</span></div>
+        <div class="row"><span>Azure GPT-5.4 High / compressed</span><span>24</span><span>24</span></div>
+        <div class="row"><span>Azure GPT-5.4 High / hybrid_state</span><span>24</span><span>24</span></div>
+      </div>
+    </section>
+
     <section id="metrics" class="section metrics-section">
       <div class="section-heading narrow">
-        <p class="section-label">EXP10 metric system</p>
-        <h2>The final experiment measures repo integrity, not prose quality</h2>
+        <p class="section-label">EXP10/EXP11 metric system</p>
+        <h2>The final experiments measure repo and page integrity, not prose quality</h2>
       </div>
       <div class="metrics-table" role="table" aria-label="EXP10 metrics">
         <div class="row header" role="row">
@@ -164,6 +213,8 @@
         <div class="row"><span>claim_drift_rate</span><span>scientific claim mutation during handoff</span><span>0.00</span></div>
         <div class="row"><span>dependency_preservation_score</span><span>forgotten README/figures/metadata links</span><span>1.00</span></div>
         <div class="row"><span>recovery_score</span><span>ability to correct after validator failure</span><span>1.00</span></div>
+        <div class="row"><span>responsive_contract</span><span>mobile CSS, viewport rules, readable public page</span><span>1.00</span></div>
+        <div class="row"><span>secret_safety</span><span>no API keys, bearer tokens, or private routes in public output</span><span>1.00</span></div>
       </div>
     </section>
 
@@ -180,6 +231,7 @@
         <article><h3>README.md</h3><p>Explains state-transfer protocol and experiment path.</p></article>
         <article><h3>CLAIMS.md</h3><p>Separates strong, narrow, exploratory, and forbidden claims.</p></article>
         <article><h3>index.html</h3><p>Public landing page and culmination view.</p></article>
+        <article><h3>EXP11_PAGE_TASK_ASSIGNMENT</h3><p>Assigned page-maintenance tasks across Gemini 3.5 Flash and Azure GPT-5.4 High.</p></article>
         <article><h3>validators/</h3><p>Checks files, sections, scope drift, claim drift, dependencies, secrets.</p></article>
         <article><h3>PUBLIC_DATASET_REDACTED</h3><p>Safe data tier with manifest, redaction, and checksums.</p></article>
         <article><h3>paper/</h3><p>Main PDF, source, figures, and appendix references.</p></article>
@@ -190,12 +242,17 @@
       <div>
         <p class="section-label">Reproduce</p>
         <h2>One experiment, deterministic checks</h2>
-        <p>EXP10 starts with 16 tasks, 2 modes, 2 repetitions, and explicit long-chain tasks. The final Gemini run completed 64/64 latest cells.</p>
+        <p>EXP10 starts with public-repo tasks. EXP11 extends it with 12 assigned page-maintenance tasks, 2 modes, 2 models, and 2 repetitions.</p>
       </div>
       <pre><code>python run_exp10_resumable.py --preflight
 python run_exp10_resumable.py --dry-local --reps 2
 python status_exp10.py
-python validators/validate_public_repo_case.py --task-bank task_bank_exp10_seed.jsonl --task-id T001 --repo workspace_runs/T001__hybrid_state__rep1</code></pre>
+python validators/validate_public_repo_case.py --task-bank task_bank_exp10_seed.jsonl --task-id T001 --repo workspace_runs/T001__hybrid_state__rep1
+
+python run_exp11_resumable.py --preflight
+python run_exp11_resumable.py --model-route gemini_3_5_flash --reps 2
+python run_exp11_resumable.py --model-route azure_gpt_5_4_high --reps 2
+python status_exp11.py</code></pre>
     </section>
 
     <section id="claims" class="section claims">
@@ -205,6 +262,7 @@ python validators/validate_public_repo_case.py --task-bank task_bank_exp10_seed.
           <li>compressed is a robust universal operational compression baseline.</li>
           <li>hybrid_state is specialized for explicit state and continuity preservation.</li>
           <li>objective validators reduce dependence on LLM-as-judge.</li>
+          <li>EXP11 suggests hybrid_state improves reliability for smaller page-maintenance agents.</li>
         </ul>
       </div>
       <div class="claim-column careful">
@@ -214,13 +272,14 @@ python validators/validate_public_repo_case.py --task-bank task_bank_exp10_seed.
           <li>ZH proves tokenization advantage.</li>
           <li>universal agent interoperability is proven.</li>
           <li>model rankings are general capability results.</li>
+          <li>EXP11 proves general web-agent superiority.</li>
         </ul>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <span>EXP10_PUBLIC_REPO_TOOL_AGENT</span>
+    <span>EXP10_EXP11_PUBLIC_REPO_TOOL_AGENT</span>
     <span>Scientific repository maintenance as state-transfer benchmark · DOI 10.5281/zenodo.20425831</span>
   </footer>
 </body>

@@ -4,7 +4,7 @@ Reproducibility package for the paper:
 
 **State-Transfer Protocols for Multilingual Multi-Agent Handoff**
 
-This repository contains the public paper package, long technical report, cleaned reproducibility artifacts, scripts, manifests, and checksums for the EXP01-EXP10 experimental trail.
+This repository contains the public paper package, long technical report, cleaned reproducibility artifacts, scripts, manifests, and checksums for the EXP01-EXP11 experimental trail.
 
 ## Citation
 
@@ -28,6 +28,7 @@ The main empirical conclusion is deliberately bounded:
 - `compressed` is the most robust general baseline.
 - `hybrid_state` is useful when operational state preservation matters.
 - later tool-agent experiments are controlled interface validations, not broad claims about general software-agent superiority.
+- EXP11 extends the public artifact loop with assigned page-maintenance tasks across Gemini 3.5 Flash and Azure GPT-5.4 High.
 
 ## Repository Layout
 
