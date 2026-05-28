@@ -31,6 +31,14 @@ Large language model agents increasingly need to transfer operational state acro
 
 Technical report. Includes EXP05 broad discovery, EXP06 controlled follow-up, and EXP07 real-agent handoff validation. Source package includes TeX and figures only; data and code release are staged separately after sanitization.
 
+Repository:
+
+- https://github.com/DaosPath/state-transfer-protocols
+
+Archived release DOI:
+
+- https://doi.org/10.5281/zenodo.20425831
+
 ## License
 
 Recommended:
@@ -43,7 +51,7 @@ Recommended:
 
 Upload:
 
-- `submission/ARXIV_SOURCE_EXP05_EXP06_EXP07_20260526.zip`
+- `paper_short/arxiv_source_focused_handoff.zip`
 
 Do not upload:
 

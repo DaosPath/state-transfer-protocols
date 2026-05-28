@@ -1,5 +1,8 @@
 {
   "created_utc": "2026-05-27T22:20:22.630704+00:00",
+  "github_repository": "https://github.com/DaosPath/state-transfer-protocols",
+  "zenodo_doi": "10.5281/zenodo.20425831",
+  "zenodo_url": "https://doi.org/10.5281/zenodo.20425831",
   "package": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\PUBLIC_RELEASE_FINAL_20260527_222018",
   "components": {
     "paper_short": "paper_short/",

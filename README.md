@@ -6,6 +6,13 @@ Reproducibility package for the paper:
 
 This repository contains the public paper package, long technical report, cleaned reproducibility artifacts, scripts, manifests, and checksums for the EXP01-EXP10 experimental trail.
 
+## Citation
+
+Archived release:
+
+- GitHub: https://github.com/DaosPath/state-transfer-protocols
+- Zenodo DOI: https://doi.org/10.5281/zenodo.20425831
+
 ## What This Studies
 
 The project treats compact prompting not only as token saving, but as a **state-transfer protocol** for LLM agents. The central comparison is between:
