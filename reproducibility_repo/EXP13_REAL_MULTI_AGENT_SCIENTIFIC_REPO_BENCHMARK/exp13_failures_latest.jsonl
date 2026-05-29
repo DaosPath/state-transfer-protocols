@@ -1,0 +1,2 @@
+{"duration_seconds": 41.89, "error": "no_json_object", "mode": "hybrid_state", "model_route": "gemini_3_5_flash", "phase": "exp13_scientific_repo", "rep": 2, "scenario_id": "S009", "scenario_type": "outreach", "status": "error", "timestamp": "2026-05-29T00:50:40Z"}
+{"duration_seconds": 19.61, "error": "no_changes", "mode": "hybrid_state", "model_route": "azure_gpt_5_4_high", "phase": "exp13_scientific_repo", "rep": 1, "scenario_id": "S011", "scenario_type": "roles", "status": "error", "timestamp": "2026-05-29T00:51:28Z"}

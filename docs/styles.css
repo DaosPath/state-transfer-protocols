@@ -333,6 +333,11 @@ h3 { margin: 0; font-size: 22px; }
   background: #f1f7ff;
 }
 
+.timeline article.highlight.green {
+  border-color: #95d2aa;
+  background: #f2fbf5;
+}
+
 .timeline span {
   color: var(--blue);
   font-size: 13px;
@@ -357,6 +362,13 @@ h3 { margin: 0; font-size: 22px; }
 .exp11-highlight {
   max-width: 1240px;
   background: linear-gradient(180deg, #f8fbff 0%, #fff 42%);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.exp13-highlight {
+  max-width: 1240px;
+  background: linear-gradient(180deg, #f4fbf6 0%, #fff 44%);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }

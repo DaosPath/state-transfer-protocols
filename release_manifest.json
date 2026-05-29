@@ -1,21 +1,25 @@
 {
-  "created_utc": "2026-05-27T22:20:22.630704+00:00",
+  "created_utc": "2026-05-28T21:30:00-05:00",
   "github_repository": "https://github.com/DaosPath/state-transfer-protocols",
   "zenodo_doi": "10.5281/zenodo.20425831",
   "zenodo_url": "https://doi.org/10.5281/zenodo.20425831",
-  "package": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\PUBLIC_RELEASE_FINAL_20260527_222018",
+  "package": "state-transfer-protocols public release",
   "components": {
     "paper_short": "paper_short/",
     "technical_report": "technical_report/",
-    "reproducibility_repo": "reproducibility_repo/"
+    "reproducibility_repo": "reproducibility_repo/",
+    "exp13": "reproducibility_repo/EXP13_REAL_MULTI_AGENT_SCIENTIFIC_REPO_BENCHMARK/"
   },
-  "source_paths": {
-    "paper_short": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\paper_focused_handoff",
-    "technical_report": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\paper_long_40p_build",
-    "public_release_safe": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\PUBLIC_RELEASE_SAFE",
-    "public_dataset_redacted": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP06_CAUSAL_PROTOCOL_TRANSFER\\delivery\\EXP05_EXP06_MAIN_PAPER_PACKAGE_20260526_FINAL\\PUBLIC_DATASET_REDACTED",
-    "exp01_exp04_recovery": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP01_EXP04_RECOVERY"
+  "exp13_summary": {
+    "real_model_cells": 128,
+    "real_model_success_cells": 126,
+    "compressed": "64/64",
+    "hybrid_state": "62/64",
+    "final_failures_retained": [
+      "gemini_3_5_flash S009 hybrid_state rep2 no_json_object",
+      "azure_gpt_5_4_high S011 hybrid_state rep1 no_changes"
+    ]
   },
-  "file_count": 324,
+  "file_count": 339,
   "secret_sweep_hits": []
 }

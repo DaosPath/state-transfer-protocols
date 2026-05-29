@@ -1,6 +1,6 @@
-# EXP10 Public Site
+# EXP10-EXP13 Public Site
 
-Static public landing page for `EXP10_PUBLIC_REPO_TOOL_AGENT`.
+Static public landing page for the public artifact and scientific-repo benchmark line.
 
 Published through GitHub Pages from the repository:
 
@@ -10,9 +10,9 @@ Published through GitHub Pages from the repository:
 Purpose:
 
 - explain state-transfer protocols;
-- show EXP05 -> EXP10 research path;
+- show EXP05 -> EXP13 research path;
 - document strong vs forbidden claims;
-- expose EXP10 objective metrics;
+- expose EXP10/EXP11/EXP13 objective metrics and latest-cell summaries;
 - serve as the public artifact that tool-using agents must maintain.
 
 Open locally:

@@ -2,7 +2,7 @@
 
 ## Package
 
-This package contains the integrated EXP05-EXP10 paper, technical appendix, selected analysis outputs, frozen metadata, and checksum manifest.
+This package contains the integrated EXP05-EXP13 paper/release trail, technical appendix, selected analysis outputs, frozen metadata, and checksum manifest.
 
 No literal API keys or provider credential files are included. Runner snapshots may contain environment-variable names such as `API_KEY`, but not secret values.
 
@@ -21,6 +21,7 @@ No literal API keys or provider credential files are included. Runner snapshots 
 - `appendix/Informe_EXP08_Real_Agent_Scaleup.md`
 - `appendix/Informe_EXP09_Real_Tool_Use_Agent_Tasks.md`
 - `appendix/Informe_EXP10_Public_Repo_Tool_Agent.md`
+- `EXP13_REAL_MULTI_AGENT_SCIENTIFIC_REPO_BENCHMARK/Informe_EXP13_RealMultiAgentScientificRepoBenchmark.md`
 - `paper/REVIEWER_HOSTILE_CRITIQUE.md`
 
 ## Data Freeze
@@ -31,8 +32,19 @@ No literal API keys or provider credential files are included. Runner snapshots 
 - `data_freeze/EXP08_20260527_FINAL/`
 - `data_freeze/EXP09_20260527_FINAL/`
 - `data_freeze/EXP10_20260527_FINAL/`
+- `EXP13_REAL_MULTI_AGENT_SCIENTIFIC_REPO_BENCHMARK/`
 
-Each freeze contains manifests, prompts or prompt-bearing runner snapshots, task banks, cleaned outputs where available, and checksum files. Raw logs are preserved for internal audit; public release should use redacted or aggregated data.
+Each freeze contains manifests, prompts or prompt-bearing runner snapshots, task banks, cleaned outputs where available, and checksum files. Raw logs are preserved for internal audit; public release should use redacted, latest-cell, or aggregated data.
+
+EXP13 is included as a public latest-cell freeze:
+
+- `exp13_latest_cells_clean.jsonl`
+- `exp13_failures_latest.jsonl`
+- `task_bank_exp13_scientific_repo.jsonl`
+- `prompts_exp13_modes.json`
+- `model_registry_exp13.json`
+- `validators/validate_scientific_repo.py`
+- `SHA256SUMS_EXP13.txt`
 
 ## Analysis
 
@@ -58,7 +70,7 @@ It points to:
 - observed provider/model routes
 - freeze dates and route manifest files
 - validators, schemas, tool-action contracts, and runner scripts
-- repaired historical error logs for EXP09/EXP10
+- repaired historical error logs for EXP09/EXP10 and latest failure evidence for EXP13
 - cleaning and deduplication policy
 - freeze/checksum locations
 - auditable example rows and reports
@@ -68,7 +80,7 @@ It points to:
 Preferred local rebuild from this package:
 
 ```powershell
-python C:\Users\jampi\.codex\plugins\cache\openai-bundled\latex\0.2.0\scripts\compile_latex.py .\paper\main.tex --json
+python path\to\compile_latex.py .\paper\main.tex --json
 ```
 
 Fallback from `paper/`:

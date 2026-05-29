@@ -1,0 +1,22 @@
+{
+  "gemini_3_5_flash": {
+    "provider": "google_vertex",
+    "model_id": "gemini-3.5-flash",
+    "location": "global",
+    "endpoint": "aiplatform.googleapis.com",
+    "project_env": "VERTEX_PROJECT_ID",
+    "max_output_tokens_default": 12000,
+    "thinking_level_default": "LOW",
+    "role": "fast scientific-repository maintenance agent"
+  },
+  "azure_gpt_5_4_high": {
+    "provider": "azure_openai",
+    "model": "gpt-5.4",
+    "endpoint_env": "AZURE_OPENAI_ENDPOINT",
+    "api_key_env": "AZURE_OPENAI_API_KEY",
+    "max_completion_tokens": 30000,
+    "timeout_seconds": 420,
+    "reasoning_effort": "high",
+    "role": "premium high-reasoning scientific-repository maintenance agent"
+  }
+}

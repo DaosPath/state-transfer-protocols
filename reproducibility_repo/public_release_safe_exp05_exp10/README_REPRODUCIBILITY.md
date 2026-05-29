@@ -43,11 +43,7 @@ pdflatex main.tex
 pdflatex main.tex
 ```
 
-On this machine the working MiKTeX path was:
-
-```powershell
-& 'C:\Users\jampi\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdflatex.exe' -interaction=nonstopmode -halt-on-error main.tex
-```
+Any standard TeX Live or MiKTeX `pdflatex` installation should work.
 
 ## Checksums
 

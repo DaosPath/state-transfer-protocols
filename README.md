@@ -4,7 +4,7 @@ Reproducibility package for the paper:
 
 **State-Transfer Protocols for Multilingual Multi-Agent Handoff**
 
-This repository contains the public paper package, long technical report, cleaned reproducibility artifacts, scripts, manifests, and checksums for the EXP01-EXP11 experimental trail.
+This repository contains the public paper package, long technical report, cleaned reproducibility artifacts, scripts, manifests, and checksums for the EXP01-EXP13 experimental trail.
 
 ## Citation
 
@@ -27,20 +27,30 @@ The main empirical conclusion is deliberately bounded:
 
 - `compressed` is the most robust general baseline.
 - `hybrid_state` is useful when operational state preservation matters.
-- later tool-agent experiments are controlled interface validations, not broad claims about general software-agent superiority.
-- EXP11 extends the public artifact loop with assigned page-maintenance tasks across Gemini 3.5 Flash and Azure GPT-5.4 High.
+- EXP10-EXP12 validate public-page and repository maintenance under deterministic validators.
+- EXP13 is the main controlled multi-agent scientific-repository benchmark.
+- In EXP13, `compressed` was more operationally robust, while `hybrid_state` exposed contract fragility in longer role-conditioned tasks.
 
 ## Repository Layout
 
 - `paper_short/`: compact arXiv/workshop-oriented paper, including LaTeX source and compiled PDF.
 - `technical_report/`: longer technical report with methodology, history, costs, errors, and extended evidence.
 - `reproducibility_repo/`: prompts, task banks, schemas, cleaned data, analysis scripts, manifests, and checksums.
+- `reproducibility_repo/EXP13_REAL_MULTI_AGENT_SCIENTIFIC_REPO_BENCHMARK/`: EXP13 report, latest-cell data, failure log, prompts, task bank, validators, runner snapshot, and checksums.
 - `SHA256SUMS.txt`: checksums for public-release files.
 - `release_manifest.json`: release metadata.
 
 ## Reproducibility Notes
 
 The package is designed to support auditability without exposing provider credentials or private API keys. Cleaned/latest-cell datasets are included where available; raw internal logs with sensitive material are excluded.
+
+EXP13 latest-cell view:
+
+- real model cells: 128
+- successful real model cells: 126
+- `compressed`: 64/64
+- `hybrid_state`: 62/64
+- final failures retained as evidence: Gemini `no_json_object`, Azure `no_changes`
 
 Before public upload, the release package was scanned for common secret patterns including API keys, bearer tokens, and provider credentials.
 
