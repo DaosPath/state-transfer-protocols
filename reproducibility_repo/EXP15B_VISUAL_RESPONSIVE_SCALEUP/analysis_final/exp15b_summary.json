@@ -1,0 +1,71 @@
+{
+  "experiment": "EXP15B",
+  "generated_at": "2026-05-30T01:20:15.394431",
+  "raw_rows": 2000,
+  "latest_cells": 2000,
+  "success_latest_cells": 1204,
+  "failure_latest_cells": 796,
+  "success_rate": 0.602,
+  "historical_non_success_events": 796,
+  "chains": {
+    "instances_seen": 200,
+    "instances_complete_ok": 71,
+    "expected_rounds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "ledger": {
+    "rows": 1233,
+    "input_tokens": 12903001.0,
+    "output_tokens": 1473720.0,
+    "reasoning_tokens": 0.0,
+    "estimated_total_tokens": 14376721.0,
+    "estimated_cost_usd": 0.0,
+    "cost_usd": 0.0
+  },
+  "workspace_manifest_files": 7233,
+  "security_sweep": {
+    "scanned_files": 5,
+    "secret_pattern_matches": {
+      "azure_like_key": 0,
+      "bearer_token": 0,
+      "google_api_key": 0,
+      "openai_key": 0
+    },
+    "safe_for_public_release": true,
+    "note": "Counts only. Raw matched values are intentionally omitted."
+  },
+  "grok_reasoning_comparison": {
+    "reasoning": {
+      "model_route": "grok_4_20_reasoning",
+      "total": 400,
+      "success": 98,
+      "success_rate": 0.245,
+      "ok": 46,
+      "ok_repaired": 52,
+      "error": 302,
+      "validator_failed": 0
+    },
+    "non_reasoning": {
+      "model_route": "grok_4_20_non_reasoning",
+      "total": 400,
+      "success": 43,
+      "success_rate": 0.1075,
+      "ok": 25,
+      "ok_repaired": 18,
+      "error": 357,
+      "validator_failed": 0
+    },
+    "absolute_success_rate_delta": 0.1375,
+    "relative_multiplier": 2.27907
+  }
+}

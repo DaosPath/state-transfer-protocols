@@ -1,0 +1,79 @@
+{
+  "by_model": {
+    "azure_gpt_5_4_high": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 37
+    },
+    "gemini_3_5_flash": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 38
+    },
+    "glm_5": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 39
+    },
+    "qwen3_next_80b_instruct": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 28
+    }
+  },
+  "by_model_mode": {
+    "azure_gpt_5_4_high::compressed": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 18
+    },
+    "azure_gpt_5_4_high::hybrid_state": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 19
+    },
+    "gemini_3_5_flash::compressed": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 19
+    },
+    "gemini_3_5_flash::hybrid_state": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 19
+    },
+    "glm_5::compressed": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 19
+    },
+    "glm_5::hybrid_state": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 20
+    },
+    "qwen3_next_80b_instruct::compressed": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 14
+    },
+    "qwen3_next_80b_instruct::hybrid_state": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 14
+    }
+  },
+  "final_pages_scored": 142
+}

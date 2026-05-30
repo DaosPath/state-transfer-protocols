@@ -1,0 +1,8 @@
+{
+  "compressed": {
+    "agent_instruction": "Use compact multi-agent handoff. Keep goal, role outputs, files, constraints, dependencies, forbidden claims, visual requirements, responsive requirements, and exact edit operations."
+  },
+  "hybrid_state": {
+    "agent_instruction": "Use compact handoff plus explicit STATE, PLAN, ROLE_OUTPUTS, CONSTRAINTS, CLAIMS, DEPENDENCIES, VISUAL_STATE, RESPONSIVE_STATE, CONFLICTS, VALIDATION, RECOVERY. Preserve scientific claims, repo dependencies, visual hierarchy, and mobile behavior during merge."
+  }
+}

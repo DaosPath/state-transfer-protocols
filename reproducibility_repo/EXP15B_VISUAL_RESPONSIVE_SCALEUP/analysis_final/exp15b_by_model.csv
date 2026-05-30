@@ -1,0 +1,6 @@
+﻿model_route,total,success,success_rate,ok,ok_repaired,error,validator_failed
+gemini_3_5_flash,400,382,0.955,328,54,16,2
+glm_5,400,363,0.9075,316,47,10,27
+grok_4_20_non_reasoning,400,43,0.1075,25,18,357,0
+grok_4_20_reasoning,400,98,0.245,46,52,302,0
+qwen3_next_80b_instruct,400,318,0.795,240,78,82,0

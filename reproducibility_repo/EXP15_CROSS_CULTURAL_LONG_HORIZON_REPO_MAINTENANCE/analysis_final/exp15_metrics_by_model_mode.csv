@@ -1,0 +1,11 @@
+﻿mean_claim_drift_rate,mean_constraint_preservation,mean_dependency_preservation,mean_heading_count,mean_html_integrity_score,mean_list_count,mean_regression_rate,mean_scope_drift_rate,mean_section_count,mean_visual_css_score,mean_visual_html_score,mean_visual_quality_proxy,mean_visual_structure_score,mode,model_route
+0.0,1.0,1.0,26.133333,1.0,20.188889,0.0,0.0,7.1,1.0,1.0,1.0,1.0,compressed,azure_gpt_5_4_high
+0.0,1.0,1.0,26.113402,1.0,20.907216,0.0,0.0,7.329897,1.0,1.0,1.0,1.0,hybrid_state,azure_gpt_5_4_high
+0.0,1.0,1.0,24.52,1.0,17.52,0.0,0.0,9.52,1.0,1.0,1.0,1.0,compressed,dry_local_scaffold
+0.0,1.0,1.0,24.52,1.0,17.52,0.0,0.0,9.52,1.0,1.0,1.0,1.0,hybrid_state,dry_local_scaffold
+0.0,1.0,1.0,25.46875,1.0,19.322917,0.0,0.0,7.833333,1.0,1.0,1.0,1.0,compressed,gemini_3_5_flash
+0.0,1.0,1.0,26.284211,1.0,20.115789,0.0,0.0,7.947368,1.0,1.0,1.0,1.0,hybrid_state,gemini_3_5_flash
+0.0,1.0,1.0,28.854167,1.0,20.833333,0.0,0.0,8.21875,1.0,1.0,1.0,1.0,compressed,glm_5
+0.0,1.0,1.0,29.494949,1.0,25.0,0.0,0.0,8.242424,1.0,1.0,1.0,1.0,hybrid_state,glm_5
+0.0,1.0,1.0,24.697368,1.0,20.092105,0.0,0.0,8.934211,1.0,1.0,1.0,1.0,compressed,qwen3_next_80b_instruct
+0.0,1.0,1.0,25.565217,1.0,20.26087,0.0,0.0,8.956522,1.0,1.0,1.0,1.0,hybrid_state,qwen3_next_80b_instruct

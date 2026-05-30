@@ -1,0 +1,6 @@
+﻿model_route,total,success,success_rate,ok,ok_repaired,error,validator_failed
+azure_gpt_5_4_high,200,187,0.935,158,29,13,0
+dry_local_scaffold,100,100,1.0,84,16,0,0
+gemini_3_5_flash,200,191,0.955,166,25,9,0
+glm_5,200,195,0.975,176,19,1,4
+qwen3_next_80b_instruct,200,145,0.725,118,27,55,0

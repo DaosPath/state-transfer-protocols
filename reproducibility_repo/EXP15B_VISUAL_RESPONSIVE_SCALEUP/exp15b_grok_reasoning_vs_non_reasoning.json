@@ -1,0 +1,69 @@
+{
+  "absolute_success_rate_delta": 0.1375,
+  "freeze": "C:\\Hijosdelsol\\ia\\Investigacion_y_Produccion\\Investigaciones\\Protolenguaje_AgentesIA\\05_Experimentos\\EXP15B_VISUAL_RESPONSIVE_SCALEUP\\data_freeze\\EXP15B_GROK_REASONING_FREEZE_20260530_061027",
+  "grok_non_reasoning": {
+    "by_mode": {
+      "compressed": {
+        "cells": 200,
+        "status": {
+          "error": 172,
+          "ok": 14,
+          "ok_repaired": 14
+        },
+        "success": 28,
+        "success_rate": 0.14
+      },
+      "hybrid_state": {
+        "cells": 200,
+        "status": {
+          "error": 185,
+          "ok": 11,
+          "ok_repaired": 4
+        },
+        "success": 15,
+        "success_rate": 0.075
+      }
+    },
+    "cells": 400,
+    "status": {
+      "error": 357,
+      "ok": 25,
+      "ok_repaired": 18
+    },
+    "success": 43,
+    "success_rate": 0.1075
+  },
+  "grok_reasoning": {
+    "by_mode": {
+      "compressed": {
+        "cells": 200,
+        "status": {
+          "error": 156,
+          "ok": 21,
+          "ok_repaired": 23
+        },
+        "success": 44,
+        "success_rate": 0.22
+      },
+      "hybrid_state": {
+        "cells": 200,
+        "status": {
+          "error": 146,
+          "ok": 25,
+          "ok_repaired": 29
+        },
+        "success": 54,
+        "success_rate": 0.27
+      }
+    },
+    "cells": 400,
+    "status": {
+      "error": 302,
+      "ok": 46,
+      "ok_repaired": 52
+    },
+    "success": 98,
+    "success_rate": 0.245
+  },
+  "relative_success_multiplier": 2.279
+}

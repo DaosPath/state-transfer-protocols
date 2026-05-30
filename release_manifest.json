@@ -1,25 +1,57 @@
-{
-  "created_utc": "2026-05-28T21:30:00-05:00",
-  "github_repository": "https://github.com/DaosPath/state-transfer-protocols",
-  "zenodo_doi": "10.5281/zenodo.20425831",
-  "zenodo_url": "https://doi.org/10.5281/zenodo.20425831",
-  "package": "state-transfer-protocols public release",
-  "components": {
-    "paper_short": "paper_short/",
-    "technical_report": "technical_report/",
-    "reproducibility_repo": "reproducibility_repo/",
-    "exp13": "reproducibility_repo/EXP13_REAL_MULTI_AGENT_SCIENTIFIC_REPO_BENCHMARK/"
-  },
-  "exp13_summary": {
-    "real_model_cells": 128,
-    "real_model_success_cells": 126,
-    "compressed": "64/64",
-    "hybrid_state": "62/64",
-    "final_failures_retained": [
-      "gemini_3_5_flash S009 hybrid_state rep2 no_json_object",
-      "azure_gpt_5_4_high S011 hybrid_state rep1 no_changes"
-    ]
-  },
-  "file_count": 339,
-  "secret_sweep_hits": []
+﻿{
+    "created_utc":  "2026-05-28T21:30:00-05:00",
+    "updated_utc":  "2026-05-30T01:45:00-05:00",
+    "github_repository":  "https://github.com/DaosPath/state-transfer-protocols",
+    "zenodo_doi":  "10.5281/zenodo.20425831",
+    "zenodo_url":  "https://doi.org/10.5281/zenodo.20425831",
+    "package":  "state-transfer-protocols public release",
+    "scope":  "EXP01-EXP15",
+    "components":  {
+                       "paper_short":  "paper_short/",
+                       "technical_report":  "technical_report/",
+                       "reproducibility_repo":  "reproducibility_repo/",
+                       "exp13":  "reproducibility_repo/EXP13_REAL_MULTI_AGENT_SCIENTIFIC_REPO_BENCHMARK/",
+                       "exp15":  "reproducibility_repo/EXP15_CROSS_CULTURAL_LONG_HORIZON_REPO_MAINTENANCE/",
+                       "exp15b":  "reproducibility_repo/EXP15B_VISUAL_RESPONSIVE_SCALEUP/",
+                       "historical_report_exp01_exp15":  "technical_report/state_transfer_protocols_historical_report_exp01_exp15.pdf"
+                   },
+    "exp13_summary":  {
+                          "real_model_cells":  128,
+                          "real_model_success_cells":  126,
+                          "compressed":  "64/64",
+                          "hybrid_state":  "62/64",
+                          "final_failures_retained":  [
+                                                          "gemini_3_5_flash S009 hybrid_state rep2 no_json_object",
+                                                          "azure_gpt_5_4_high S011 hybrid_state rep1 no_changes"
+                                                      ]
+                      },
+    "exp15_summary":  {
+                          "latest_cells":  900,
+                          "success_latest_cells":  818,
+                          "success_rate":  0.908889,
+                          "complete_chains":  "141/180",
+                          "interpretation":  "cross-cultural long-horizon repository/page maintenance with objective validators"
+                      },
+    "exp15b_summary":  {
+                           "latest_cells":  2000,
+                           "success_latest_cells":  1204,
+                           "success_rate":  0.602,
+                           "complete_chains":  "71/200",
+                           "model_success":  {
+                                                 "gemini_3_5_flash":  "382/400",
+                                                 "glm_5":  "363/400",
+                                                 "qwen3_next_80b_instruct":  "318/400",
+                                                 "grok_4_20_reasoning":  "98/400",
+                                                 "grok_4_20_non_reasoning":  "43/400"
+                                             },
+                           "grok_reasoning_vs_non_reasoning":  {
+                                                                   "absolute_success_rate_delta":  0.1375,
+                                                                   "relative_multiplier":  2.279
+                                                               },
+                           "interpretation":  "visual/responsive scale-up as contract-interface compatibility stress test, not a visual design leaderboard"
+                       },
+    "file_count":  378,
+    "secret_sweep_hits":  [
+
+                          ]
 }

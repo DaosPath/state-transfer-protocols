@@ -1,0 +1,97 @@
+{
+  "by_model": {
+    "gemini_3_5_flash": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 37
+    },
+    "glm_5": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 36
+    },
+    "grok_4_20_non_reasoning": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 3
+    },
+    "grok_4_20_reasoning": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 6
+    },
+    "qwen3_next_80b_instruct": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 32
+    }
+  },
+  "by_model_mode": {
+    "gemini_3_5_flash::compressed": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 19
+    },
+    "gemini_3_5_flash::hybrid_state": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 18
+    },
+    "glm_5::compressed": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 17
+    },
+    "glm_5::hybrid_state": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 19
+    },
+    "grok_4_20_non_reasoning::compressed": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 2
+    },
+    "grok_4_20_non_reasoning::hybrid_state": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 1
+    },
+    "grok_4_20_reasoning::compressed": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 2
+    },
+    "grok_4_20_reasoning::hybrid_state": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 4
+    },
+    "qwen3_next_80b_instruct::compressed": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 18
+    },
+    "qwen3_next_80b_instruct::hybrid_state": {
+      "max": 1.0,
+      "mean_visual_page_score": 1.0,
+      "min": 1.0,
+      "n": 14
+    }
+  },
+  "final_pages_scored": 114
+}

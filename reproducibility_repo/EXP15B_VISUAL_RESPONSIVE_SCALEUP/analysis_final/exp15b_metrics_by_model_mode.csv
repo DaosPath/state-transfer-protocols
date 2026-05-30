@@ -1,0 +1,11 @@
+﻿mean_claim_drift_rate,mean_constraint_preservation,mean_dependency_preservation,mean_heading_count,mean_html_integrity_score,mean_list_count,mean_regression_rate,mean_scope_drift_rate,mean_section_count,mean_visual_css_score,mean_visual_html_score,mean_visual_quality_proxy,mean_visual_structure_score,mode,model_route
+0.0,1.0,1.0,29.65445,1.0,21.837696,0.0,0.0,9.376963,1.0,1.0,1.0,1.0,compressed,gemini_3_5_flash
+0.0,1.0,1.0,29.445026,1.0,23.376963,0.0,0.0,9.188482,1.0,1.0,1.0,1.0,hybrid_state,gemini_3_5_flash
+0.0,1.0,1.0,35.182857,1.0,31.897143,0.0,0.0,10.12,1.0,1.0,1.0,1.0,compressed,glm_5
+0.0,1.0,1.0,37.505319,1.0,38.898936,0.0,0.0,10.654255,1.0,1.0,1.0,1.0,hybrid_state,glm_5
+0.0,1.0,1.0,25.035714,1.0,23.535714,0.0,0.0,8.785714,1.0,1.0,1.0,1.0,compressed,grok_4_20_non_reasoning
+0.0,1.0,1.0,23.8,1.0,23.4,0.0,0.0,8.533333,1.0,1.0,1.0,1.0,hybrid_state,grok_4_20_non_reasoning
+0.0,1.0,1.0,24.590909,1.0,27.022727,0.0,0.0,8.454545,1.0,1.0,1.0,1.0,compressed,grok_4_20_reasoning
+0.0,1.0,1.0,25.259259,1.0,27.12963,0.0,0.0,8.87037,1.0,1.0,1.0,1.0,hybrid_state,grok_4_20_reasoning
+0.0,1.0,1.0,30.857143,1.0,23.850932,0.0,0.0,11.701863,1.0,1.0,1.0,1.0,compressed,qwen3_next_80b_instruct
+0.0,1.0,1.0,32.286624,1.0,27.025478,0.0,0.0,12.082803,1.0,1.0,1.0,1.0,hybrid_state,qwen3_next_80b_instruct

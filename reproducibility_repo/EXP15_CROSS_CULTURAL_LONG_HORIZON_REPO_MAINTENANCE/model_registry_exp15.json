@@ -1,0 +1,50 @@
+{
+  "gemini_3_5_flash": {
+    "provider": "google_vertex",
+    "model_id": "gemini-3.5-flash",
+    "location": "global",
+    "endpoint": "aiplatform.googleapis.com",
+    "project_env": "VERTEX_PROJECT_ID",
+    "max_output_tokens_default": 16000,
+    "thinking_level_default": "LOW",
+    "timeout_seconds": 240,
+    "role": "fast frontier scientific-repository maintenance agent"
+  },
+  "azure_gpt_5_4_high": {
+    "provider": "azure_openai",
+    "model": "gpt-5.4",
+    "endpoint_env": "AZURE_OPENAI_ENDPOINT",
+    "api_key_env": "AZURE_OPENAI_API_KEY",
+    "max_completion_tokens": 30000,
+    "timeout_seconds": 420,
+    "reasoning_effort": "high",
+    "role": "premium high-reasoning scientific-repository maintenance agent"
+  },
+  "qwen3_next_80b_instruct": {
+    "provider": "vertex_openai",
+    "model": "qwen/qwen3-next-80b-a3b-instruct-maas",
+    "location": "global",
+    "endpoint": "aiplatform.googleapis.com",
+    "project_env": "VERTEX_PROJECT_ID",
+    "max_tokens": 12000,
+    "timeout_seconds": 240,
+    "temperature": 0,
+    "role": "Chinese-origin open-weight-style long-horizon maintenance agent"
+  },
+  "glm_5": {
+    "provider": "vertex_openai",
+    "model": "zai-org/glm-5-maas",
+    "location": "global",
+    "endpoint": "aiplatform.googleapis.com",
+    "project_env": "VERTEX_PROJECT_ID",
+    "max_tokens": 12000,
+    "timeout_seconds": 240,
+    "temperature": 0,
+    "extra_json": {
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      }
+    },
+    "role": "Chinese-origin multilingual long-horizon maintenance agent"
+  }
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>State-Transfer Protocols · EXP10-EXP13</title>
+  <title>State-Transfer Protocols · EXP10-EXP15</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,6 +16,7 @@
       <a href="#overview">Overview</a>
       <a href="#experiments">Experiments</a>
       <a href="#exp13">EXP13</a>
+      <a href="#exp15">EXP15</a>
       <a href="#exp11">EXP11</a>
       <a href="#metrics">Metrics</a>
       <a href="#artifacts">Artifacts</a>
@@ -28,14 +29,14 @@
   <main>
     <section id="overview" class="hero section">
       <div class="hero-copy">
-        <p class="section-label">EXP10-EXP13: public artifact and scientific-repo loop</p>
+        <p class="section-label">EXP10-EXP15: public artifact and scientific-repo loop</p>
         <h1>State-transfer protocols for scientific repo and page agents</h1>
         <p class="lead">
           EXP10 turns the protocol work into a live public-repository task.
           EXP11 and EXP12 continue that loop through assigned page and conflict-aware repo tasks.
-          EXP13 is the main controlled multi-agent scientific-repository benchmark,
-          testing Gemini 3.5 Flash and Azure GPT-5.4 High across writer, reviewer,
-          reproducibility, security/claims, and merge roles.
+          EXP13 is the main controlled multi-agent scientific-repository benchmark.
+          EXP15 and EXP15-B extend the line into cross-cultural, long-horizon visual
+          and responsive repository maintenance across Gemini, GLM, Qwen, and Grok routes.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#metrics">Explore metrics</a>
@@ -47,7 +48,7 @@
           <li><strong>Measure objectively</strong><span>scope drift, claim drift, dependency preservation, recovery.</span></li>
           <li><strong>Validate in chain</strong><span>multi-turn handoff from short to long agent sequences.</span></li>
         </ul>
-        <p class="run-line">Latest: EXP13 completed 126/128 real model cells · compressed 64/64 · hybrid_state 62/64</p>
+        <p class="run-line">Latest: EXP15-B completed 1204/2000 strict latest cells · Gemini 382/400 · GLM 363/400 · Qwen 318/400</p>
       </div>
 
       <aside class="ops-panel" aria-label="Live repository operations summary">
@@ -161,8 +162,56 @@
           <p>Role-conditioned agents maintain scientific repo artifacts with objective validators for claims, scope, dependencies, security, and HTML integrity.</p>
           <strong>Outcome: 126/128 real model OK</strong>
         </article>
+        <article class="highlight">
+          <span>EXP15-B</span>
+          <h3>Visual Responsive Scale-Up</h3>
+          <p>Long-horizon public-page maintenance stress test across Gemini, GLM, Qwen, Grok Reasoning, and Grok Non-Reasoning.</p>
+          <strong>Outcome: 1204/2000 strict cells OK</strong>
+        </article>
       </div>
       <p class="core-finding">Core finding: compressed is the universal operational baseline; hybrid_state is specialized for explicit state transfer but can expose contract fragility in longer role-conditioned tasks.</p>
+    </section>
+
+    <section id="exp15" class="section exp13-highlight">
+      <div class="section-heading narrow">
+        <p class="section-label">EXP15/EXP15-B: long-horizon visual maintenance</p>
+        <h2>Cross-cultural page editing as a contract-compatibility stress test</h2>
+        <p>
+          EXP15 asks agents to maintain a public research page across repeated rounds while preserving claims,
+          responsive behavior, dependencies, and file-scope constraints. EXP15-B scales that pressure into
+          a larger visual/responsive benchmark. The result is deliberately interpreted as interface and contract
+          compatibility, not as a general aesthetic leaderboard.
+        </p>
+      </div>
+
+      <div class="result-grid">
+        <article class="result-card">
+          <span class="result-label">EXP15</span>
+          <strong class="score">818/900</strong>
+          <p>Latest-cell success with 141/180 complete chains under five maintenance rounds.</p>
+        </article>
+        <article class="result-card">
+          <span class="result-label">EXP15-B</span>
+          <strong class="score">1204/2000</strong>
+          <p>Strict latest-cell success with 71/200 complete chains under ten visual/responsive rounds.</p>
+        </article>
+        <article class="result-card">
+          <span class="result-label">Grok Reasoning</span>
+          <strong class="score">+13.75 pts</strong>
+          <p>Reasoning improved over Grok Non-Reasoning by 2.279x relative success, but both remained fragile.</p>
+        </article>
+      </div>
+
+      <div class="comparison-table" role="table" aria-label="EXP15-B model summary">
+        <div class="row header" role="row">
+          <span>EXP15-B model route</span><span>Latest cells</span><span>OK</span>
+        </div>
+        <div class="row"><span>Gemini 3.5 Flash</span><span>400</span><span>382</span></div>
+        <div class="row"><span>GLM 5</span><span>400</span><span>363</span></div>
+        <div class="row"><span>Qwen3-Next-80B Instruct</span><span>400</span><span>318</span></div>
+        <div class="row"><span>Grok 4.20 Reasoning</span><span>400</span><span>98</span></div>
+        <div class="row"><span>Grok 4.20 Non-Reasoning</span><span>400</span><span>43</span></div>
+      </div>
     </section>
 
     <section id="exp13" class="section exp13-highlight">
@@ -281,6 +330,7 @@
         <article><h3>index.html</h3><p>Public landing page and culmination view.</p></article>
         <article><h3>EXP11_PAGE_TASK_ASSIGNMENT</h3><p>Assigned page-maintenance tasks across Gemini 3.5 Flash and Azure GPT-5.4 High.</p></article>
         <article><h3>EXP13_SCIENTIFIC_REPO_BENCHMARK</h3><p>Main multi-agent scientific-repository benchmark: 126/128 real model cells, latest-cell data, failures, validators, and checksums.</p></article>
+        <article><h3>EXP15 / EXP15-B</h3><p>Long-horizon visual and responsive maintenance: reports, latest-cell data, failures, summaries, validators, and model comparison figures.</p></article>
         <article><h3>validators/</h3><p>Checks files, sections, scope drift, claim drift, dependencies, secrets.</p></article>
         <article><h3>PUBLIC_DATASET_REDACTED</h3><p>Safe data tier with manifest, redaction, and checksums.</p></article>
         <article><h3>paper/</h3><p>Main PDF, source, figures, and appendix references.</p></article>
@@ -290,8 +340,8 @@
     <section id="reproduce" class="section reproduce">
       <div>
         <p class="section-label">Reproduce</p>
-        <h2>One experiment, deterministic checks</h2>
-        <p>EXP10 starts with public-repo tasks. EXP11 extends it with 12 assigned page-maintenance tasks, 2 modes, 2 models, and 2 repetitions.</p>
+        <h2>One experiment line, deterministic checks</h2>
+        <p>EXP10 starts with public-repo tasks. EXP11 extends it with assigned page-maintenance tasks. EXP13 controls scientific-repo roles. EXP15/EXP15-B scale long-horizon visual and responsive maintenance.</p>
       </div>
       <pre><code>python run_exp10_resumable.py --preflight
 python run_exp10_resumable.py --dry-local --reps 2
@@ -318,6 +368,7 @@ python status_exp13.py</code></pre>
           <li>objective validators reduce dependence on LLM-as-judge.</li>
           <li>EXP11 suggests hybrid_state improves reliability for smaller page-maintenance agents.</li>
           <li>EXP13 shows compressed was more operationally robust in role-conditioned scientific-repo maintenance.</li>
+          <li>EXP15-B shows later page-maintenance tasks are sensitive to model/tool contract compatibility.</li>
         </ul>
       </div>
       <div class="claim-column careful">
@@ -329,13 +380,14 @@ python status_exp13.py</code></pre>
           <li>model rankings are general capability results.</li>
           <li>EXP11 proves general web-agent superiority.</li>
           <li>EXP13 proves arbitrary repository maintenance is solved.</li>
+          <li>EXP15-B is a general visual-design benchmark or aesthetic ranking.</li>
         </ul>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-        <span>EXP10_EXP13_PUBLIC_REPO_TOOL_AGENT</span>
+        <span>EXP10_EXP15_PUBLIC_REPO_TOOL_AGENT</span>
     <span>Scientific repository maintenance as state-transfer benchmark · DOI 10.5281/zenodo.20425831</span>
   </footer>
 </body>

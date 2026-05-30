@@ -1,0 +1,3 @@
+﻿mode,total,success,success_rate,ok,ok_repaired,error,validator_failed
+compressed,1000,599,0.599,472,127,381,20
+hybrid_state,1000,605,0.605,483,122,386,9

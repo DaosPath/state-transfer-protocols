@@ -1,0 +1,43 @@
+{
+  "experiment": "EXP15",
+  "generated_at": "2026-05-30T01:20:11.369819",
+  "raw_rows": 900,
+  "latest_cells": 900,
+  "success_latest_cells": 818,
+  "failure_latest_cells": 82,
+  "success_rate": 0.908889,
+  "historical_non_success_events": 82,
+  "chains": {
+    "instances_seen": 180,
+    "instances_complete_ok": 141,
+    "expected_rounds": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "ledger": {
+    "rows": 822,
+    "input_tokens": 6259658.0,
+    "output_tokens": 1979450.0,
+    "reasoning_tokens": 0.0,
+    "estimated_total_tokens": 8239108.0,
+    "estimated_cost_usd": 0.0,
+    "cost_usd": 0.0
+  },
+  "workspace_manifest_files": 3522,
+  "security_sweep": {
+    "scanned_files": 5,
+    "secret_pattern_matches": {
+      "azure_like_key": 0,
+      "bearer_token": 0,
+      "google_api_key": 0,
+      "openai_key": 0
+    },
+    "safe_for_public_release": true,
+    "note": "Counts only. Raw matched values are intentionally omitted."
+  },
+  "grok_reasoning_comparison": null
+}
