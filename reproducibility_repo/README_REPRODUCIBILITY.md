@@ -42,6 +42,7 @@ No literal API keys or provider credential files are included. Runner snapshots 
 - `EXP15B_VISUAL_RESPONSIVE_SCALEUP/`
 - `EXP16_MODEL_SPECIFIC_PROTOCOL_ADAPTATION/`
 - `EXP16B_GROK_REASONING_ADAPTATION_SEARCH/`
+- `FUTURE_EXPERIMENTS_EXP17_EXP23/`
 
 Each freeze contains manifests, prompts or prompt-bearing runner snapshots, task banks, cleaned outputs where available, and checksum files. Raw logs are preserved for internal audit; public release should use redacted, latest-cell, or aggregated data.
 
@@ -150,6 +151,14 @@ It points to:
 - cleaning and deduplication policy
 - freeze/checksum locations
 - auditable example rows and reports
+
+## Future Experiments
+
+The follow-up roadmap is available at:
+
+- `FUTURE_EXPERIMENTS_EXP17_EXP23/ROADMAP_FUTURE_EXPERIMENTS.md`
+
+These experiments are planned, not executed. They are included to distinguish future work from requirements for the current EXP01-EXP16 report.
 
 ## Rebuild
 

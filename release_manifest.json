@@ -16,6 +16,8 @@
                        "exp15b":  "reproducibility_repo/EXP15B_VISUAL_RESPONSIVE_SCALEUP/",
                        "exp16":  "reproducibility_repo/EXP16_MODEL_SPECIFIC_PROTOCOL_ADAPTATION/",
                        "exp16b":  "reproducibility_repo/EXP16B_GROK_REASONING_ADAPTATION_SEARCH/",
+                       "future_experiments":  "reproducibility_repo/FUTURE_EXPERIMENTS_EXP17_EXP23/",
+                       "external_submission_plan":  "EXTERNAL_SUBMISSION_PLAN.md",
                        "appendix_figures":  "reproducibility_repo/appendix_figures/",
                        "figure_generation_script":  "scripts/generate_appendix_figures.py",
                        "figure_png_generation_script":  "scripts/generate_appendix_png_figures.py",
@@ -69,7 +71,13 @@
                             "failure_cells":  110,
                             "interpretation":  "Grok reasoning adaptation search was truncated by quota/auth/provider failures; useful as stress evidence, not as a complete model ranking"
                         },
-    "file_count":  438,
+    "future_experiments":  {
+                               "status":  "planned_not_executed",
+                               "range":  "EXP17-EXP23",
+                               "first_recommended":  "EXP17 confirmatory statistics",
+                               "interpretation":  "future work agenda, not missing requirements for the current report"
+                           },
+    "file_count":  440,
     "secret_sweep_hits":  [
 
                           ]
