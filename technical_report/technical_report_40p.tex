@@ -20,7 +20,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 
-\title{Symbolic Compression Protocols for Multilingual Multi-Agent Handoff Across Frontier Models: A Long Technical Report}
+\title{Protolanguages for State Transfer in Multilingual Multi-Agent Systems: EXP01--EXP16 Technical Report}
 \author{Jordy Hernandez Cruzado\\Hijos Del Sol Research\\\texttt{hernandezcruzadojordy@gmail.com}}
 \date{}
 
@@ -28,7 +28,7 @@
 \maketitle
 
 \begin{abstract}
-Large language model agents increasingly need to transfer operational state across models, providers, and languages without carrying full conversational histories. We study compact symbolic formats as \emph{state-transfer protocols}, asking when they preserve semantic fidelity, operational continuity, and handoff quality across heterogeneous model families. EXP05 is a broad discovery experiment: it compares natural, compressed, hybrid\_min, and hybrid\_state protocols over Spanish, English, and Chinese tasks using multiple frontier and semi-open generators, plus judge-drift, token-budget, Chinese compactness, and long-handoff mini-experiments. EXP06 is a controlled follow-up: it directly pairs compressed against hybrid\_state, adds a Chinese tokenizer/variant ablation, and evaluates every valid generation with three judges. EXP07 and EXP08 add real-agent validation layers using LangGraph and OpenFang with objective handoff metrics; EXP08 scales this setting to 900 operational executions. EXP09 then connects protocols to deterministic file-level tool use over controlled repository tasks, EXP10--EXP12 use the public research artifact as controlled repository/page-maintenance surfaces, EXP13 introduces a role-conditioned multi-agent scientific-repository benchmark, and EXP14--EXP15 extend this line into long-horizon and visual/responsive repository maintenance. Across EXP05, compressed is the strongest general baseline, while hybrid\_state significantly improves paired state preservation in the principal subset ($\Delta=+0.133$, 95\% CI $[+0.025,+0.240]$). EXP06 confirms the state-preservation advantage under stricter controls ($\Delta=+0.066$, 95\% CI $[+0.032,+0.100]$), but also shows that hybrid\_state does not win global quality ($\Delta Q=-0.208$, 95\% CI $[-0.239,-0.177]$). EXP07 and EXP08 confirm that these protocols can be evaluated in real agent surfaces without relying solely on LLM judges, but neither shows a global hybrid\_state win: compressed remains the strongest operational baseline, while hybrid\_state shows only conditional advantages in selected state/constraint strata. EXP09--EXP15 show that protocol/tool interfaces can support deterministic file-level and public-repository task completion under objective validators, after interface-level repair of action schemas, parser contracts, and reasoning-budget behavior. EXP13 is more discriminative than the saturated public-artifact tests; EXP15-B is more discriminative still for model/interface compatibility, with 1204/2000 latest cells successful and Grok reasoning improving over non-reasoning while remaining fragile under the current contract. We therefore argue that compressed is the universal baseline, while hybrid\_state is a specialized protocol whose benefits are strongest for explicit state variables, not aggregate quality. Chinese and tokenizer-ablation results suggest language representation matters, but the mechanism remains only partially isolated.
+Large language model agents increasingly need to transfer operational state across models, providers, languages, tools, and repository surfaces without carrying full conversational histories. We study compact symbolic communication formats as \emph{protolanguages}: state-transfer protocols designed to preserve variables, constraints, plans, and handoff context across increasingly realistic agent surfaces. Across EXP05--EXP16, the evaluation ladder moves from text-only multilingual handoff to controlled causal follow-up, real-agent execution, deterministic tool use, public-repository maintenance, long-horizon visual/responsive tasks, and model-specific protocol adaptation. The central result is deliberately bounded. \texttt{compressed} is the strongest general baseline. \texttt{hybrid\_state} does not win global quality, but it improves paired state preservation in EXP05 ($\Delta=+0.133$, 95\% CI $[+0.025,+0.240]$) and EXP06 ($\Delta=+0.066$, 95\% CI $[+0.032,+0.100]$). Real-agent and tool-agent experiments show that protocol performance changes with the execution surface: validators, parsers, action schemas, dependency constraints, visual/responsive requirements, model routes, and provider failures become part of the measured system. We therefore argue that protolanguages should be evaluated not only by compression or answer quality, but by their ability to preserve operational state across increasingly realistic agent surfaces. The technical report releases prompts, templates, validators, cleaned latest-cell data, repaired-error logs, scripts, figures, and checksums where public release is safe.
 \end{abstract}
 
 \section{Introduction}
@@ -36,24 +36,50 @@ Autonomous and semi-autonomous language-model agents often need to continue work
 
 This paper studies a different framing: compressed and symbolic prompt formats as \emph{state-transfer protocols}. Rather than asking only whether a prompt can be shortened, we ask whether compact formats preserve the information required for another model to continue a task. This distinction matters because a protocol can be token-efficient yet operationally weak, or slightly less natural yet better at carrying state.
 
-The empirical design has eleven major stages after the early protocol formation runs. EXP05, named \texttt{EXP05\_PREMIUM\_MULTIMODEL\_TRILINGUAL}, is a broad discovery experiment across modes, languages, model families, judges, and stress tests. EXP06, named \texttt{EXP06\_CAUSAL\_PROTOCOL\_TRANSFER}, is a narrower confirmation experiment that directly tests the strongest EXP05 claim: hybrid\_state should improve operational state transfer even if it does not maximize global quality. EXP07, named \texttt{EXP07\_REAL\_AGENT\_HANDOFF\_OBJECTIVE\_METRICS}, asks whether the same protocol family can be evaluated inside real agent frameworks using objective continuation metrics rather than only LLM judges. EXP08, named \texttt{EXP08\_REAL\_AGENT\_SCALEUP}, scales the real-agent evaluation to 30 tasks, 5 repetitions, and 900 operational executions. EXP09, named \texttt{EXP09\_REAL\_TOOL\_USE\_AGENT\_TASKS}, moves from handoff scoring to controlled repository-like tool use with deterministic validators. EXP10--EXP12 use the public landing/repository artifact as controlled culmination and page/conflict-maintenance tasks. EXP13, named \texttt{EXP13\_REAL\_MULTI\_AGENT\_SCIENTIFIC\_REPO\_BENCHMARK}, is the main role-conditioned scientific-repository benchmark. EXP14 extends the same idea to long-horizon repo maintenance. EXP15 and EXP15-B extend it to cross-cultural long-horizon page maintenance and visual/responsive scale-up across several model routes. The later tool-agent experiments are intentionally narrower interface validations rather than broad multi-model comparisons.
+We use the term \emph{protolanguage} for a compact symbolic communication format used to preserve operational state across agents. A protolanguage is not merely a short prompt. It is a deliberately shaped handoff artifact: it decides which variables, constraints, plans, dependencies, and next actions are made explicit enough for another agent or model route to continue work.
 
-The resulting story is deliberately not a winner-takes-all ranking. Compressed text remains the strongest universal baseline. Hybrid\_state is weaker on aggregate quality, but it repeatedly improves state preservation in judge-based experiments, the metric most aligned with multi-agent continuation. EXP07 and EXP08 further show that real-agent objective metrics are feasible and useful, while also warning against overgeneralization: hybrid\_state does not dominate real-agent execution globally. EXP09 through EXP15 add a practical interface lesson: tool-use success depends not only on the protocol text, but also on the action schema, validator contract, parser tolerance, dependency tracking, visual/responsive requirements, model route behavior, and model reasoning budget. This distinction is central: compact protocols should be optimized against their intended transfer function and execution surface, not only against a single global score.
+For continuity with the project's earlier terminology, we refer to the broader family of compact symbolic state-transfer formats as \emph{Symbolic Compression}; the formal claim in this report is about protolanguages for operational state transfer, not compression alone.
+
+The empirical design is best read as a ladder rather than as a pile of unrelated experiments:
+
+\begin{center}
+\small
+\begin{tabular}{p{0.16\linewidth}p{0.72\linewidth}}
+\toprule
+Stage & Role in the ladder \\
+\midrule
+EXP01--EXP04 & formation: early text and multilingual protocol recovery \\
+EXP05--EXP06 & text-only multilingual handoff and controlled causal follow-up \\
+EXP07--EXP08 & real-agent handoff with objective continuation metrics \\
+EXP09--EXP12 & deterministic tool use and public repository/page maintenance \\
+EXP13--EXP15 & role-conditioned scientific repositories, long-horizon tasks, and visual/responsive maintenance \\
+EXP16 & model-specific adaptation and provider-surface stress \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This ladder is the main narrative of the report: text $\rightarrow$ handoff $\rightarrow$ real agents $\rightarrow$ tools $\rightarrow$ repositories $\rightarrow$ long tasks $\rightarrow$ model-specific adaptation. EXP05 is a broad discovery experiment across modes, languages, model families, judges, and stress tests. EXP06 directly tests the strongest EXP05 claim: \texttt{hybrid\_state} should improve operational state transfer even if it does not maximize global quality. EXP07 and EXP08 ask whether the same protocol family can be evaluated inside real agent frameworks using objective continuation metrics. EXP09 through EXP16 then ask whether the protolanguage survives when it must execute tools, edit files, preserve claims, maintain dependencies, satisfy visual/responsive constraints, and adapt to model-route behavior. The later tool-agent experiments are intentionally narrower interface validations rather than broad multi-model comparisons.
+
+The resulting story is deliberately not a winner-takes-all ranking. Compressed text remains the strongest universal baseline. Hybrid\_state is weaker on aggregate quality, but it repeatedly improves state preservation in judge-based experiments, the metric most aligned with multi-agent continuation. EXP07 and EXP08 further show that real-agent objective metrics are feasible and useful, while also warning against overgeneralization: hybrid\_state does not dominate real-agent execution globally. EXP09 through EXP16 add a practical interface lesson: tool-use success depends not only on the protocol text, but also on the action schema, validator contract, parser tolerance, dependency tracking, visual/responsive requirements, model route behavior, provider quota/auth state, and model reasoning budget. This distinction is central: compact protocols should be optimized against their intended transfer function and execution surface, not only against a single global score.
+
+Protolanguages should be evaluated not only by compression or answer quality, but by their ability to preserve operational state across increasingly realistic agent surfaces.
 
 \section{Related Work}
 This work connects several lines of research: prompt compression, agent memory, state summarization, tool-use evaluation, multilingual evaluation, and LLM-as-judge methodology.
 
-\textbf{Prompt compression.} Prompt compression studies attempt to reduce token count while preserving task utility. These approaches usually optimize for shorter prompts, shorter context, cheaper inference, or equivalent downstream answers. Our framing is adjacent but different: the compressed artifact is not only a shorter prompt, but a communication protocol between agents. This shifts the evaluation target from response quality alone to state preservation, continuity, recoverability, and protocol transfer.
+\textbf{Prompt compression.} Prompt compression studies attempt to reduce token count while preserving task utility. LLMLingua, for example, frames compression as a coarse-to-fine token-selection problem for reducing inference cost while preserving downstream behavior \cite{jiang2023llmlingua}. Other prompt-compression work similarly treats the prompt as an input budget to be optimized. Our framing is adjacent but different: the compressed artifact is not only a shorter prompt, but a communication protocol between agents. This shifts the evaluation target from response quality alone to state preservation, continuity, recoverability, and protocol transfer.
 
-\textbf{Agent memory and state summarization.} LLM-agent systems often use summaries, scratchpads, memory stores, retrieval, or structured state objects to survive long tasks. Natural-language summaries are flexible but can blur variables, constraints, and pending actions. Structured memories can preserve fields more explicitly, but they require schemas and update discipline. The hybrid\_state protocol sits between these traditions: it is compact enough to function as a handoff note, but explicit enough to carry operational state variables.
+\textbf{Agent memory and state summarization.} LLM-agent systems often use summaries, scratchpads, memory stores, retrieval, or structured state objects to survive long tasks. LongMem studies memory augmentation for long histories \cite{wang2023longmem}, while MemGPT frames the problem as virtual-context management with memory tiers and control-flow interrupts \cite{packer2023memgpt}. Natural-language summaries are flexible but can blur variables, constraints, and pending actions. Structured memories can preserve fields more explicitly, but they require schemas and update discipline. The hybrid\_state protocol sits between these traditions: it is compact enough to function as a handoff note, but explicit enough to carry operational state variables.
 
-\textbf{Multi-agent handoff and planning.} Agent frameworks increasingly expose handoff, planning, tool routing, and workflow state as first-class concerns. Prior work often evaluates final task success or qualitative continuation. EXP07 and EXP08 instead measure variable recovery, subtask completion, plan continuity, constraint retention, handoff success, and state-error count. This is meant to separate ``the next agent wrote something plausible'' from ``the next agent preserved the operational state needed to continue.''
+\textbf{Multi-agent handoff and planning.} Agent frameworks increasingly expose handoff, planning, tool routing, and workflow state as first-class concerns. ReAct showed the value of interleaving reasoning traces and actions for planning and exception handling \cite{yao2023react}. AutoGen generalizes multi-agent conversation as an application framework in which multiple agents cooperate through conversational workflows \cite{wu2023autogen}. Our experiments are narrower: instead of proposing a full agent framework, EXP07 and EXP08 ask whether handoff artifacts preserve variables, subtasks, plans, constraints, and state-error counts. This is meant to separate ``the next agent wrote something plausible'' from ``the next agent preserved the operational state needed to continue.''
 
-\textbf{Tool-use evaluation.} Tool-using agents introduce a second interface problem: the model must satisfy both the natural-language task and a machine-readable action contract. EXP09 through EXP15 therefore evaluate deterministic validators, tool schemas, parser repair, historical interface failures, scope drift, claim drift, dependency preservation, and visual/responsive repository maintenance. These experiments are closer to protocol/interface validation than to broad model benchmarking.
+\textbf{Tool-use evaluation.} Tool-using agents introduce a second interface problem: the model must satisfy both the natural-language task and a machine-readable action contract. ToolLLM studies tool-use training and evaluation across a large API collection \cite{qin2023toolllm}; our later experiments are smaller but more controlled, focusing on file-level repository edits, deterministic validators, and repaired interface failures. EXP09 through EXP16 therefore evaluate tool schemas, parser repair, scope drift, claim drift, dependency preservation, visual/responsive repository maintenance, and model-route-specific output adapters. These experiments are closer to protocol/interface validation than to broad model benchmarking.
 
 \textbf{Multilingual and tokenization effects.} Multilingual evaluation shows that model behavior varies by language, script, tokenization, training distribution, and cultural-linguistic structure. EXP05 directly compares Spanish, English, and Chinese, while EXP06 adds native ZH, ZH\_PINYIN, EN\_LITERAL, and ES\_LITERAL variants. This design does not fully isolate tokenization, but it tests whether compact symbolic formats remain stable across representation regimes.
 
-\textbf{LLM-as-judge and judge drift.} LLM-as-judge methodology is common for scalable evaluation, but evaluator identity can shift score levels and relative rankings. This paper treats judge scores as useful but not sufficient: EXP06 uses three-judge calibration, MiniEXP-B measures judge drift, and EXP07--EXP15 add objective validators where possible.
+\textbf{LLM-as-judge and judge drift.} LLM-as-judge methodology is common for scalable evaluation. MT-Bench and Chatbot Arena helped establish LLM-based judges as a scalable proxy for human preference in conversational evaluation \cite{zheng2023judging}. However, evaluator identity can shift score levels and relative rankings, especially when outputs are compressed, symbolic, multilingual, or schema-like. This paper treats judge scores as useful but not sufficient: EXP06 uses three-judge calibration, MiniEXP-B measures judge drift, and EXP07--EXP16 add objective validators where possible.
+
+\textbf{Positioning.} Relative to these lines, this report contributes a systems-oriented evaluation program rather than a single new compression algorithm or agent framework. The core question is whether compact symbolic artifacts can function as state-transfer protocols across models, languages, judges, and tool surfaces. The answer is deliberately bounded: compressed is the robust baseline, hybrid\_state is useful for explicit state transfer, and later tool-agent experiments expose interface contracts that prompt-compression benchmarks often leave implicit.
 
 \section{Method}
 \subsection{Communication Modes}
@@ -66,6 +92,61 @@ We compare four protocol modes.
 \textbf{hybrid\_min} uses the most aggressively minimized hybrid symbolic form.
 
 \textbf{hybrid\_state} emphasizes explicit state preservation, continuity markers, and handoff-relevant fields.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{p{0.13\linewidth}p{0.23\linewidth}p{0.24\linewidth}p{0.24\linewidth}}
+\toprule
+Protocol & Purpose & Strength & Weakness \\
+\midrule
+natural & Human-readable continuation context & Easy to read and flexible & State, constraints, and dependencies can remain implicit \\
+compressed & General compact operational baseline & Strongest universal baseline across the experimental family & Can preserve gist while dropping some explicit state structure \\
+hybrid\_min & Extreme symbolic compression & Very compact and useful as a stress condition & Highest risk of information loss and ambiguity \\
+hybrid\_state & Explicit operational state transfer & Best targeted format for variables, constraints, plans, and handoff fields in EXP05/EXP06 & Does not win global quality and can be brittle under strict tool contracts \\
+\bottomrule
+\end{tabular}
+\caption{Protocol roles. The experiments do not assume one global winner; each mode represents a different tradeoff.}
+\label{tab:protocol_roles}
+\end{table}
+
+\subsection{Concrete Protolanguage Example}
+The same handoff task can be expressed in all four modes. This example is illustrative, but it matches the fields used throughout the task banks.
+
+\noindent\textbf{Task.} Continue a paper revision. Preserve the supported claim that \texttt{compressed} is the general baseline. Do not claim that \texttt{hybrid\_state} is the global winner. Add related work and statistical caveats.
+
+\noindent\textbf{natural}
+\begin{verbatim}
+Please continue revising the paper. The supported claim is that compressed
+is the strongest general baseline. Hybrid_state should only be described as
+better for explicit state preservation in EXP05/EXP06, not as a global winner.
+Add related work and make the statistical caveats clearer.
+\end{verbatim}
+
+\noindent\textbf{compressed}
+\begin{verbatim}
+goal=revise_paper; keep=compressed_general_baseline;
+hs_claim=state_preservation_only_EXP05_EXP06; forbid=hybrid_state_global_winner;
+next=add_related_work+stats_caveats; risk=overclaiming.
+\end{verbatim}
+
+\noindent\textbf{hybrid\_min}
+\begin{verbatim}
+g=paper_rev; keep=compressed_base; hs=state_only; no=hs_global_win;
+do=RW+stats_caveat; risk=overclaim.
+\end{verbatim}
+
+\noindent\textbf{hybrid\_state}
+\begin{verbatim}
+HYBRID_STATE{
+objective: revise technical report for review
+allowed_claims: compressed=general baseline;
+                hybrid_state=state-specialized in EXP05/EXP06
+forbidden_claims: hybrid_state global winner
+pending_actions: add related work; add statistical caveat
+handoff_risk: overclaiming; treating tool-agent validations as broad proof
+}
+\end{verbatim}
 
 \subsection{Languages and Tasks}
 The principal experiment uses Spanish (ES), English (EN), and Chinese (ZH). Tasks cover contextual summarization, handoff, planning, persistent operational state, and multilingual transfer. The principal design contains 15 task templates, 3 languages, 4 modes, 2 repetitions, and 5 generator families, partitioned into resumable execution parts.
@@ -82,8 +163,23 @@ Q = \frac{\mathrm{mean}(\mathrm{positive}) + (6 - \mathrm{mean}(\mathrm{negative
 \]
 This index is used for ranking, but individual metrics are reported separately because the main scientific claims concern state preservation, continuity, compactness, and language behavior.
 
+\subsection{Evaluation Pipeline}
+The experimental object is not only a prompt. It is a protocol moving through a model route, judge or agent surface, validator, metric extractor, and cleaning policy. The pipeline is:
+
+\begin{center}
+\small
+\fbox{Protocol} $\rightarrow$
+\fbox{Generator route} $\rightarrow$
+\fbox{Judge or agent surface} $\rightarrow$
+\fbox{Validator} $\rightarrow$
+\fbox{Metrics} $\rightarrow$
+\fbox{Latest-cell cleaning}
+\end{center}
+
+This is why provider routes, parser contracts, tool schemas, retry logs, and repaired errors are treated as reproducibility metadata rather than incidental implementation details.
+
 \subsection{Data Cleaning}
-All analyses use cleaned and deduplicated outputs. The cleaning pass keeps the latest successful generation/evaluation per cell, removes superseded retries, preserves unique MiniEXP-C generation failures as experimental evidence, and verifies that no evaluation points to a missing generation. EXP06 additionally preserves provider policy failures as terminal events: 21 Azure GPT instant generation cells were marked \texttt{policy\_failure}, retained for provider-reliability analysis, and excluded from score aggregation because no output existed to evaluate. EXP07 preserves operational startup/calibration errors separately, then scores the latest successful execution per real-agent cell. EXP08 reports two views: an \emph{operational-complete} view with 900/900 latest cells marked OK, and a stricter \emph{JSON-valid} view with 824/900 cells after excluding blank-output responses from Azure GPT 5.4 High. EXP09 keeps the latest successful row per tool-use cell, produces \texttt{clean\_latest\_ok.jsonl}, and preserves 155 historical repaired errors separately rather than deleting them. EXP10 follows the same policy: the latest-cell view contains 80/80 successful cells, including 64/64 Gemini 3.5 Flash tool-agent cells, while 17 historical interface errors are retained as repaired evidence. EXP15 freezes 900 latest cells with 818 successful latest cells and 82 final failures; EXP15-B freezes 2000 latest cells with 1204 successful latest cells and 796 final failures. Both retain historical non-success events, latest-cell clean datasets, failures datasets, workspace manifests, SHA-256 manifests, and secret-sweep summaries.
+All analyses use cleaned and deduplicated outputs. The cleaning pass keeps the latest successful generation/evaluation per cell, removes superseded retries, preserves unique MiniEXP-C generation failures as experimental evidence, and verifies that no evaluation points to a missing generation. EXP06 additionally preserves provider policy failures as terminal events: 21 Azure GPT instant generation cells were marked \texttt{policy\_failure}, retained for provider-reliability analysis, and excluded from score aggregation because no output existed to evaluate. EXP07 preserves operational startup/calibration errors separately, then scores the latest successful execution per real-agent cell. EXP08 reports two views: an \emph{operational-complete} view with 900/900 latest cells marked OK, and a stricter \emph{JSON-valid} view with 824/900 cells after excluding blank-output responses from Azure GPT 5.4 High. EXP09 keeps the latest successful row per tool-use cell, produces \texttt{clean\_latest\_ok.jsonl}, and preserves 155 historical repaired errors separately rather than deleting them. EXP10 follows the same policy: the latest-cell view contains 80/80 successful cells, including 64/64 Gemini 3.5 Flash tool-agent cells, while 17 historical interface errors are retained as repaired evidence. EXP15 freezes 900 latest cells with 818 successful latest cells and 82 final failures; EXP15-B freezes 2000 latest cells with 1204 successful latest cells and 796 final failures. EXP16 freezes 421 latest cells with 320 successful or repaired-success cells and 101 final failures; EXP16-B freezes 160 Grok-adaptation latest cells with 50 successes and 110 final failures. Both EXP16 freezes separate quota/auth/provider-suspension errors from protocol/JSON failures.
 
 
 \section{Expanded Methodology}
@@ -118,7 +214,7 @@ Provider-specific failures are not discarded as irrelevant noise. Quota exhausti
 \subsection{Resumable Execution}
 Every large experiment is designed as resumable execution. A cell is identified by phase, task, language or variant, mode, generator, judge when applicable, framework when applicable, and repetition. The runner appends events instead of mutating history. A later successful cell can supersede an earlier parse error, quota event, or retry failure, but the historical event remains available for audit.
 
-This matters for two reasons. First, provider quotas and long windows make uninterrupted execution unrealistic. Second, silent overwrites would make the final dataset look cleaner than the actual experiment. The latest-cell analysis is the scoring view; the historical log is the systems-evidence view. EXP09--EXP12 are especially dependent on this distinction because their final success rates are saturated after interface repair, while their historical errors reveal the real engineering lessons. EXP13 keeps the same policy but retains two final latest-cell failures as benchmark evidence rather than repairing them away. EXP15 and EXP15-B use the same policy at larger long-horizon scale: failed latest cells remain failures rather than being repaired away to make the benchmark look cleaner.
+This matters for two reasons. First, provider quotas and long windows make uninterrupted execution unrealistic. Second, silent overwrites would make the final dataset look cleaner than the actual experiment. The latest-cell analysis is the scoring view; the historical log is the systems-evidence view. EXP09--EXP12 are especially dependent on this distinction because their final success rates are saturated after interface repair, while their historical errors reveal the real engineering lessons. EXP13 keeps the same policy but retains two final latest-cell failures as benchmark evidence rather than repairing them away. EXP15, EXP15-B, and EXP16 use the same policy at larger long-horizon or model-adaptation scale: failed latest cells remain failures rather than being repaired away to make the benchmark look cleaner.
 
 \subsection{Rate Limits and Retry Policy}
 The execution policy is conservative. When a provider returns quota exhaustion, the runner waits before retrying. The target for rate-limited Gemini evaluation was kept around four calls per minute during constrained phases. When a failure appears to come from a longer quota window rather than a local bug, the process pauses rather than switching judges silently. The rule is methodological: do not trade quota failures for hidden evaluator substitution unless the substitution is explicitly marked.
@@ -148,7 +244,9 @@ The cost ledger is used in three ways. First, it protects the budget during long
 \subsection{Statistical Procedure}
 The main statistical unit is a paired cell where \texttt{compressed} and \texttt{hybrid\_state} share the same task, language or variant, generator, judge, and repetition. Paired deltas are computed as candidate minus baseline. Confidence intervals are computed over paired deltas. The descriptive quality index is used to summarize aggregate quality, but the paper's strongest claims rely on specific metrics such as state preservation, operational continuity, ambiguity, information loss, and objective recovery.
 
-The current analysis is sufficient for a technical report but not the final word. A venue-strength version should add clustered bootstrap or mixed-effect models with random effects over task, language, generator, judge, framework, and repetition. This is declared as a limitation rather than hidden.
+Because many observations share tasks, languages, generators, judges, frameworks, and repetitions, the paired confidence intervals in this report should be read as descriptive paired intervals, not as fully independent-observation inference. They are useful for showing effect direction and practical magnitude under the executed design, but they do not exhaust the dependence structure of the data.
+
+A venue-strength confirmatory analysis should therefore add either clustered bootstrap intervals \cite{efron1994bootstrap} or mixed-effects models with random effects over task, language, generator, judge, framework, and repetition \cite{bates2015lme4}. For EXP05 and EXP06, a natural model would include fixed effects for protocol mode and language/variant plus random intercepts for task and generator, with judge as either a random effect or explicit calibration factor. For EXP07--EXP16, the model should additionally cluster or randomize over framework, route, scenario, and repetition. This stronger analysis is not hidden as completed work; it is declared as the next statistical step required for a venue-strength submission.
 
 \subsection{Threat Model for Claims}
 The paper distinguishes strong claims, bounded claims, exploratory claims, and non-claims. Strong claims require convergence across experiments or strict paired evidence. Bounded claims are supported only under specific surfaces. Exploratory claims identify signals that need stronger controls. Non-claims are explicitly blocked. For example, the paper does not claim that \texttt{hybrid\_state} is globally better, that ZH proves tokenizer causality, or that model rankings measure general intelligence.
@@ -366,8 +464,8 @@ Gemini 3.5 Flash & Grok 4.20 Reasoning & 1563 & 0.886 & 0.512 \\
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.86\linewidth]{../paper_short/figures/fig_exp06_language_delta.png}
-\caption{EXP06 judge-agreement matrix over quality index. Correlations are high enough to reduce single-judge risk, but not high enough to treat any judge as ground truth.}
-\label{fig:exp06_judges}
+\caption{EXP06 paired quality-index deltas for hybrid\_state minus compressed by language and representation variant. The figure shows that hybrid\_state remains below compressed on aggregate quality across variants, while the ZH\_PINYIN gap is smaller and more uncertain.}
+\label{fig:exp06_language_delta}
 \end{figure}
 
 \subsection{Interpretation}
@@ -552,7 +650,7 @@ The \texttt{dry-local scaffold} row is a deterministic harness sanity check. It 
 \begin{table}[ht]
 \centering
 \small
-\begin{tabular}{lrl}
+\begin{tabular}{p{0.30\linewidth}rp{0.50\linewidth}}
 \toprule
 Metric & Mean & Interpretation \\
 \midrule
@@ -630,6 +728,15 @@ EXP15 extends this to cross-cultural long-horizon repo/page maintenance. The fin
 
 The visual proxy saturates for successful EXP15/EXP15-B pages. Therefore it should not be treated as an aesthetic ranking. The defensible claim is operational: under a fixed strict page-editing contract, some routes preserve scope, claims, dependencies, and parseable edits more reliably than others.
 
+\subsection{EXP16 as Model-Specific Protocol Adaptation}
+EXP16 tests whether the protocol should be adapted to model route rather than kept identical across all models. The experiment compares \texttt{compressed\_general}, \texttt{hybrid\_state\_general}, and \texttt{model\_adapted} across Qwen3-Next-80B, GLM 5, Grok 4.20 Reasoning, and Gemini 3.5 Flash. The intended full design contains 1920 primary cells. The available freeze is partial because Google Cloud/Vertex access was restricted on 2026-05-30 during the run.
+
+The EXP16 freeze contains 421 latest cells, 320 successful or repaired-success cells, and 101 final failures. GLM 5 completes all 96 observed round-1 cells. Qwen3-Next-80B completes 88/96 cells, with \texttt{model\_adapted}=32/32. Gemini 3.5 Flash completes 83/96 cells, with \texttt{model\_adapted}=30/32, \texttt{compressed\_general}=28/32, and \texttt{hybrid\_state\_general}=25/32. The deprecated exploratory \texttt{gemini\_3\_flash\_preview} route is preserved for auditability but excluded from the official Gemini 3.5 Flash interpretation.
+
+Grok 4.20 Reasoning is the problematic route. In the default EXP16 contract it succeeds on only 18/96 cells, but this should not be read as a clean model-quality result: many failures are quota and provider errors. EXP16-B therefore runs five Grok-specific prompt contracts. The best two are \texttt{grok\_v5\_two\_phase\_hidden} at 19/32 and \texttt{grok\_v4\_schema\_echo} at 18/32, while v1--v3 remain below 6/32. EXP16-B's 110 final failures consist of 83 quota exhaustion errors, 15 authentication errors, and 12 consumer-suspension errors. The defensible claim is therefore operational: v4/v5 are better prompt contracts among successful attempts, but Grok via the Vertex partner endpoint was unstable under this workload.
+
+EXP16 adds an important methodological lesson. Model-specific prompt contracts can improve parseable execution for some routes, but provider stability, authentication, quota windows, and suspension events are part of the experimental surface. These events should be reported rather than hidden or scored as ordinary semantic failures.
+
 
 \section{Cost, Pricing, and Quota History}
 \label{sec:cost_history}
@@ -650,7 +757,7 @@ The paper does not optimize only for cheapest output. Some expensive calls are v
 \begin{table}[ht]
 \centering
 \small
-\begin{tabular}{llll}
+\begin{tabular}{p{0.12\linewidth}p{0.22\linewidth}p{0.27\linewidth}p{0.27\linewidth}}
 \toprule
 Stage & Cost role & Risk & Mitigation \\
 \midrule
@@ -661,6 +768,7 @@ EXP08 & scale-up & blank strict-JSON outputs & operational and strict views \\
 EXP09 & tool use & parser/schema repair & historical error log \\
 EXP10 & public artifact & saturated success & drift/dependency metrics \\
 EXP15 & long-horizon page/repo maintenance & contract/interface fragility & latest-cell failures retained \\
+EXP16 & model-specific adaptation & provider restriction and route instability & platform errors separated from protocol failures \\
 \bottomrule
 \end{tabular}
 \caption{Cost and quota risks by experimental stage.}
@@ -677,14 +785,36 @@ The strongest claim is that compressed is the most reliable general-purpose base
 
 The second strong claim is narrower: hybrid\_state improves state preservation under judge-scored paired designs. This appears in EXP05's principal paired analysis and survives EXP06's stricter paired design. The claim should not be overstated as a global quality victory or a universal real-agent operational win.
 
-The third claim is methodological: real-agent handoff and tool use can be measured with objective validators. EXP07 demonstrates objective state-continuation metrics in LangGraph and OpenFang, EXP08 scales the real-agent setting to 900 operational executions, EXP09 shows deterministic file-level tool-use completion over controlled repository tasks, and EXP10 applies the same idea to the public research artifact itself. EXP14 and EXP15 show that the same validator style can be extended to longer repo/page chains where failures remain informative. The substantive real-agent result remains mixed: compressed is stronger globally in EXP07/EXP08, while hybrid\_state shows narrower constraint/plan benefits only in selected strata. EXP09 through EXP15 are best read as protocol-interface validations rather than new global protocol rankings.
+The third claim is methodological: real-agent handoff and tool use can be measured with objective validators. EXP07 demonstrates objective state-continuation metrics in LangGraph and OpenFang, EXP08 scales the real-agent setting to 900 operational executions, EXP09 shows deterministic file-level tool-use completion over controlled repository tasks, and EXP10 applies the same idea to the public research artifact itself. EXP14 and EXP15 show that the same validator style can be extended to longer repo/page chains where failures remain informative. EXP16 shows that model-route-specific prompt contracts and provider failure classes must be measured explicitly when the protocol is deployed through hosted model surfaces. The substantive real-agent result remains mixed: compressed is stronger globally in EXP07/EXP08, while hybrid\_state shows narrower constraint/plan benefits only in selected strata. EXP09 through EXP16 are best read as protocol-interface validations rather than new global protocol rankings.
 
 The ZH/tokenization claim is promising but still partly exploratory. EXP05 shows a ZH advantage, and EXP06-B shows native ZH outperforming romanized ZH\_PINYIN. This supports a representation effect, but not a complete causal explanation.
 
 The weakest claims are any broad model-intelligence rankings. Generator effects in this paper reflect protocol/task/provider behavior, not general model capability.
 
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{p{0.29\linewidth}p{0.34\linewidth}p{0.29\linewidth}}
+\toprule
+Claim & Evidence & Limitation \\
+\midrule
+\texttt{compressed} is the best general baseline & EXP05 quality ranking, EXP06 paired quality, EXP07/EXP08 objective handoff metrics & Does not imply superiority on every individual metric or future provider route \\
+\texttt{hybrid\_state} is a state-oriented protocol & EXP05 and EXP06 paired gains on state preservation & It loses global quality in EXP06 and is not a universal real-agent winner \\
+Representation matters for compact protocols & EXP05 ZH advantage and EXP06 ZH versus ZH\_PINYIN ablation & Tokenizer causality is not fully isolated from training distribution or language familiarity \\
+Objective validators are feasible for agent handoff & EXP07--EXP10 use variable recovery, constraint retention, tool success, drift, dependency, and leakage checks & Controlled validators do not prove arbitrary software-agent competence \\
+Provider and parser surfaces are part of the result & EXP08 blank outputs, EXP09/EXP10 repaired interface errors, EXP16 route failures & These are systems observations, not pure model-intelligence rankings \\
+\bottomrule
+\end{tabular}
+\caption{Claim, evidence, and limitation map. This table is intended to prevent over-reading the report as a single leaderboard.}
+\label{tab:claim_evidence_limitations}
+\end{table}
+
 \section{Discussion}
-The main result is not that a symbolic protocol simply beats natural language everywhere. Instead, EXP05 through EXP15 show tradeoffs between global quality, compactness, operational state, real-agent continuation, tool-interface reliability, public-artifact maintenance, and visual/responsive editing. Compressed remains the strongest universal baseline: it performs well across languages, models, controlled follow-up tests, and real-agent objective metrics. Hybrid\_state gives up some global quality but improves state preservation in judge-based paired experiments, which is precisely the property that motivated the protocol. EXP07 and EXP08 add a caution: the hybrid\_state advantage should not be generalized to every real-agent metric or framework. EXP09 through EXP15 add a second caution: a protocol can only succeed operationally if the action schema, available tools, parser, dependency model, validator contract, visual requirements, and output-budget settings are aligned with the task.
+The practical thesis is broader than compression: a useful protolanguage is one whose compact form still carries operational state as the agent surface becomes more realistic.
+
+The main result is not that a symbolic protocol simply beats natural language everywhere. Instead, EXP05 through EXP16 show tradeoffs between global quality, compactness, operational state, real-agent continuation, tool interface reliability, public artifact maintenance, visual and responsive editing, and provider-route robustness.
+
+Compressed remains the strongest universal baseline: it performs well across languages, models, controlled follow-up tests, and real-agent objective metrics. Hybrid\_state gives up some global quality but improves state preservation in judge-based paired experiments, which is precisely the property that motivated the protocol. EXP07 and EXP08 add a caution: the hybrid\_state advantage should not be generalized to every real-agent metric or framework. EXP09 through EXP16 add a second caution: a protocol can only succeed operationally if the action schema, available tools, parser, dependency model, validator contract, visual requirements, output-budget settings, and provider route are aligned with the task.
 
 This suggests a practical design rule: compact agent protocols should be optimized by target function. If the goal is general semantic quality, compressed is the safer baseline. If the goal is durable handoff and preservation of operational state, hybrid\_state is more promising. If the goal is extreme brevity, hybrid\_min is compact but risky.
 
@@ -693,16 +823,18 @@ The ZH result is one of the most interesting signals. Chinese performs best in t
 Judge drift also matters. The same outputs can receive systematically different quality levels depending on evaluator family. This does not invalidate the result, but it means future papers should report judge identity, judge agreement, and sensitivity analysis.
 
 \section{Limitations}
-EXP05 is exploratory and systems-oriented, while EXP06 is a narrower controlled follow-up but still depends on LLM judges and provider serving layers. EXP07 and EXP08 reduce judge dependence through objective metrics, but their framework surfaces are not interchangeable. EXP09 and EXP10 further reduce judge dependence, but they use controlled repository-like tasks rather than a large live codebase. EXP14 and EXP15 extend the repository setting, but still use controlled task banks and deterministic validators rather than unconstrained production work. The use of LLM judges introduces evaluator bias, even though EXP06 reduces single-judge risk through three-judge calibration. Some models were accessed through provider-specific serving layers, so observed behavior includes provider routing, quota, truncation, latency, safety filtering, and content-policy behavior. In EXP06, 21 Azure GPT instant generations were retained as terminal policy failures and excluded from score aggregation; therefore Azure generator averages should be read with survivorship bias in mind. In EXP08, 76 Azure GPT 5.4 High cells returned blank outputs under strict JSON scoring; these are retained as a model/serving failure mode rather than silently removed. In EXP09, 155 historical errors were repaired by improving the action parser, checksum tool contract, and Gemini thinking budget; these are preserved as interface-failure evidence and should not be hidden behind the final 288/288 latest-cell success rate. In EXP10, 17 historical errors were repaired before the final 80/80 latest-cell view; the saturated result should be interpreted as a controlled public-artifact interface validation, not evidence that general repository maintenance is solved. EXP15-B includes many final failures and therefore should be read as a stress test of contract compatibility, not a failure to be cleaned away.
+EXP05 is exploratory and systems-oriented, while EXP06 is a narrower controlled follow-up but still depends on LLM judges and provider serving layers. EXP07 and EXP08 reduce judge dependence through objective metrics, but their framework surfaces are not interchangeable. EXP09 and EXP10 further reduce judge dependence, but they use controlled repository-like tasks rather than a large live codebase. EXP14 and EXP15 extend the repository setting, but still use controlled task banks and deterministic validators rather than unconstrained production work. EXP16 is partial because provider access was restricted before the full design completed. The use of LLM judges introduces evaluator bias, even though EXP06 reduces single-judge risk through three-judge calibration. Some models were accessed through provider-specific serving layers, so observed behavior includes provider routing, quota, truncation, latency, safety filtering, authentication, and content-policy behavior. In EXP06, 21 Azure GPT instant generations were retained as terminal policy failures and excluded from score aggregation; therefore Azure generator averages should be read with survivorship bias in mind. In EXP08, 76 Azure GPT 5.4 High cells returned blank outputs under strict JSON scoring; these are retained as a model/serving failure mode rather than silently removed. In EXP09, 155 historical errors were repaired by improving the action parser, checksum tool contract, and Gemini thinking budget; these are preserved as interface-failure evidence and should not be hidden behind the final 288/288 latest-cell success rate. In EXP10, 17 historical errors were repaired before the final 80/80 latest-cell view; the saturated result should be interpreted as a controlled public-artifact interface validation, not evidence that general repository maintenance is solved. EXP15-B includes many final failures and therefore should be read as a stress test of contract compatibility, not a failure to be cleaned away. EXP16 and EXP16-B include quota, authentication, and provider-suspension failures; these are platform outcomes and should not be collapsed into semantic model failures.
 
 The quality index is descriptive, not a validated psychometric scale. It is useful for ranking and paired contrasts, but the paper's main scientific claims rely on individual metrics such as state preservation, operational continuity, compactness, ambiguity, and information loss. The ZH effect is promising but not fully causal. EXP06-B strengthens the representation hypothesis by comparing ZH with ZH\_PINYIN and literal variants, but it still cannot isolate tokenizer mechanics from training distribution and language familiarity. Some mini-experiments use smaller samples and should be treated as hypothesis-generating.
 
-The model list is also time-sensitive. Frontier model names, availability, quotas, and pricing change rapidly. Therefore, this paper should describe exact observed model identifiers, dates, and serving routes in an appendix before publication. EXP07's OpenFang results saturate the objective schema, and EXP08's OpenFang results remain high, so they should be interpreted as successful compatibility checks rather than general framework benchmarks. EXP09 and EXP10 saturated final results should likewise be interpreted as controlled protocol/tool-interface validations, not as evidence that arbitrary repository work is solved. EXP15 visual proxy metrics saturate on successful pages, so they should be used as integrity checks, not as subjective design-quality rankings.
+The model list is also time-sensitive. Frontier model names, availability, quotas, and pricing change rapidly. Therefore, this paper should describe exact observed model identifiers, dates, and serving routes in an appendix before publication. EXP07's OpenFang results saturate the objective schema, and EXP08's OpenFang results remain high, so they should be interpreted as successful compatibility checks rather than general framework benchmarks. EXP09 and EXP10 saturated final results should likewise be interpreted as controlled protocol/tool-interface validations, not as evidence that arbitrary repository work is solved. EXP15 visual proxy metrics saturate on successful pages, so they should be used as integrity checks, not as subjective design-quality rankings. EXP16 should be cited as partial model-route evidence and provider-failure evidence, not as a completed full factorial experiment.
 
 \section{Conclusion}
-EXP05 through EXP15 together reframe prompt compression as interoperable state-transfer protocol design. EXP05 provides the broad discovery result: compressed is a strong cross-model, multilingual baseline, and hybrid\_state improves state preservation in paired analysis. EXP06 provides the controlled follow-up: compressed remains ahead on global quality, but hybrid\_state still improves state preservation under stricter paired controls. EXP07 adds real-agent validation, and EXP08 scales it: compact protocols can be executed and measured in LangGraph and OpenFang using objective handoff metrics, but hybrid\_state does not dominate globally in this setting. EXP09 shows that the same research program can be connected to deterministic file-level tool use, where validator contracts and tool schemas become part of the protocol surface. EXP10--EXP12 extend that validation to the public research artifact itself, measuring claim drift, scope drift, dependency preservation, recovery, responsive behavior, and conflict-aware maintenance under controlled repository/page-maintenance task sets. EXP13 provides the clearest early repository benchmark result: compressed was more operationally robust (64/64) than hybrid\_state (62/64), while hybrid\_state exposed contract fragility in longer role-conditioned tasks. EXP14 and EXP15 extend this to longer chains and larger visual/responsive surfaces, showing that model/interface compatibility and parser contracts can dominate the observed success rate. The conclusion is therefore not that one protocol dominates all uses. Rather, compressed is the universal baseline, and hybrid\_state is a specialized state-oriented protocol whose benefits are conditional and should be tested against the target execution surface.
+EXP05 through EXP16 together reframe prompt compression as interoperable state-transfer protocol design. EXP05 provides the broad discovery result: compressed is a strong cross-model, multilingual baseline, and hybrid\_state improves state preservation in paired analysis. EXP06 provides the controlled follow-up: compressed remains ahead on global quality, but hybrid\_state still improves state preservation under stricter paired controls. EXP07 adds real-agent validation, and EXP08 scales it: compact protocols can be executed and measured in LangGraph and OpenFang using objective handoff metrics, but hybrid\_state does not dominate globally in this setting. EXP09 shows that the same research program can be connected to deterministic file-level tool use, where validator contracts and tool schemas become part of the protocol surface. EXP10--EXP12 extend that validation to the public research artifact itself, measuring claim drift, scope drift, dependency preservation, recovery, responsive behavior, and conflict-aware maintenance under controlled repository/page-maintenance task sets. EXP13 provides the clearest early repository benchmark result: compressed was more operationally robust (64/64) than hybrid\_state (62/64), while hybrid\_state exposed contract fragility in longer role-conditioned tasks. EXP14 and EXP15 extend this to longer chains and larger visual/responsive surfaces, showing that model/interface compatibility and parser contracts can dominate the observed success rate. EXP16 adds that model-route-specific adapters can help some routes, but provider quota/auth/suspension state can dominate observed outcomes. The conclusion is therefore not that one protocol dominates all uses. Rather, compressed is the universal baseline, and hybrid\_state is a specialized state-oriented protocol whose benefits are conditional and should be tested against the target execution surface.
 
-This distinction makes the research program clearer. Future compact agent protocols should be evaluated by target function: general semantic quality, state preservation, continuity, recoverability, cost, framework behavior, contract fit, visual/responsive behavior, and robustness to language and model family. The results motivate further work on symbolic protocols for multi-agent AI systems, especially where agents must survive context loss, provider substitution, multilingual transfer, evaluator drift, and real-agent execution constraints.
+This distinction makes the research program clearer. Future compact agent protocols should be evaluated by target function: general semantic quality, state preservation, continuity, recoverability, cost, framework behavior, contract fit, visual/responsive behavior, platform robustness, and robustness to language and model family. The results motivate further work on symbolic protocols for multi-agent AI systems, especially where agents must survive context loss, provider substitution, multilingual transfer, evaluator drift, provider restriction, and real-agent execution constraints.
+
+In short, \texttt{compressed} is the base language, \texttt{hybrid\_state} is the state language, and protolanguages should be chosen by operational surface rather than by a single global metric.
 
 
 \appendix
@@ -1072,6 +1204,141 @@ The current paper includes the most important figures, but a full visual appendi
 
 The style should remain simple: grey background, white grid, line plots for metric profiles, bar plots for counts, and paired-delta plots for controlled comparisons. Each figure should answer one question. A figure that only repeats a table should be removed or moved to appendix.
 
+\subsection{Complete Figure Appendix}
+This appendix collects the current public figure set for the full EXP01--EXP16 trail. The early figures are central to the paper's scientific claim. The later repository/tool-agent figures are diagnostic and systems-oriented: they document interface success, repaired failure modes, route-specific fragility, and visual/responsive maintenance behavior. They should therefore be read as evidence about protocol execution surfaces, not as a universal leaderboard of models.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\linewidth]{../paper_short/figures/fig_exp05_modes.png}
+\caption{EXP05 mode profile. Compressed remains the strongest broad baseline, while hybrid\_state is motivated by state-transfer behavior rather than global dominance.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\linewidth]{../paper_short/figures/fig_exp06_modes.png}
+\caption{EXP06 controlled mode profile. The controlled follow-up confirms a state-preservation advantage for hybrid\_state while preserving the broader quality tradeoff.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.84\linewidth]{../paper_short/figures/fig_exp06_language_delta.png}
+\caption{EXP06 language/variant deltas. These results support a cautious language-representation hypothesis but do not by themselves prove a tokenization mechanism.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\linewidth]{../paper_short/figures/fig_exp07_objective.png}
+\caption{EXP07 objective real-agent metrics. This figure shifts the evaluation from judge preference to continuation behavior in real agent surfaces.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\linewidth]{../paper_short/figures/fig_exp08_objective.png}
+\caption{EXP08 objective scale-up metrics. EXP08 shows that compressed remains a strong operational baseline under larger real-agent execution.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.96\linewidth]{../paper_short/figures/fig_exp07_exp08_objective_compact.png}
+\caption{Compact EXP07/EXP08 comparison. The paired real-agent picture is more conservative than the judge-based result: hybrid\_state has conditional value but not global dominance.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\linewidth]{figures_appendix/fig_exp01_exp04_recovery_counts.png}
+\caption{EXP01--EXP04 recovered clean latest-ok cells. These early stages provide historical protocol formation and recovery evidence rather than final causal claims.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\linewidth]{figures_appendix/fig_exp09_success_by_route_mode.png}
+\caption{EXP09 deterministic tool-use validation by route and mode. The saturated final view is useful as interface validation, but repaired historical errors remain scientifically important.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\linewidth]{figures_appendix/fig_exp10_metric_means.png}
+\caption{EXP10 public repository tool-agent metrics. The figure reports state, plan, constraint, dependency, recovery, claim-drift, and scope-drift behavior on the public artifact surface.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\linewidth]{figures_appendix/fig_exp11_success_by_model.png}
+\caption{EXP11 page task-assignment latest-cell outcomes. This stage tests whether models can perform assigned page edits while preserving repository constraints.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.88\linewidth]{figures_appendix/fig_exp12_success_by_mode.png}
+\caption{EXP12 conflict-aware repository maintenance success by mode. Conflict resolution exposes claim-preservation and merge-safety weaknesses that are hidden in simpler tasks.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.88\linewidth]{figures_appendix/fig_exp12_claim_drift_by_mode.png}
+\caption{EXP12 mean claim drift by mode. Claim drift is treated separately from ordinary state loss because it mutates scientific claims rather than merely dropping variables.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\linewidth]{figures_appendix/fig_exp13_success_by_model_mode.png}
+\caption{EXP13 real multi-agent scientific repository benchmark. Unlike EXP09/EXP10, EXP13 is not fully saturated and therefore provides more discriminative interface evidence.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\linewidth]{figures_appendix/fig_exp14_success_rate_by_round.png}
+\caption{EXP14 long-horizon repository maintenance success rate by round. This diagnoses cumulative degradation across sequential maintenance steps.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.86\linewidth]{figures_appendix/fig_exp14_success_rate_by_mode.png}
+\caption{EXP14 long-horizon success rate by mode. This plot should be read as long-horizon interface evidence rather than a broad prompt-compression result.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\linewidth]{../paper_short/figures/fig_exp15_success_by_model.png}
+\caption{EXP15 cross-cultural long-horizon page/repository maintenance success by model. The experiment extends the protocol test into visual/responsive and cross-cultural repository maintenance.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\linewidth]{../paper_short/figures/fig_exp15b_success_by_model.png}
+\caption{EXP15-B visual/responsive scale-up success by model. Gemini 3.5 Flash and GLM remain strong, while Grok routes reveal strict-contract fragility.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\linewidth]{figures_appendix/fig_exp16_success_by_model.png}
+\caption{EXP16 model-specific adaptation outcomes by model route. Qwen and Gemini 3.5 Flash benefit from route-specific contracts, while Grok is confounded by quota/auth/provider failures.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\linewidth]{figures_appendix/fig_exp16_success_by_mode.png}
+\caption{EXP16 outcomes by prompt adaptation mode. Model-specific adaptation is treated as an engineering hypothesis about interface compatibility, not as a final universal protocol.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\linewidth]{figures_appendix/fig_exp16b_success_rate_by_variant.png}
+\caption{EXP16-B Grok reasoning adaptation search. The best variants improve parseable success, but the experiment remains truncated and confounded by provider-surface failures.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.86\linewidth]{figures_appendix/fig_exp16b_failure_classes.png}
+\caption{EXP16-B terminal failure classes. Quota, authentication, and provider-suspension failures are retained as systems evidence and separated from protocol/model failures.}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\linewidth]{figures_appendix/fig_experiment_figure_coverage.png}
+\caption{Figure coverage across the experiment trail. This diagnostic confirms that the long report now includes explicit visual material for the complete EXP01--EXP16 trajectory.}
+\end{figure}
+
 \clearpage
 \section{Appendix Z: Final Release Checklist}
 Before public release, run the following checklist. Compile the PDF. Extract text and inspect for encoding artifacts. Confirm that every figure renders. Run a secret sweep. Confirm that public data contains no API keys, bearer tokens, credential files, or private local paths. Confirm that prompts, validators, schemas, task banks, clean datasets, repaired-error logs, analysis scripts, and checksums are present. Confirm that model routes and dates are listed. Confirm that claim-strength language is conservative. Confirm that EXP09 and EXP10 are described as interface validations rather than broad proof of general repository-solving ability.
@@ -1079,9 +1346,57 @@ Before public release, run the following checklist. Compile the PDF. Extract tex
 The final public package should be boring in the best sense: no hidden dependencies, no mystery scripts, no private credentials, and no unsupported claims. The science is strongest when a skeptical reader can reproduce the tables and see exactly where the system failed before it was repaired.
 
 \section*{Data and Code Availability}\addcontentsline{toc}{section}{Data and Code Availability}
-We release the prompts, task templates, validators, schemas, cleaned latest-cell datasets, repaired-error logs, analysis scripts, freeze manifests, and checksum manifests used for EXP05--EXP15 where public release is safe. The release excludes API keys, credential files, private provider logs, and unredacted local paths. Exact artifact locations are listed in the reproducibility appendix and public repository.
+We release the prompts, task templates, validators, schemas, cleaned latest-cell datasets, repaired-error logs, analysis scripts, freeze manifests, and checksum manifests used for EXP05--EXP16 where public release is safe. The release excludes API keys, credential files, private provider logs, and unredacted local paths. Exact artifact locations are listed in the reproducibility appendix and public repository.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
+
+\bibitem{jiang2023llmlingua}
+Huiqiang Jiang et al.
+\newblock LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models.
+\newblock EMNLP 2023. arXiv:2310.05736.
+\newblock \url{https://arxiv.org/abs/2310.05736}.
+
+\bibitem{wang2023longmem}
+Weizhi Wang et al.
+\newblock Augmenting Language Models with Long-Term Memory.
+\newblock arXiv:2306.07174, 2023.
+\newblock \url{https://arxiv.org/abs/2306.07174}.
+
+\bibitem{packer2023memgpt}
+Charles Packer et al.
+\newblock MemGPT: Towards LLMs as Operating Systems.
+\newblock arXiv:2310.08560, 2023.
+\newblock \url{https://arxiv.org/abs/2310.08560}.
+
+\bibitem{wu2023autogen}
+Qingyun Wu et al.
+\newblock AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation.
+\newblock arXiv:2308.08155, 2023.
+\newblock \url{https://arxiv.org/abs/2308.08155}.
+
+\bibitem{qin2023toolllm}
+Yujia Qin et al.
+\newblock ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs.
+\newblock arXiv:2307.16789, 2023.
+\newblock \url{https://arxiv.org/abs/2307.16789}.
+
+\bibitem{zheng2023judging}
+Lianmin Zheng et al.
+\newblock Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena.
+\newblock NeurIPS 2023 Datasets and Benchmarks. arXiv:2306.05685.
+\newblock \url{https://arxiv.org/abs/2306.05685}.
+
+\bibitem{efron1994bootstrap}
+Bradley Efron and Robert J. Tibshirani.
+\newblock An Introduction to the Bootstrap.
+\newblock Chapman and Hall/CRC, 1994.
+
+\bibitem{bates2015lme4}
+Douglas Bates, Martin Maechler, Ben Bolker, and Steve Walker.
+\newblock Fitting Linear Mixed-Effects Models Using lme4.
+\newblock Journal of Statistical Software, 67(1), 2015.
+\newblock DOI: 10.18637/jss.v067.i01.
+\newblock \url{https://doi.org/10.18637/jss.v067.i01}.
 
 \bibitem{exp06data2026}
 Anonymous Authors.

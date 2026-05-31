@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="540" viewBox="0 0 980 540">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>
+text { font-family: Arial, Helvetica, sans-serif; fill: #222; }
+.title { font-size: 20px; font-weight: 700; }
+.axis { font-size: 12px; fill: #555; }
+.label { font-size: 12px; }
+.small { font-size: 11px; fill: #555; }
+.grid { stroke: #ddd; stroke-width: 1; }
+</style>
+<text class="title" x="28" y="36">EXP12 conflict-aware maintenance: latest-cell outcomes</text>
+<line class="grid" x1="72" y1="410.0" x2="952" y2="410.0"/>
+<text class="axis" x="64" y="414.0" text-anchor="end">0</text>
+<line class="grid" x1="72" y1="342.4" x2="952" y2="342.4"/>
+<text class="axis" x="64" y="346.4" text-anchor="end">8</text>
+<line class="grid" x1="72" y1="274.8" x2="952" y2="274.8"/>
+<text class="axis" x="64" y="278.8" text-anchor="end">16</text>
+<line class="grid" x1="72" y1="207.2" x2="952" y2="207.2"/>
+<text class="axis" x="64" y="211.2" text-anchor="end">24</text>
+<line class="grid" x1="72" y1="139.6" x2="952" y2="139.6"/>
+<text class="axis" x="64" y="143.6" text-anchor="end">32</text>
+<line class="grid" x1="72" y1="72.0" x2="952" y2="72.0"/>
+<text class="axis" x="64" y="76.0" text-anchor="end">40</text>
+<rect x="72.0" y="114.2" width="431.0" height="295.8" fill="#59a14f"/>
+<rect x="72.0" y="72.0" width="431.0" height="42.2" fill="#e15759"/>
+<text class="axis" transform="translate(287.5,468) rotate(-35)" text-anchor="end">compressed</text>
+<rect x="521.0" y="131.1" width="431.0" height="278.9" fill="#59a14f"/>
+<rect x="521.0" y="72.0" width="431.0" height="59.1" fill="#e15759"/>
+<text class="axis" transform="translate(736.5,468) rotate(-35)" text-anchor="end">hybrid_state</text>
+<rect x="72" y="504" width="12" height="12" fill="#59a14f"/>
+<text class="small" x="90" y="514">success</text>
+<rect x="212" y="504" width="12" height="12" fill="#e15759"/>
+<text class="small" x="230" y="514">non-success</text>
+<text class="axis" transform="translate(20,241.0) rotate(-90)" text-anchor="middle">latest cells</text>
+</svg>

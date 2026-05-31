@@ -1,0 +1,43 @@
+﻿{
+  "experiment": "EXP16B",
+  "freeze_timestamp": "20260530_225809",
+  "raw_rows": 211,
+  "latest_cells": 160,
+  "latest_success_cells": 50,
+  "latest_failure_cells": 110,
+  "deprecated_latest_cells": 0,
+  "by_model_mode_status": {
+    "grok_4_20_reasoning|grok_v1_final_json|error": 28,
+    "grok_4_20_reasoning|grok_v1_final_json|ok": 4,
+    "grok_4_20_reasoning|grok_v2_template_lock|error": 27,
+    "grok_4_20_reasoning|grok_v2_template_lock|ok": 5,
+    "grok_4_20_reasoning|grok_v3_patch_min|error": 28,
+    "grok_4_20_reasoning|grok_v3_patch_min|ok": 4,
+    "grok_4_20_reasoning|grok_v4_schema_echo|error": 14,
+    "grok_4_20_reasoning|grok_v4_schema_echo|ok": 18,
+    "grok_4_20_reasoning|grok_v5_two_phase_hidden|error": 13,
+    "grok_4_20_reasoning|grok_v5_two_phase_hidden|ok": 19
+  },
+  "error_classes": {
+    "401_auth": 15,
+    "403_consumer_suspended": 12,
+    "429_resource_exhausted": 83
+  },
+  "token_summary": {
+    "total": {
+      "calls": 50,
+      "input_tokens": 362074,
+      "output_tokens": 27626,
+      "estimated_total_tokens": 389700
+    },
+    "by_model": {
+      "grok_4_20_reasoning": {
+        "calls": 50,
+        "input_tokens": 362074,
+        "output_tokens": 27626,
+        "estimated_total_tokens": 389700
+      }
+    }
+  },
+  "freeze_dir": "EXP16B_GROK_REASONING_ADAPTATION_SEARCH/data_freeze/freeze_20260530_225809 (internal freeze; public subset included here)"
+}

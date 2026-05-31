@@ -1,18 +1,24 @@
 ﻿{
     "created_utc":  "2026-05-28T21:30:00-05:00",
-    "updated_utc":  "2026-05-30T01:45:00-05:00",
+    "updated_utc":  "2026-05-30T23:10:00-05:00",
     "github_repository":  "https://github.com/DaosPath/state-transfer-protocols",
     "zenodo_doi":  "10.5281/zenodo.20425831",
     "zenodo_url":  "https://doi.org/10.5281/zenodo.20425831",
     "package":  "state-transfer-protocols public release",
-    "scope":  "EXP01-EXP15",
+    "scope":  "EXP01-EXP16",
     "components":  {
                        "paper_short":  "paper_short/",
                        "technical_report":  "technical_report/",
+                       "full_report_pdf":  "technical_report/state_transfer_protocols_full_exp01_exp16_report_20260531.pdf",
                        "reproducibility_repo":  "reproducibility_repo/",
                        "exp13":  "reproducibility_repo/EXP13_REAL_MULTI_AGENT_SCIENTIFIC_REPO_BENCHMARK/",
                        "exp15":  "reproducibility_repo/EXP15_CROSS_CULTURAL_LONG_HORIZON_REPO_MAINTENANCE/",
                        "exp15b":  "reproducibility_repo/EXP15B_VISUAL_RESPONSIVE_SCALEUP/",
+                       "exp16":  "reproducibility_repo/EXP16_MODEL_SPECIFIC_PROTOCOL_ADAPTATION/",
+                       "exp16b":  "reproducibility_repo/EXP16B_GROK_REASONING_ADAPTATION_SEARCH/",
+                       "appendix_figures":  "reproducibility_repo/appendix_figures/",
+                       "figure_generation_script":  "scripts/generate_appendix_figures.py",
+                       "figure_png_generation_script":  "scripts/generate_appendix_png_figures.py",
                        "historical_report_exp01_exp15":  "technical_report/state_transfer_protocols_historical_report_exp01_exp15.pdf"
                    },
     "exp13_summary":  {
@@ -50,7 +56,20 @@
                                                                },
                            "interpretation":  "visual/responsive scale-up as contract-interface compatibility stress test, not a visual design leaderboard"
                        },
-    "file_count":  378,
+    "exp16_summary":  {
+                           "latest_cells":  421,
+                           "success_or_repaired_cells":  320,
+                           "failure_cells":  101,
+                           "provider_restriction_event":  "Google Cloud Platform service unavailable from 2026-05-30",
+                           "interpretation":  "model-specific adaptation improved compatibility for Qwen and Gemini 3.5 Flash, while platform failures were treated separately from protocol failures"
+                       },
+    "exp16b_summary":  {
+                            "latest_cells":  160,
+                            "success_cells":  50,
+                            "failure_cells":  110,
+                            "interpretation":  "Grok reasoning adaptation search was truncated by quota/auth/provider failures; useful as stress evidence, not as a complete model ranking"
+                        },
+    "file_count":  438,
     "secret_sweep_hits":  [
 
                           ]

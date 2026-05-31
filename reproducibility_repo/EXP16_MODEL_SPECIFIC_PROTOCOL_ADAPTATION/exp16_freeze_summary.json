@@ -1,0 +1,87 @@
+﻿{
+  "experiment": "EXP16",
+  "freeze_timestamp": "20260530_225809",
+  "raw_rows": 426,
+  "latest_cells": 421,
+  "latest_success_cells": 320,
+  "latest_failure_cells": 101,
+  "deprecated_latest_cells": 37,
+  "by_model_mode_status": {
+    "gemini_3_5_flash|compressed_general|error": 4,
+    "gemini_3_5_flash|compressed_general|ok": 27,
+    "gemini_3_5_flash|compressed_general|ok_repaired": 1,
+    "gemini_3_5_flash|hybrid_state_general|error": 7,
+    "gemini_3_5_flash|hybrid_state_general|ok": 25,
+    "gemini_3_5_flash|model_adapted|error": 2,
+    "gemini_3_5_flash|model_adapted|ok": 29,
+    "gemini_3_5_flash|model_adapted|ok_repaired": 1,
+    "gemini_3_flash_preview|compressed_general|error": 1,
+    "gemini_3_flash_preview|compressed_general|ok": 12,
+    "gemini_3_flash_preview|hybrid_state_general|ok": 12,
+    "gemini_3_flash_preview|model_adapted|error": 1,
+    "gemini_3_flash_preview|model_adapted|ok": 11,
+    "glm_5|compressed_general|ok": 32,
+    "glm_5|hybrid_state_general|ok": 32,
+    "glm_5|model_adapted|ok": 32,
+    "grok_4_20_reasoning|compressed_general|error": 23,
+    "grok_4_20_reasoning|compressed_general|ok": 9,
+    "grok_4_20_reasoning|hybrid_state_general|error": 27,
+    "grok_4_20_reasoning|hybrid_state_general|ok": 5,
+    "grok_4_20_reasoning|model_adapted|error": 28,
+    "grok_4_20_reasoning|model_adapted|ok": 4,
+    "qwen3_next_80b_instruct|compressed_general|error": 3,
+    "qwen3_next_80b_instruct|compressed_general|ok": 23,
+    "qwen3_next_80b_instruct|compressed_general|ok_repaired": 6,
+    "qwen3_next_80b_instruct|hybrid_state_general|error": 5,
+    "qwen3_next_80b_instruct|hybrid_state_general|ok": 25,
+    "qwen3_next_80b_instruct|hybrid_state_general|ok_repaired": 2,
+    "qwen3_next_80b_instruct|model_adapted|ok": 31,
+    "qwen3_next_80b_instruct|model_adapted|ok_repaired": 1
+  },
+  "error_classes": {
+    "403_consumer_suspended": 9,
+    "429_resource_exhausted": 88,
+    "json_parse_or_contract": 4
+  },
+  "token_summary": {
+    "total": {
+      "calls": 320,
+      "input_tokens": 2390494,
+      "output_tokens": 334181,
+      "estimated_total_tokens": 2724675
+    },
+    "by_model": {
+      "gemini_3_5_flash": {
+        "calls": 83,
+        "input_tokens": 661438,
+        "output_tokens": 85145,
+        "estimated_total_tokens": 746583
+      },
+      "gemini_3_flash_preview": {
+        "calls": 35,
+        "input_tokens": 278909,
+        "output_tokens": 28037,
+        "estimated_total_tokens": 306946
+      },
+      "glm_5": {
+        "calls": 96,
+        "input_tokens": 673102,
+        "output_tokens": 130629,
+        "estimated_total_tokens": 803731
+      },
+      "grok_4_20_reasoning": {
+        "calls": 18,
+        "input_tokens": 130092,
+        "output_tokens": 12803,
+        "estimated_total_tokens": 142895
+      },
+      "qwen3_next_80b_instruct": {
+        "calls": 88,
+        "input_tokens": 646953,
+        "output_tokens": 77567,
+        "estimated_total_tokens": 724520
+      }
+    }
+  },
+  "freeze_dir": "EXP16_MODEL_SPECIFIC_PROTOCOL_ADAPTATION/data_freeze/freeze_20260530_225809 (internal freeze; public subset included here)"
+}

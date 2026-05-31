@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="540" viewBox="0 0 980 540">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<style>
+text { font-family: Arial, Helvetica, sans-serif; fill: #222; }
+.title { font-size: 20px; font-weight: 700; }
+.axis { font-size: 12px; fill: #555; }
+.label { font-size: 12px; }
+.small { font-size: 11px; fill: #555; }
+.grid { stroke: #ddd; stroke-width: 1; }
+</style>
+<text class="title" x="28" y="36">EXP16 outcome by model route</text>
+<line class="grid" x1="72" y1="410.0" x2="952" y2="410.0"/>
+<text class="axis" x="64" y="414.0" text-anchor="end">0</text>
+<line class="grid" x1="72" y1="342.4" x2="952" y2="342.4"/>
+<text class="axis" x="64" y="346.4" text-anchor="end">19</text>
+<line class="grid" x1="72" y1="274.8" x2="952" y2="274.8"/>
+<text class="axis" x="64" y="278.8" text-anchor="end">38</text>
+<line class="grid" x1="72" y1="207.2" x2="952" y2="207.2"/>
+<text class="axis" x="64" y="211.2" text-anchor="end">58</text>
+<line class="grid" x1="72" y1="139.6" x2="952" y2="139.6"/>
+<text class="axis" x="64" y="143.6" text-anchor="end">77</text>
+<line class="grid" x1="72" y1="72.0" x2="952" y2="72.0"/>
+<text class="axis" x="64" y="76.0" text-anchor="end">96</text>
+<rect x="72.0" y="117.8" width="206.5" height="292.2" fill="#4c78a8"/>
+<rect x="72.0" y="72.0" width="206.5" height="45.8" fill="#f28e2b"/>
+<text class="axis" transform="translate(175.2,468) rotate(-35)" text-anchor="end">gemini_3_5_flash</text>
+<rect x="296.5" y="72.0" width="206.5" height="338.0" fill="#4c78a8"/>
+<rect x="296.5" y="72.0" width="206.5" height="0.0" fill="#f28e2b"/>
+<text class="axis" transform="translate(399.8,468) rotate(-35)" text-anchor="end">glm_5</text>
+<rect x="521.0" y="346.6" width="206.5" height="63.4" fill="#4c78a8"/>
+<rect x="521.0" y="72.0" width="206.5" height="274.6" fill="#f28e2b"/>
+<text class="axis" transform="translate(624.2,468) rotate(-35)" text-anchor="end">grok_4_20_reasoning</text>
+<rect x="745.5" y="100.2" width="206.5" height="309.8" fill="#4c78a8"/>
+<rect x="745.5" y="72.0" width="206.5" height="28.2" fill="#f28e2b"/>
+<text class="axis" transform="translate(848.8,468) rotate(-35)" text-anchor="end">qwen3_next_80b_instruct</text>
+<rect x="72" y="504" width="12" height="12" fill="#4c78a8"/>
+<text class="small" x="90" y="514">success/repaired</text>
+<rect x="212" y="504" width="12" height="12" fill="#f28e2b"/>
+<text class="small" x="230" y="514">failure</text>
+<text class="axis" transform="translate(20,241.0) rotate(-90)" text-anchor="middle">latest cells</text>
+</svg>

@@ -2,7 +2,7 @@
 
 ## Package
 
-This package contains the integrated EXP05-EXP15 paper/release trail, technical appendix, selected analysis outputs, frozen metadata, and checksum manifest.
+This package contains the integrated EXP05-EXP16 paper/release trail, technical appendix, selected analysis outputs, frozen metadata, and checksum manifest.
 
 No literal API keys or provider credential files are included. Runner snapshots may contain environment-variable names such as `API_KEY`, but not secret values.
 
@@ -25,6 +25,8 @@ No literal API keys or provider credential files are included. Runner snapshots 
 - `EXP15_CROSS_CULTURAL_LONG_HORIZON_REPO_MAINTENANCE/Informe_EXP15_Final.md`
 - `EXP15B_VISUAL_RESPONSIVE_SCALEUP/Informe_EXP15B_Final.md`
 - `EXP15B_VISUAL_RESPONSIVE_SCALEUP/Informe_EXP15B_GrokReasoning_vs_NonReasoning.md`
+- `EXP16_MODEL_SPECIFIC_PROTOCOL_ADAPTATION/Informe_EXP16_ModelSpecificProtocolAdaptation.md`
+- `EXP16B_GROK_REASONING_ADAPTATION_SEARCH/Informe_EXP16B_GrokReasoningAdaptationSearch.md`
 - `paper/REVIEWER_HOSTILE_CRITIQUE.md`
 
 ## Data Freeze
@@ -38,6 +40,8 @@ No literal API keys or provider credential files are included. Runner snapshots 
 - `EXP13_REAL_MULTI_AGENT_SCIENTIFIC_REPO_BENCHMARK/`
 - `EXP15_CROSS_CULTURAL_LONG_HORIZON_REPO_MAINTENANCE/`
 - `EXP15B_VISUAL_RESPONSIVE_SCALEUP/`
+- `EXP16_MODEL_SPECIFIC_PROTOCOL_ADAPTATION/`
+- `EXP16B_GROK_REASONING_ADAPTATION_SEARCH/`
 
 Each freeze contains manifests, prompts or prompt-bearing runner snapshots, task banks, cleaned outputs where available, and checksum files. Raw logs are preserved for internal audit; public release should use redacted, latest-cell, or aggregated data.
 
@@ -75,6 +79,24 @@ EXP15-B is included as a public latest-cell freeze:
 - `validators/validate_long_horizon_repo.py`
 - `figures/fig_exp15b_success_by_model.png`
 
+EXP16 is included as a public latest-cell freeze:
+
+- `exp16_latest_cells_clean.jsonl`
+- `exp16_failures_latest.jsonl`
+- `exp16_latest_cells_summary.csv`
+- `exp16_freeze_summary.json`
+- `Informe_EXP16_ModelSpecificProtocolAdaptation.md`
+- `SHA256SUMS_EXP16.txt`
+
+EXP16-B is included as a public latest-cell freeze:
+
+- `exp16b_latest_cells_clean.jsonl`
+- `exp16b_failures_latest.jsonl`
+- `exp16b_latest_cells_summary.csv`
+- `exp16b_freeze_summary.json`
+- `Informe_EXP16B_GrokReasoningAdaptationSearch.md`
+- `SHA256SUMS_EXP16B.txt`
+
 ## Analysis
 
 - `analysis/EXP05/`
@@ -85,6 +107,31 @@ EXP15-B is included as a public latest-cell freeze:
 - `analysis/EXP10/`
 
 The analysis folders contain CSV/JSON/Markdown summaries used by the paper. EXP09 and EXP10 include deterministic validator summaries, repaired historical error counts, and latest-cell views.
+
+## Supplemental Figures
+
+Additional SVG figures are included in:
+
+- `appendix_figures/fig_exp01_exp04_recovery_counts.svg`
+- `appendix_figures/fig_exp09_success_by_route_mode.svg`
+- `appendix_figures/fig_exp10_metric_means.svg`
+- `appendix_figures/fig_exp11_success_by_model.svg`
+- `appendix_figures/fig_exp12_success_by_mode.svg`
+- `appendix_figures/fig_exp12_claim_drift_by_mode.svg`
+- `appendix_figures/fig_exp13_success_by_model_mode.svg`
+- `appendix_figures/fig_exp14_success_rate_by_round.svg`
+- `appendix_figures/fig_exp14_success_rate_by_mode.svg`
+- `appendix_figures/fig_exp16_success_by_model.svg`
+- `appendix_figures/fig_exp16_success_by_mode.svg`
+- `appendix_figures/fig_exp16b_success_rate_by_variant.svg`
+- `appendix_figures/fig_exp16b_failure_classes.svg`
+- `appendix_figures/fig_experiment_figure_coverage.svg`
+
+They can be regenerated without external plotting dependencies:
+
+```bash
+python scripts/generate_appendix_figures.py
+```
 
 ## Prompt, Task, Model, Freeze Index
 
@@ -99,7 +146,7 @@ It points to:
 - observed provider/model routes
 - freeze dates and route manifest files
 - validators, schemas, tool-action contracts, and runner scripts
-- repaired historical error logs for EXP09/EXP10 and latest failure evidence for EXP13/EXP15/EXP15-B
+- repaired historical error logs for EXP09/EXP10 and latest failure evidence for EXP13/EXP15/EXP15-B/EXP16/EXP16-B
 - cleaning and deduplication policy
 - freeze/checksum locations
 - auditable example rows and reports
