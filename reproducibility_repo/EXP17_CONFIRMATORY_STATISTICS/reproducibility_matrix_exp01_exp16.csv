@@ -1,0 +1,17 @@
+experiment,files_indexed,prompts,task_bank,clean_data,failures,checksums,report,extra_roles,audit_status
+EXP01,335,yes,yes,yes,yes,yes,yes,"analysis, runs",complete
+EXP02,0,missing,missing,missing,missing,missing,missing,,needs_review
+EXP03,0,missing,missing,missing,missing,missing,missing,,needs_review
+EXP04,16,missing,yes,missing,yes,missing,missing,runs,needs_review
+EXP05,267,yes,yes,yes,yes,yes,yes,"analysis, config, cost_ledger, runs",complete
+EXP06,676,yes,yes,yes,yes,yes,yes,"analysis, config, cost_ledger, runs, validators",complete
+EXP07,8438,yes,yes,missing,yes,yes,yes,"analysis, config, cost_ledger, runs, validators",needs_review
+EXP08,8513,yes,yes,yes,yes,yes,yes,"analysis, config, cost_ledger, runs, validators",complete
+EXP09,1007,yes,yes,yes,yes,yes,yes,"analysis, cost_ledger, runs, validators",complete
+EXP10,239,yes,yes,yes,yes,yes,yes,"analysis, config, cost_ledger, runs, validators",complete
+EXP11,204,yes,yes,missing,missing,missing,missing,"config, cost_ledger, runs, validators",needs_review
+EXP12,172,yes,yes,missing,missing,yes,yes,"config, cost_ledger, runs, validators",needs_review
+EXP13,343,yes,yes,yes,yes,yes,yes,"config, cost_ledger, runs, validators",complete
+EXP14,805,yes,yes,yes,yes,yes,yes,"config, cost_ledger, runs, validators",complete
+EXP15,1824,yes,yes,yes,yes,yes,yes,"analysis, config, cost_ledger, runs, validators",complete
+EXP16,798,yes,yes,yes,yes,yes,yes,"analysis, config, cost_ledger, runs, validators",complete

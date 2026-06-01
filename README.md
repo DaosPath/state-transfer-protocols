@@ -45,9 +45,12 @@ The main empirical conclusion is deliberately bounded:
 - `reproducibility_repo/EXP15B_VISUAL_RESPONSIVE_SCALEUP/`: EXP15-B scale-up report, latest-cell data, failure log, Grok Reasoning comparison, prompts, task bank, validators, summaries, and figures.
 - `reproducibility_repo/EXP16_MODEL_SPECIFIC_PROTOCOL_ADAPTATION/`: EXP16 report, latest-cell data, failure log, summary CSV, freeze summary, and checksums.
 - `reproducibility_repo/EXP16B_GROK_REASONING_ADAPTATION_SEARCH/`: EXP16-B Grok adaptation report, latest-cell data, failure log, summary CSV, freeze summary, and checksums.
+- `reproducibility_repo/EXP17_CONFIRMATORY_STATISTICS/`: no-model inventory, reproducibility matrix and bootstrap candidate intervals over frozen EXP05-EXP16 data.
 - `reproducibility_repo/FUTURE_EXPERIMENTS_EXP17_EXP23/`: planned follow-up roadmap for confirmatory statistics, tokenizer ablations, human calibration, formal grammars, long-horizon repo maintenance, model-specific adapters, and cost-quality-state analysis.
 - `reproducibility_repo/appendix_figures/`: supplemental figures for experiments not visualized in the short paper, including EXP01-04, EXP09-EXP14, EXP16, EXP16-B, and a coverage map.
 - `scripts/generate_appendix_figures.py`: dependency-free script that regenerates the appendix SVG figures from public CSV/JSONL artifacts.
+- `docs/HOW_TO_REPRODUCE.md`: reviewer-oriented reproduction path.
+- `docs/CLAIM_STRENGTH.md`: strong vs exploratory claim map.
 - `EXTERNAL_SUBMISSION_PLAN.md`: workshop/OpenReview/lab-feedback preparation notes.
 - `SHA256SUMS.txt`: checksums for public-release files.
 - `release_manifest.json`: release metadata.
